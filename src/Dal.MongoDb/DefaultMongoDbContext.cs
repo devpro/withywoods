@@ -40,7 +40,7 @@ namespace Devpro.Withywoods.Dal.MongoDb
         /// <summary>
         /// Register default conventions in the MongoDB registry.
         /// </summary>
-        protected virtual void RegisterConventions()
+        private void RegisterConventions()
         {
             ConventionRegistry.Register(
                 "IgnoreNullValues",
