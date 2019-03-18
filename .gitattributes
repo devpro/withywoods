@@ -16,6 +16,7 @@
 *.sln           text eol=lf
 *.csproj        text eol=lf
 *.yml           text eol=lf
+*.props         text eol=lf
 
 ###############################################################################
 # Set default behavior for command prompt diff.

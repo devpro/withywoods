@@ -8,12 +8,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - Solution Items", "{3125FF38-E220-4829-8855-66109C5B274B}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
+		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Data Access", "1 - Data Access", "{C547657B-0CFA-4CD4-B276-C9190B179A8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal.MongoDb.UnitTests", "test\Dal.MongoDb.UnitTests\Dal.MongoDb.UnitTests.csproj", "{E2533B06-9C39-4C43-941A-B9FA1D9A4304}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal.MongoDb.UnitTests", "test\Dal.MongoDb.UnitTests\Dal.MongoDb.UnitTests.csproj", "{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MongoDB", "MongoDB", "{A2C0AE1A-9B86-4F43-9F19-54C70939D2F0}"
 EndProject
@@ -27,17 +28,17 @@ Global
 		{4B8DBF6F-4E0C-4164-9A50-4B50D630CE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B8DBF6F-4E0C-4164-9A50-4B50D630CE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B8DBF6F-4E0C-4164-9A50-4B50D630CE7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2533B06-9C39-4C43-941A-B9FA1D9A4304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2533B06-9C39-4C43-941A-B9FA1D9A4304}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2533B06-9C39-4C43-941A-B9FA1D9A4304}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2533B06-9C39-4C43-941A-B9FA1D9A4304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B8DBF6F-4E0C-4164-9A50-4B50D630CE7F} = {A2C0AE1A-9B86-4F43-9F19-54C70939D2F0}
-		{E2533B06-9C39-4C43-941A-B9FA1D9A4304} = {A2C0AE1A-9B86-4F43-9F19-54C70939D2F0}
+		{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F} = {A2C0AE1A-9B86-4F43-9F19-54C70939D2F0}
 		{A2C0AE1A-9B86-4F43-9F19-54C70939D2F0} = {C547657B-0CFA-4CD4-B276-C9190B179A8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
