@@ -4,12 +4,22 @@ using MongoDB.Driver;
 
 namespace Devpro.Withywoods.Dal.MongoDb
 {
+    /// <summary>
+    /// Default MongoDB context implementation.
+    /// </summary>
     public class DefaultMongoDbContext : IMongoDbContext
     {
         private readonly string _databaseName;
 
-        protected MongoClient MongoClient { get; set; }
+        /// <summary>
+        /// Mongo client
+        /// </summary>
+        protected MongoClient MongoClient { get; private set; }
 
+        /// <summary>
+        /// Create a new instance of <see cref="DefaultMongoDbContext"/>.
+        /// </summary>
+        /// <param name="configuration"></param>
         public DefaultMongoDbContext(IMongoDbConfiguration configuration)
         {
             _databaseName = configuration.DatabaseName;
@@ -17,11 +27,19 @@ namespace Devpro.Withywoods.Dal.MongoDb
             MongoClient = new MongoClient(configuration.ConnectionString);
         }
 
+        /// <summary>
+        /// Get Database instance.
+        /// </summary>
+        /// <param name="databaseName"></param>
+        /// <returns></returns>
         public IMongoDatabase GetDatabase(string databaseName = null)
         {
             return MongoClient.GetDatabase(databaseName ?? _databaseName);
         }
 
+        /// <summary>
+        /// Register default conventions in the MongoDB registry.
+        /// </summary>
         protected virtual void RegisterConventions()
         {
             ConventionRegistry.Register(

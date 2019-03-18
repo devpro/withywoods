@@ -5,7 +5,7 @@ using MongoDB.Driver;
 namespace Devpro.Withywoods.Dal.MongoDb.Repositories
 {
     /// <summary>
-    /// Base class for DAL repositories using MongoDB as DB storage.
+    /// Base class for DAL repositories using MongoDB as DB server.
     /// </summary>
     public abstract class RepositoryBase
     {
@@ -43,9 +43,9 @@ namespace Devpro.Withywoods.Dal.MongoDb.Repositories
         protected RepositoryBase(IMongoDbContext mongoDbContext, ILogger<RepositoryBase> logger, IMapper mapper)
         {
             MongoDbContext = mongoDbContext;
-            MongoDatabase  = MongoDbContext.GetDatabase();
-            Logger         = logger;
-            Mapper         = mapper;
+            MongoDatabase = MongoDbContext.GetDatabase();
+            Logger = logger;
+            Mapper = mapper;
         }
 
         /// <summary>

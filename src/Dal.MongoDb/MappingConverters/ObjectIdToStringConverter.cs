@@ -14,11 +14,12 @@ namespace Devpro.Withywoods.Dal.MongoDb.MappingConverters
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <param name="context"></param>
-        /// <returns></returns>
+        /// <returns>String value of the object id, null if the object id is empty</returns>
         public string Convert(ObjectId source, string destination, ResolutionContext context)
         {
             if (source == ObjectId.Empty)
                 return null;
+
             return source.ToString();
         }
     }

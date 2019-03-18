@@ -8,9 +8,9 @@ namespace Devpro.Withywoods.Dal.MongoDb
     public interface IMongoDbContext
     {
         /// <summary>
-        /// Get database.
+        /// Get database instance.
         /// </summary>
-        /// <param name="databaseName"></param>
+        /// <param name="databaseName">database name (can be null)</param>
         /// <returns></returns>
         IMongoDatabase GetDatabase(string databaseName = null);
     }
