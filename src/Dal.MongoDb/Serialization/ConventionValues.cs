@@ -3,7 +3,7 @@
     /// <summary>
     /// Serialization convention possible values.
     /// </summary>
-    public class ConventionValues
+    public static class ConventionValues
     {
         /// <summary>
         /// Ignore null values.
