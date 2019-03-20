@@ -1,4 +1,6 @@
-﻿namespace Devpro.Withywoods.Dal.MongoDb
+﻿using System.Collections.Generic;
+
+namespace Devpro.Withywoods.Dal.MongoDb
 {
     /// <summary>
     /// Configuration interface in order to use DAL MongoDB.
@@ -14,5 +16,10 @@
         /// Database name.
         /// </summary>
         string DatabaseName { get; }
+
+        /// <summary>
+        /// Driver registry conventions containing values from <see cref="Serialization.ConventionValues" constant values />
+        /// </summary>
+        List<string> SerializationConventions { get; }
     }
 }

@@ -6,6 +6,7 @@ using Xunit;
 
 namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.MappingConverters
 {
+    [Trait("Category", "UnitTests")]
     public class ObjectIdToStringConverterTest
     {
         private readonly IMapper _mapper;
@@ -22,20 +23,20 @@ namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.MappingConverters
         }
 
         [Fact]
-        public void AssertConfigurationIsValid_WhenDefault_ThenDoNotThrowException()
+        public void ObjectIdToStringConverterAssertConfigurationIsValid_DoNotThrowAnException()
         {
             _mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }
 
         [Fact]
-        public void Map_WhenValidObjectIdString_ThenReturnValidString()
+        public void ObjectIdToStringConverterMap_WhenValidObjectIdString_ReturnValidString()
         {
             var output = _mapper.Map<string>(new ObjectId("5ba893a670f3b02e3d34e24c"));
             output.Should().Be("5ba893a670f3b02e3d34e24c");
         }
 
         [Fact]
-        public void Map_WhenEmptyString_ThenReturnNull()
+        public void ObjectIdToStringConverterMap_WhenEmptyString_ReturnNull()
         {
             var output = _mapper.Map<string>(ObjectId.Empty);
             output.Should().BeNull();

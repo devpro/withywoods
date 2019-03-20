@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using System.Linq;
+using Devpro.Withywoods.Dal.MongoDb.Serialization;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
@@ -9,22 +11,23 @@ namespace Devpro.Withywoods.Dal.MongoDb
     /// </summary>
     public class DefaultMongoDbContext : IMongoDbContext
     {
-        private readonly string _databaseName;
+        private readonly IMongoDbConfiguration _mongoDbConfiguration;
 
         /// <summary>
         /// Mongo client
         /// </summary>
-        protected MongoClient MongoClient { get; private set; }
+        protected IMongoClient MongoClient { get; private set; }
 
         /// <summary>
         /// Create a new instance of <see cref="DefaultMongoDbContext"/>.
         /// </summary>
         /// <param name="configuration"></param>
-        public DefaultMongoDbContext(IMongoDbConfiguration configuration)
+        /// <param name="mongoClientFactory"></param>
+        public DefaultMongoDbContext(IMongoDbConfiguration configuration, IMongoClientFactory mongoClientFactory)
         {
-            _databaseName = configuration.DatabaseName;
+            _mongoDbConfiguration = configuration;
             RegisterConventions();
-            MongoClient = new MongoClient(configuration.ConnectionString);
+            MongoClient = mongoClientFactory.CreateClient(configuration.ConnectionString);
         }
 
         /// <summary>
@@ -34,42 +37,67 @@ namespace Devpro.Withywoods.Dal.MongoDb
         /// <returns></returns>
         public IMongoDatabase GetDatabase(string databaseName = null)
         {
-            return MongoClient.GetDatabase(databaseName ?? _databaseName);
+            return MongoClient.GetDatabase(databaseName ?? _mongoDbConfiguration.DatabaseName);
         }
 
         /// <summary>
-        /// Register default conventions in the MongoDB registry.
+        /// Register the serialization conventions in the registry from the list provided by the configuration.
         /// </summary>
         private void RegisterConventions()
         {
-            ConventionRegistry.Register(
-                "IgnoreNullValues",
-                new ConventionPack
-                {
-                    new IgnoreIfNullConvention(true)
-                },
-                t => true);
-            ConventionRegistry.Register(
-                "CamelCaseElementName",
-                new ConventionPack
-                {
-                    new CamelCaseElementNameConvention()
-                },
-                t => true);
-            ConventionRegistry.Register(
-                "EnumAsString",
-                new ConventionPack
-                {
-                    new EnumRepresentationConvention(BsonType.String)
-                },
-                t => true);
-            ConventionRegistry.Register(
-                "IgnoreExtraElements",
-                new ConventionPack
-                {
-                    new IgnoreExtraElementsConvention(true)
-                },
-                t => true);
+            if (_mongoDbConfiguration.SerializationConventions == null
+                || !_mongoDbConfiguration.SerializationConventions.Any())
+            {
+                return;
+            }
+
+            if (_mongoDbConfiguration.SerializationConventions.Contains(ConventionValues.IgnoreNullValues))
+            {
+                ConventionRegistry.Register(
+                    ConventionValues.IgnoreNullValues,
+                    new ConventionPack
+                    {
+                        new IgnoreIfNullConvention(true)
+                    },
+                    t => true
+                );
+            }
+
+            if (_mongoDbConfiguration.SerializationConventions.Contains(ConventionValues.CamelCaseElementName))
+            {
+                ConventionRegistry.Register(
+                    ConventionValues.CamelCaseElementName,
+                    new ConventionPack
+                    {
+                        new CamelCaseElementNameConvention()
+                    },
+                    t => true
+                );
+            }
+
+            if (_mongoDbConfiguration.SerializationConventions.Contains(ConventionValues.EnumAsString))
+            {
+                ConventionRegistry.Register(
+                    ConventionValues.EnumAsString,
+                    new ConventionPack
+                    {
+                        new EnumRepresentationConvention(BsonType.String)
+                    },
+                    t => true
+                );
+            }
+
+            if (_mongoDbConfiguration.SerializationConventions.Contains(ConventionValues.IgnoreExtraElements))
+            {
+                ConventionRegistry.Register(
+                    ConventionValues.IgnoreExtraElements,
+                    new ConventionPack
+                    {
+                        new IgnoreExtraElementsConvention(true)
+                    },
+                    t => true
+                );
+            }
         }
     }
 }
