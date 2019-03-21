@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <metadata>
-        <description>
-            A package that provide classes to ease the use of MongoDB driver.
-        </description>
-        <projectUrl>https://github.com/devpro/withywoods</projectUrl>
-    </metadata>
-</package>
