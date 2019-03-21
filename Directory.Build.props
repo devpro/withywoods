@@ -12,7 +12,7 @@
     <When Condition=" '$(BUILD_SOURCEBRANCHNAME)' != 'master' ">
       <PropertyGroup>
         <!-- Prerelease version numbers are MAJOR.MINOR.0-pre-build###### -->
-        <VersionSuffix>$(BUILD_SOURCEBRANCHNAME)-build$(BUILD_BUILDID.PadLeft(6, '0'))</VersionSuffix>
+        <VersionSuffix>pre-build$(BUILD_BUILDID.PadLeft(6, '0'))</VersionSuffix>
       </PropertyGroup>
     </When>
     <Otherwise>
