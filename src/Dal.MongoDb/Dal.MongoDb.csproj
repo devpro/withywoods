@@ -8,6 +8,7 @@
     <Authors>devprofr</Authors>
     <Description>A package that provide classes to ease the use of MongoDB driver.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
