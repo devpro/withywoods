@@ -14,11 +14,13 @@ namespace Devpro.Withywoods.Dal.MongoDb.DependencyInjection
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddMongoDbContext(this IServiceCollection services)
+        public static IServiceCollection AddMongoDbContext<T>(this IServiceCollection services)
+            where T : class, IMongoDbConfiguration
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
 
+            services.TryAddTransient<IMongoDbConfiguration, T>();
             services.TryAddTransient<IMongoClientFactory, MongoClientFactory>();
             services.TryAddScoped<IMongoDbContext, DefaultMongoDbContext>();
 

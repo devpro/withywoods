@@ -3,7 +3,6 @@ using Devpro.Withywoods.Dal.MongoDb.DependencyInjection;
 using Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Xunit;
 
 namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.DependencyInjection
@@ -19,10 +18,9 @@ namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.DependencyInjection
         {
             // Arrange
             var serviceCollection = new ServiceCollection();
-            serviceCollection.TryAddTransient<IMongoDbConfiguration, FakeConfiguration>();
 
             // Act
-            serviceCollection.AddMongoDbContext();
+            serviceCollection.AddMongoDbContext<FakeConfiguration>();
             var services = serviceCollection.BuildServiceProvider();
             var mongoDbContext = services.GetRequiredService<IMongoDbContext>();
             var database = mongoDbContext.GetDatabase();
@@ -41,7 +39,7 @@ namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.DependencyInjection
             ServiceCollection serviceCollection = null;
 
             // Act
-            var exc = Assert.Throws<ArgumentNullException>(() => serviceCollection.AddMongoDbContext());
+            var exc = Assert.Throws<ArgumentNullException>(() => serviceCollection.AddMongoDbContext<FakeConfiguration>());
 
             // Assert
             exc.Should().NotBeNull();
