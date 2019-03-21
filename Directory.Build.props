@@ -9,10 +9,10 @@
   </PropertyGroup>
  
   <Choose>
-    <When Condition=" '$(Prerelease)' != '' ">
+    <When Condition=" '$(BUILD_SOURCEBRANCHNAME)' != 'master' ">
       <PropertyGroup>
         <!-- Prerelease version numbers are MAJOR.MINOR.0-pre-build###### -->
-        <VersionSuffix>$(Prerelease)-build$(BUILD_BUILDID.PadLeft(6, '0'))</VersionSuffix>
+        <VersionSuffix>$(BUILD_SOURCEBRANCHNAME)-build$(BUILD_BUILDID.PadLeft(6, '0'))</VersionSuffix>
       </PropertyGroup>
     </When>
     <Otherwise>
