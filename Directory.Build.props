@@ -4,21 +4,20 @@
   </PropertyGroup>
  
   <PropertyGroup>
-    <!-- edit this value to change the current MAJOR.MINOR version -->
-    <VersionPrefix>1.0</VersionPrefix>
+    <!-- edit this value to change the current MAJOR.MINOR.PATCH version -->
+    <VersionPrefix>1.1.0</VersionPrefix>
   </PropertyGroup>
  
   <Choose>
     <When Condition=" '$(BUILD_SOURCEBRANCHNAME)' != 'master' ">
       <PropertyGroup>
-        <!-- Prerelease version numbers are MAJOR.MINOR.0-pre-build###### -->
-        <VersionSuffix>pre-build$(BUILD_BUILDID.PadLeft(6, '0'))</VersionSuffix>
+        <!-- Alpha version numbers are MAJOR.MINOR.PATCH-alpha-###### -->
+        <VersionSuffix>alpha-$(BUILD_BUILDID.PadLeft(6, '0'))</VersionSuffix>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
-        <!-- Release version numbers are MAJOR.MINOR.# -->
-        <VersionPrefix>$(VersionPrefix).$(BUILD_BUILDID.PadLeft(1, '0'))</VersionPrefix>
+        <VersionSuffix>$(VersionSuffix)</VersionSuffix>
       </PropertyGroup>
     </Otherwise>
   </Choose>
