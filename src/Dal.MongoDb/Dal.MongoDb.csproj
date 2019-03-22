@@ -5,6 +5,10 @@
     <AssemblyName>Devpro.Withywoods.Dal.MongoDb</AssemblyName>
     <RootNamespace>Devpro.Withywoods.Dal.MongoDb</RootNamespace>
     <ProjectGuid>{4B8DBF6F-4E0C-4164-9A50-4B50D630CE7F}</ProjectGuid>
+    <Authors>devprofr</Authors>
+    <Description>A package that provide classes to ease the use of MongoDB driver.</Description>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

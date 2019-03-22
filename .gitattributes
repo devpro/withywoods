@@ -17,6 +17,8 @@
 *.csproj        text eol=lf
 *.yml           text eol=lf
 *.props         text eol=lf
+*.nuspec        text eol=lf
+*.runsettings   text eol=lf
 
 ###############################################################################
 # Set default behavior for command prompt diff.
