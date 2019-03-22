@@ -3,23 +3,22 @@
 [![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/withywoods-CI?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=12&branchName=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devpro.withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=devpro.withywoods)
 
-## Components
+Standard/Core libraries to ease usual application .NET development needs. All this libraries are available on [nuget.org](https://www.nuget.org/).
 
-### DAL MongoDB
+## Get started
+
+### Data Access Layer (DAL) for MongoDB
 
 [![Version](https://img.shields.io/nuget/v/Devpro.Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Devpro.Withywoods.Dal.MongoDb/)
 [![Downloads](https://img.shields.io/nuget/dt/Devpro.Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Devpro.Withywoods.Dal.MongoDb/)
-
-Sources for NuGet package [Devpro.Withywoods.Dal.MongoDb](https://www.nuget.org/packages/Devpro.Withywoods.Dal.MongoDb/) containing classes to ease the use of MongoDB (db server).
 
 - Main classes:
   - `DefaultMongoDbContext`: have one clean database context in your application using the best practices
   - `RepositoryBase`: abstract class for repositories with common fields and methods
   - `ObjectIdToStringConverter` and `StringToObjectIdConverter`: AutoMapper converters
 
-- Install the NuGet package: `Install-Package Devpro.Withywoods.Dal.MongoDb`.
-
 - How to use it:
+  - Reference `Devpro.Withywoods.Dal.MongoDb` NuGet package
   - Implement `IMongoDbConfiguration` interface and add it in the service collection (dependency injection)
   - Use extension to register all needed types:
 
@@ -28,8 +27,7 @@ Sources for NuGet package [Devpro.Withywoods.Dal.MongoDb](https://www.nuget.org/
   {
     // ...
 
-	services.AddScoped<Devpro.Withywoods.Dal.MongoDb.IMongoDbConfiguration, MyCustomConfiguration>();
-    service.AddMongoDbContext();
+    service.AddMongoDbContext<Devpro.Withywoods.Dal.MongoDb.IMongoDbConfiguration>();
 
 	// ...
   }
@@ -51,3 +49,10 @@ Sources for NuGet package [Devpro.Withywoods.Dal.MongoDb](https://www.nuget.org/
     var mapper = config.CreateMapper();
     mapper.ConfigurationProvider.AssertConfigurationIsValid();
   ```
+
+## Build & Debug
+
+- .NET Core SDK must be installed ([download](https://dotnet.microsoft.com/download))
+  - From the command line `dotnet --version` must return a version >= 2.2.104
+- Build the solution: `dotnet run`
+- Run the tests: `dotnet test`
