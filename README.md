@@ -19,12 +19,12 @@
 
 - How to use it:
   - Reference `Devpro.Withywoods.Dal.MongoDb` NuGet package
-  - Implement `IMongoDbConfiguration` interface and add it in the service collection (dependency injection)
-  - Use extension to register all needed types:
+  - Implement `IMongoDbConfiguration` interface (let's call it MyCustomConfiguration
+  - Use the extension to register all needed types:
 
   ```csharp
-    // Add this line in Startup class in ConfigureServices method
-    service.AddMongoDbContext<Devpro.Withywoods.Dal.MongoDb.IMongoDbConfiguration>();
+    // Add this line in Startup class in ConfigureServices method (MyCustom)
+    service.AddMongoDbContext<MyCustomConfiguration>();
   ```
 
   - Register AutoMapper converters:
