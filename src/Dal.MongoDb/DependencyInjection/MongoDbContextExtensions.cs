@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Devpro.Withywoods.Dal.MongoDb.DependencyInjection
+namespace Withywoods.Dal.MongoDb.DependencyInjection
 {
     /// <summary>
     /// Extensions methods to configure an <see cref="IServiceCollection"/>.

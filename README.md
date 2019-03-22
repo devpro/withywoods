@@ -1,7 +1,7 @@
 # Devpro Withywoods - Shared .NET libraries
 
 [![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/withywoods-CI?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=12&branchName=master)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devpro.withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=devpro.withywoods)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=withywoods)
 
 .NET libraries (Standard/Core) to ease .NET development needs. All this libraries are available on [nuget.org](https://www.nuget.org/).
 
@@ -9,8 +9,8 @@
 
 ### Data Access Layer (DAL) for MongoDB
 
-[![Version](https://img.shields.io/nuget/v/Devpro.Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Devpro.Withywoods.Dal.MongoDb/)
-[![Downloads](https://img.shields.io/nuget/dt/Devpro.Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Devpro.Withywoods.Dal.MongoDb/)
+[![Version](https://img.shields.io/nuget/v/Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.Dal.MongoDb/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.Dal.MongoDb/)
 
 - Main classes:
   - `DefaultMongoDbContext`: have one clean database context in your application using the best practices
@@ -18,7 +18,7 @@
   - `ObjectIdToStringConverter` and `StringToObjectIdConverter`: AutoMapper converters
 
 - How to use it:
-  - Reference `Devpro.Withywoods.Dal.MongoDb` NuGet package
+  - Reference `Withywoods.Dal.MongoDb` NuGet package
   - Implement `IMongoDbConfiguration` interface (let's call it MyCustomConfiguration
   - Use the extension to register all needed types:
 
@@ -33,9 +33,9 @@
     var config = new MapperConfiguration(x =>
     {
         x.CreateMap<MongoDB.Bson.ObjectId, string>()
-	        .ConvertUsing<Devpro.Withywoods.Dal.MongoDb.MappingConverters.ObjectIdToStringConverter>();
+	        .ConvertUsing<Withywoods.Dal.MongoDb.MappingConverters.ObjectIdToStringConverter>();
 		x.CreateMap<string, MongoDB.Bson.ObjectId>()
-			.ConvertUsing<Devpro.Withywoods.Dal.MongoDb.MappingConverters.StringToObjectIdConverter>();
+			.ConvertUsing<Withywoods.Dal.MongoDb.MappingConverters.StringToObjectIdConverter>();
 		x.AllowNullCollections = true;
 	});
 

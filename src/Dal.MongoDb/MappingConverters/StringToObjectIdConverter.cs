@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Bson;
 
-namespace Devpro.Withywoods.Dal.MongoDb.MappingConverters
+namespace Withywoods.Dal.MongoDb.MappingConverters
 {
     /// <summary>
     /// AutoMapper type Converter from <see cref="string"/> to <see cref="ObjectId"/>.

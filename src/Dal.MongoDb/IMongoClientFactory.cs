@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace Devpro.Withywoods.Dal.MongoDb
+namespace Withywoods.Dal.MongoDb
 {
     /// <summary>
     /// Interface for factory on <see cref="IMongoClient"/>.

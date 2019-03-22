@@ -1,4 +1,4 @@
-﻿namespace Devpro.Withywoods.Dal.MongoDb.Serialization
+﻿namespace Withywoods.Dal.MongoDb.Serialization
 {
     /// <summary>
     /// Serialization convention possible values.

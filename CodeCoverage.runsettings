@@ -7,10 +7,10 @@
           <CodeCoverage>
             <ModulePaths>
               <Include>
-                <ModulePath>.*Devpro\.Withywoods\.Dal.*\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Dal.*\.dll$</ModulePath>
               </Include>
               <Exclude>
-                <ModulePath>.*Devpro\.Withywoods.*Tests\.dll$</ModulePath>
+                <ModulePath>.*Withywoods.*Tests\.dll$</ModulePath>
                 <ModulePath>.*Moq.*</ModulePath>
               </Exclude>
             </ModulePaths>

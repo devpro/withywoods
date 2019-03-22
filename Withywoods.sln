@@ -7,7 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal.MongoDb", "src\Dal.Mong
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - Solution Items", "{3125FF38-E220-4829-8855-66109C5B274B}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
 		CodeCoverage.runsettings = CodeCoverage.runsettings
 		docs\dal.mongodb.md = docs\dal.mongodb.md
 		Directory.Build.props = Directory.Build.props
@@ -19,6 +18,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal.MongoDb.UnitTests", "test\Dal.MongoDb.UnitTests\Dal.MongoDb.UnitTests.csproj", "{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MongoDB", "MongoDB", "{A2C0AE1A-9B86-4F43-9F19-54C70939D2F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Web", "2 - Web", "{3D263FD4-B1FB-4009-B80B-5496B880552D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

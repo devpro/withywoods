@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Devpro.Withywoods.Dal.MongoDb</AssemblyName>
-    <RootNamespace>Devpro.Withywoods.Dal.MongoDb</RootNamespace>
-    <ProjectGuid>{4B8DBF6F-4E0C-4164-9A50-4B50D630CE7F}</ProjectGuid>
+    <AssemblyName>Withywoods.Dal.MongoDb</AssemblyName>
+    <RootNamespace>Withywoods.Dal.MongoDb</RootNamespace>
+    <ProjectGuid>{AAD8B37B-D944-4DBB-B9AB-1DF444683BF0}</ProjectGuid>
     <Authors>devprofr</Authors>
     <Description>A package that provide classes to ease the use of MongoDB driver.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>

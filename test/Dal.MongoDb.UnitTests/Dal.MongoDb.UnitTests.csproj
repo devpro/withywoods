@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>Devpro.Withywoods.Dal.MongoDb.UnitTests</AssemblyName>
-    <RootNamespace>Devpro.Withywoods.Dal.MongoDb.UnitTests</RootNamespace>
-    <ProjectGuid>{3DCDB715-F2D4-499E-BE82-258D4AE8CA6F}</ProjectGuid>
+    <AssemblyName>Withywoods.Dal.MongoDb.UnitTests</AssemblyName>
+    <RootNamespace>Withywoods.Dal.MongoDb.UnitTests</RootNamespace>
+    <ProjectGuid>{A7D0A7F8-D1FE-44E0-81D3-F500B731F937}</ProjectGuid>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

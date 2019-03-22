@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using Moq;
+using Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using Xunit;
 
-namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.Repositories
+namespace Withywoods.Dal.MongoDb.UnitTests.Repositories
 {
     [Trait("Category", "UnitTests")]
     public class RepositoryBaseTest

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Devpro.Withywoods.Dal.MongoDb.Repositories;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using Withywoods.Dal.MongoDb.Repositories;
 
-namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes
+namespace Withywoods.Dal.MongoDb.UnitTests.Fakes
 {
     internal class FakeRepository : RepositoryBase
     {

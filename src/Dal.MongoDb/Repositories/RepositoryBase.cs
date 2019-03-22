@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
-namespace Devpro.Withywoods.Dal.MongoDb.Repositories
+namespace Withywoods.Dal.MongoDb.Repositories
 {
     /// <summary>
     /// Base class for DAL repositories using MongoDB as DB server.

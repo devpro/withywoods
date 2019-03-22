@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Devpro.Withywoods.Dal.MongoDb.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
+using Withywoods.Dal.MongoDb.Serialization;
 
-namespace Devpro.Withywoods.Dal.MongoDb
+namespace Withywoods.Dal.MongoDb
 {
     /// <summary>
     /// Default MongoDB context implementation.
