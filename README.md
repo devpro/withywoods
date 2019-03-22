@@ -3,7 +3,7 @@
 [![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/withywoods-CI?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=12&branchName=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devpro.withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=devpro.withywoods)
 
-Standard/Core libraries to ease usual application .NET development needs. All this libraries are available on [nuget.org](https://www.nuget.org/).
+.NET libraries (Standard/Core) to ease .NET development needs. All this libraries are available on [nuget.org](https://www.nuget.org/).
 
 ## Get started
 
@@ -23,24 +23,17 @@ Standard/Core libraries to ease usual application .NET development needs. All th
   - Use extension to register all needed types:
 
   ```csharp
-  public void ConfigureServices(IServiceCollection services)
-  {
-    // ...
-
+    // Add this line in Startup class in ConfigureServices method
     service.AddMongoDbContext<Devpro.Withywoods.Dal.MongoDb.IMongoDbConfiguration>();
-
-	// ...
-  }
   ```
 
   - Register AutoMapper converters:
 
   ```csharp
-	var config = new MapperConfiguration(x =>
-	{
-		// ...
-		x.CreateMap<MongoDB.Bson.ObjectId, string>()
-			.ConvertUsing<Devpro.Withywoods.Dal.MongoDb.MappingConverters.ObjectIdToStringConverter>();
+    var config = new MapperConfiguration(x =>
+    {
+        x.CreateMap<MongoDB.Bson.ObjectId, string>()
+	        .ConvertUsing<Devpro.Withywoods.Dal.MongoDb.MappingConverters.ObjectIdToStringConverter>();
 		x.CreateMap<string, MongoDB.Bson.ObjectId>()
 			.ConvertUsing<Devpro.Withywoods.Dal.MongoDb.MappingConverters.StringToObjectIdConverter>();
 		x.AllowNullCollections = true;
