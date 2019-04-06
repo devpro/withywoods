@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Withywoods.AspNetCoreApiSample
@@ -12,6 +13,7 @@ namespace Withywoods.AspNetCoreApiSample
         /// Entry point.
         /// </summary>
         /// <param name="args"></param>
+        [ExcludeFromCodeCoverage]
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.Swagger;
 using Withywoods.AspNetCore;
+using Withywoods.Configuration;
 
 namespace Withywoods.AspNetCoreApiSample
 {
@@ -29,14 +29,6 @@ namespace Withywoods.AspNetCoreApiSample
 
         #endregion
 
-        #region IWebAppConfiguration properties
-
-        Info IWebAppConfiguration.SwaggerDefinition => GetSection(_ApiDefinitionSectionKey).Get<Info>();
-
-        string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
-        #endregion
-
         #region Public properties
 
         public string InMemoryDatabaseName = "TaskList";
@@ -45,16 +37,11 @@ namespace Withywoods.AspNetCoreApiSample
 
         #endregion
 
-        #region Private methods
+        #region IWebAppConfiguration properties
 
-        private IConfigurationSection GetSection(string sectionKey)
-        {
-            var section = _configuration.GetSection(sectionKey);
-            if (section == null)
-                throw new ArgumentException($"Missing section \"{sectionKey}\" in configuration file");
+        Info IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(_ApiDefinitionSectionKey).Get<Info>();
 
-            return section;
-        }
+        string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
         #endregion
     }
