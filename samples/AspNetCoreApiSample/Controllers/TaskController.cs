@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Withywoods.AspNetCoreApiSample.Dal;
+using Withywoods.AspNetCoreApiSample.Dal.Repositories;
 using Withywoods.AspNetCoreApiSample.Dto;
 
 namespace Withywoods.AspNetCoreApiSample.Controllers
@@ -17,14 +17,17 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         #region Private members & Constructor
 
         private readonly ITaskDbContext _dbContext;
+        private readonly ITaskRepository _taskRepository;
 
         /// <summary>
         /// Create a new instance of <see cref="TaskController"/>.
         /// </summary>
         /// <param name="dbContext"></param>
-        public TaskController(ITaskDbContext dbContext)
+        /// <param name="taskRepository"></param>
+        public TaskController(ITaskDbContext dbContext, ITaskRepository taskRepository)
         {
             _dbContext = dbContext;
+            _taskRepository = taskRepository;
         }
 
         #endregion
@@ -47,7 +50,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(200, Type = typeof(List<TaskDto>))]
         public ActionResult<List<TaskDto>> Get()
         {
-            return _dbContext.TaskItems.ToList();
+            return _taskRepository.FindAll();
         }
 
         /// <summary>

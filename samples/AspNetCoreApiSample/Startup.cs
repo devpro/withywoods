@@ -44,6 +44,7 @@ namespace Withywoods.AspNetCoreApiSample
 
             // DAL
             services.AddScoped<Dal.ITaskDbContext, Dal.Efcore.EfcoreDbContext>();
+            services.AddScoped<Dal.Repositories.ITaskRepository, Dal.Efcore.Repositories.TaskRepository>();
             services.AddDbContext<Dal.Efcore.EfcoreDbContext>(opt =>
                 opt.UseInMemoryDatabase(_webAppConfiguration.InMemoryDatabaseName));
         }
