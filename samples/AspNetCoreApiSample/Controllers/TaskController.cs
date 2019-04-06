@@ -16,13 +16,13 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
     {
         #region Private members & Constructor
 
-        private readonly ITodoDbContext _dbContext;
+        private readonly ITaskDbContext _dbContext;
 
         /// <summary>
         /// Create a new instance of <see cref="TaskController"/>.
         /// </summary>
         /// <param name="dbContext"></param>
-        public TaskController(ITodoDbContext dbContext)
+        public TaskController(ITaskDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -47,7 +47,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(200, Type = typeof(List<TaskDto>))]
         public ActionResult<List<TaskDto>> Get()
         {
-            return _dbContext.TodoItems.ToList();
+            return _dbContext.TaskItems.ToList();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(404)]
         public ActionResult<TaskDto> Get(string id)
         {
-            var item = _dbContext.TodoItems.Find(id);
+            var item = _dbContext.TaskItems.Find(id);
             if (item == null)
                 return NotFound();
 
@@ -98,7 +98,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(400)]
         public ActionResult<TaskDto> Create(TaskDto item)
         {
-            _dbContext.TodoItems.Add(item);
+            _dbContext.TaskItems.Add(item);
             _dbContext.SaveChanges();
 
             return CreatedAtRoute("GetTaskById", new { id = item.Id }, item);
@@ -130,14 +130,14 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
             if (string.IsNullOrEmpty(id) || item?.Id != id)
                 return BadRequest();
 
-            var task = _dbContext.TodoItems.Find(id);
+            var task = _dbContext.TaskItems.Find(id);
             if (task == null)
                 return NotFound();
 
             task.Title = item.Title;
             task.IsComplete = item.IsComplete;
 
-            _dbContext.TodoItems.Update(task);
+            _dbContext.TaskItems.Update(task);
             _dbContext.SaveChanges();
 
             return NoContent();
@@ -161,11 +161,11 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(404)]
         public IActionResult Delete(string id)
         {
-            var task = _dbContext.TodoItems.Find(id);
+            var task = _dbContext.TaskItems.Find(id);
             if (task == null)
                 return NotFound();
 
-            _dbContext.TodoItems.Remove(task);
+            _dbContext.TaskItems.Remove(task);
             _dbContext.SaveChanges();
 
             return NoContent();

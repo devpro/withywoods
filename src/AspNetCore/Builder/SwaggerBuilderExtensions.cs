@@ -24,7 +24,7 @@ namespace Withywoods.AspNetCore.Builder
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint($"/swagger/{swaggerDefinition.Version}/swagger.json", swaggerDefinition.Title);
+                c.SwaggerEndpoint($"/swagger/{swaggerDefinition?.Version ?? "1.0"}/swagger.json", swaggerDefinition?.Title ?? "");
             });
 
             return app;

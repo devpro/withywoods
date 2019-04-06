@@ -1,4 +1,7 @@
-﻿using Withywoods.AspNetCoreApiSample.Dal.Repositories;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Withywoods.AspNetCoreApiSample.Dal.Repositories;
+using Withywoods.AspNetCoreApiSample.Dto;
 
 namespace Withywoods.AspNetCoreApiSample.Dal.Efcore.Repositories
 {
@@ -16,6 +19,15 @@ namespace Withywoods.AspNetCoreApiSample.Dal.Efcore.Repositories
         public TaskRepository(EfcoreDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        /// <summary>
+        /// Find all tasks.
+        /// </summary>
+        /// <returns></returns>
+        public List<TaskDto> FindAll()
+        {
+            return _dbContext.TaskItems.ToList();
         }
     }
 }

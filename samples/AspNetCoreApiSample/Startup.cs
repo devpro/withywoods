@@ -14,8 +14,7 @@ namespace Withywoods.AspNetCoreApiSample
     /// </summary>
     public class Startup
     {
-        private readonly IConfiguration _configuration;
-        private readonly ApiConfiguration _apiConfiguration;
+        private readonly WebAppConfiguration _webAppConfiguration;
 
         /// <summary>
         /// Create a new instance of <see cref="Startup"/>.
@@ -23,8 +22,7 @@ namespace Withywoods.AspNetCoreApiSample
         /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
-            _configuration = configuration;
-            _apiConfiguration = new ApiConfiguration(_configuration);
+            _webAppConfiguration = new WebAppConfiguration(configuration);
         }
 
         /// <summary>
@@ -37,13 +35,17 @@ namespace Withywoods.AspNetCoreApiSample
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            // Health checks
+            services.AddHealthChecks()
+                .AddDbContextCheck<Dal.Efcore.EfcoreDbContext>();
+
             // Swagger
-            services.AddSwaggerGen(_apiConfiguration);
+            services.AddSwaggerGen(_webAppConfiguration);
 
             // DAL
-            services.AddScoped<Dal.ITodoDbContext, Dal.Efcore.EfcoreDbContext>();
+            services.AddScoped<Dal.ITaskDbContext, Dal.Efcore.EfcoreDbContext>();
             services.AddDbContext<Dal.Efcore.EfcoreDbContext>(opt =>
-                opt.UseInMemoryDatabase(_apiConfiguration.InMemoryDatabaseName));
+                opt.UseInMemoryDatabase(_webAppConfiguration.InMemoryDatabaseName));
         }
 
         /// <summary>
@@ -63,7 +65,9 @@ namespace Withywoods.AspNetCoreApiSample
                 app.UseHsts();
             }
 
-            app.UseSwagger(_apiConfiguration);
+            app.UseHealthChecks(_webAppConfiguration.HealthChecksEndpoint);
+
+            app.UseSwagger(_webAppConfiguration);
 
             app.UseHttpsRedirection();
             app.UseMvc();

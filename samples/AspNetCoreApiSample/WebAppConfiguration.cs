@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.Swagger;
 using Withywoods.AspNetCore;
 
 namespace Withywoods.AspNetCoreApiSample
 {
-    internal class ApiConfiguration : IWebAppConfiguration
+    internal class WebAppConfiguration : IWebAppConfiguration
     {
         #region Private constants
 
@@ -21,7 +22,7 @@ namespace Withywoods.AspNetCoreApiSample
         /// Constructor
         /// </summary>
         /// <param name="configuration"></param>
-        public ApiConfiguration(IConfiguration configuration)
+        public WebAppConfiguration(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -32,13 +33,15 @@ namespace Withywoods.AspNetCoreApiSample
 
         Info IWebAppConfiguration.SwaggerDefinition => GetSection(_ApiDefinitionSectionKey).Get<Info>();
 
-        string IWebAppConfiguration.AssemblyName => System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+        string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
         #endregion
 
         #region Public properties
 
         public string InMemoryDatabaseName = "TodoList";
+
+        public string HealthChecksEndpoint = "/health";
 
         #endregion
 

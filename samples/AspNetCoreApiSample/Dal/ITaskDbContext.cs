@@ -4,14 +4,14 @@ using Withywoods.AspNetCoreApiSample.Dto;
 namespace Withywoods.AspNetCoreApiSample.Dal
 {
     /// <summary>
-    /// Todo database context interface.
+    /// Task database context interface.
     /// </summary>
-    public interface ITodoDbContext
+    public interface ITaskDbContext
     {
         /// <summary>
-        /// Todo items.
+        /// Task items.
         /// </summary>
-        DbSet<TaskDto> TodoItems { get; set; }
+        DbSet<TaskDto> TaskItems { get; set; }
 
         /// <summary>
         /// Save changes.

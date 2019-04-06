@@ -6,7 +6,7 @@ namespace Withywoods.AspNetCoreApiSample
     /// <summary>
     /// Application main class.
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         /// Entry point.

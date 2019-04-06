@@ -6,7 +6,7 @@ namespace Withywoods.AspNetCoreApiSample.Dal.Efcore
     /// <summary>
     /// EntityFrameworkCore database context for Todo elements.
     /// </summary>
-    public class EfcoreDbContext : DbContext, ITodoDbContext
+    public class EfcoreDbContext : DbContext, ITaskDbContext
     {
         /// <summary>
         /// Create a new instance of <see cref="EfcoreDbContext"/>.
@@ -20,6 +20,6 @@ namespace Withywoods.AspNetCoreApiSample.Dal.Efcore
         /// <summary>
         /// Database sets for Todo elements.
         /// </summary>
-        public DbSet<TaskDto> TodoItems { get; set; }
+        public DbSet<TaskDto> TaskItems { get; set; }
     }
 }
