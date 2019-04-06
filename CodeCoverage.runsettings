@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <DataCollectionRunSettings>
     <DataCollectors>
@@ -8,6 +8,8 @@
             <ModulePaths>
               <Include>
                 <ModulePath>.*Withywoods\.Dal.*\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.AspNetCore.*\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.AspNetCoreApiSample.*\.dll$</ModulePath>
               </Include>
               <Exclude>
                 <ModulePath>.*Withywoods.*Tests\.dll$</ModulePath>

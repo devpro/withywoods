@@ -15,9 +15,8 @@ namespace Withywoods.AspNetCore.DependencyInjection
         /// Add Swagger generation in ASP.NET Core dependency injection mechanism.
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="setupAction"></param>
         /// <returns></returns>
-        public static IServiceCollection AddSwaggerGen(this IServiceCollection services, IWebAppConfiguration configuration, Action<SwaggerGenOptions> setupAction = null)
+        public static IServiceCollection AddSwaggerGen(this IServiceCollection services, IWebAppConfiguration configuration)
         {
             var swaggerDefinition = configuration.SwaggerDefinition;
 

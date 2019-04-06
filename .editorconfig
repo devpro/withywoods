@@ -26,3 +26,6 @@ dotnet_sort_system_directives_first = true
 
 [*.{xml,config,*proj,nuspec,props,resx,targets,yml,tasks,json}]
 indent_size = 2
+
+[*.{sln}]
+indent_size = 4
