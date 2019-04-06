@@ -5,7 +5,10 @@
     <AssemblyName>Withywoods.WebTesting</AssemblyName>
     <RootNamespace>Withywoods.WebTesting</RootNamespace>
     <ProjectGuid>{09BD8721-6F8C-44A2-BA49-545A3CCD5690}</ProjectGuid>
-    <IsPackable>false</IsPackable>
+    <Authors>devprofr</Authors>
+    <Description>Library to ease the use ASP.NET Core web testing.</Description>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
