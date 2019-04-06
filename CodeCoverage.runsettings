@@ -9,6 +9,7 @@
               <Include>
                 <ModulePath>.*Withywoods\.AspNetCore\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.AspNetCoreApiSample\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Configuration\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.Dal.*\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.Selenium\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.WebTesting\.dll$</ModulePath>
