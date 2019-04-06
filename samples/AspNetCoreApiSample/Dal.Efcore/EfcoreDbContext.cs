@@ -4,7 +4,7 @@ using Withywoods.AspNetCoreApiSample.Dto;
 namespace Withywoods.AspNetCoreApiSample.Dal.Efcore
 {
     /// <summary>
-    /// EntityFrameworkCore database context for Todo elements.
+    /// EntityFrameworkCore database context for tasks.
     /// </summary>
     public class EfcoreDbContext : DbContext, ITaskDbContext
     {
@@ -18,7 +18,7 @@ namespace Withywoods.AspNetCoreApiSample.Dal.Efcore
         }
 
         /// <summary>
-        /// Database sets for Todo elements.
+        /// Database sets for tasks.
         /// </summary>
         public DbSet<TaskDto> TaskItems { get; set; }
     }

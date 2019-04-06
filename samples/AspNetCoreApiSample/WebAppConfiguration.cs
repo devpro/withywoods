@@ -39,7 +39,7 @@ namespace Withywoods.AspNetCoreApiSample
 
         #region Public properties
 
-        public string InMemoryDatabaseName = "TodoList";
+        public string InMemoryDatabaseName = "TaskList";
 
         public string HealthChecksEndpoint = "/health";
 

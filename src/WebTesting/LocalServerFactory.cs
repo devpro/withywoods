@@ -10,17 +10,26 @@ namespace Withywoods.WebTesting
     /// <summary>
     /// Local server factory to be able to test a web application from an external driver (such as the one provided by Selenium).
     /// </summary>
-    /// <typeparam name="TStartup"></typeparam>
+    /// <typeparam name="TStartup">Web startup</typeparam>
     public class LocalServerFactory<TStartup> : WebApplicationFactory<TStartup>
         where TStartup : class
     {
+        private const string _LocalhostBaseAddress = "https://localhost";
+
         private IWebHost _host;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="LocalServerFactory"/>.
+        /// Sets client options base address to localhost.
+        /// </summary>
         public LocalServerFactory()
         {
-            ClientOptions.BaseAddress = new Uri("https://localhost");
+            ClientOptions.BaseAddress = new Uri(_LocalhostBaseAddress);
         }
 
+        /// <summary>
+        /// Root URI.
+        /// </summary>
         public string RootUri { get; private set; }
 
         protected override TestServer CreateServer(IWebHostBuilder builder)
