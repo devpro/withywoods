@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,6 +6,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Withywoods.AspNetCoreApiSample.Dto;
+using Withywoods.AspNetCoreApiSample.IntegrationTests.Entities;
 using Withywoods.WebTesting.Rest;
 using Xunit;
 
@@ -87,6 +87,19 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             expectedError.Errors["Title"] = new string[1] { "The Title field is required." };
             await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId }, _client, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLighBadRequest()
+        {
+            var taskId = Guid.NewGuid().ToString();
+            var expectedError = new LightValidationProblemDetails
+            {
+                Title = "One or more validation errors occurred.",
+                Status = 400
+            };
+            expectedError.Errors["Title"] = new string[1] { "The Title field is required." };
+            await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId }, _client, expectedError, HttpStatusCode.BadRequest);
         }
 
         [Theory]
