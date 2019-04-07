@@ -1,11 +1,11 @@
 ﻿using System;
-using Devpro.Withywoods.Dal.MongoDb.DependencyInjection;
-using Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Withywoods.Dal.MongoDb.DependencyInjection;
+using Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using Xunit;
 
-namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.DependencyInjection
+namespace Withywoods.Dal.MongoDb.UnitTests.DependencyInjection
 {
     [Trait("Category", "UnitTests")]
     public class MongoDbContextExtensionsTest

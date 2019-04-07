@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Devpro.Withywoods.Dal.MongoDb
+namespace Withywoods.Dal.MongoDb
 {
     /// <summary>
     /// Configuration interface in order to use DAL MongoDB.

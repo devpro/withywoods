@@ -1,8 +1,8 @@
-﻿using Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
+using Withywoods.Dal.MongoDb.UnitTests.Fakes;
 
-namespace Devpro.Withywoods.Dal.MongoDb.UnitTests
+namespace Withywoods.Dal.MongoDb.UnitTests
 {
     [Trait("Category", "UnitTests")]
     public class MongoClientFactoryTest

@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
-namespace Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes
+namespace Withywoods.Dal.MongoDb.UnitTests.Fakes
 {
     internal class FakeEntity
     {

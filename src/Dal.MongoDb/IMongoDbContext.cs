@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace Devpro.Withywoods.Dal.MongoDb
+namespace Withywoods.Dal.MongoDb
 {
     /// <summary>
     /// MongoDB Context interface.

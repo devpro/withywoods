@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Devpro.Withywoods.Dal.MongoDb.Serialization;
-using Devpro.Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using FluentAssertions;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 using Moq;
+using Withywoods.Dal.MongoDb.Serialization;
+using Withywoods.Dal.MongoDb.UnitTests.Fakes;
 using Xunit;
 
-namespace Devpro.Withywoods.Dal.MongoDb.UnitTests
+namespace Withywoods.Dal.MongoDb.UnitTests
 {
     [Trait("Category", "UnitTests")]
     public class DefaultMongoDbContextTest

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <DataCollectionRunSettings>
     <DataCollectors>
@@ -7,13 +7,24 @@
           <CodeCoverage>
             <ModulePaths>
               <Include>
-                <ModulePath>.*Devpro\.Withywoods\.Dal.*\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.AspNetCore\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.AspNetCoreApiSample\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Configuration\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Dal.*\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Selenium\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Serialization\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.WebTesting\.dll$</ModulePath>
               </Include>
               <Exclude>
-                <ModulePath>.*Devpro\.Withywoods.*Tests\.dll$</ModulePath>
+                <ModulePath>.*Withywoods.*Tests\.dll$</ModulePath>
                 <ModulePath>.*Moq.*</ModulePath>
               </Exclude>
             </ModulePaths>
+            <Attributes>
+              <Exclude>
+                <Attribute>^System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
+              </Exclude>
+            </Attributes>
             <!-- We recommend you do not change the following values: -->
             <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
             <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
