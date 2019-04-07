@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>Withywoods.Configuration.UnitTests</AssemblyName>
-    <RootNamespace>Withywoods.Configuration.UnitTests</RootNamespace>
-    <ProjectGuid>{6363D334-1F99-414B-94B2-1030DA6EF659}</ProjectGuid>
+    <AssemblyName>Withywoods.Serialization.UnitTests</AssemblyName>
+    <RootNamespace>Withywoods.Serialization.UnitTests</RootNamespace>
+    <ProjectGuid>{F17F5F36-4A14-476E-B42A-D8FB4F4F8A93}</ProjectGuid>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Configuration\Configuration.csproj" />
+    <ProjectReference Include="..\..\src\Serialization\Serialization.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
     [Trait("Environment", "Localhost")]
     public class HealthResourceTest : IClassFixture<WebApplicationFactory<Startup>>
     {
-        private const string _ResourceEndPoint = "health";
+        private const string _ResourceEndpoint = "health";
 
         private readonly HttpClient _client;
 
@@ -23,7 +23,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         public async Task AspNetCoreApiSampleHealthResourceGet_ReturnsHttpOk()
         {
             // Arrange & Act
-            var response = await _client.GetAsync($"/{_ResourceEndPoint}");
+            var response = await _client.GetAsync($"/{_ResourceEndpoint}");
             response.EnsureSuccessStatusCode();
             var stringResponse = await response.Content.ReadAsStringAsync();
 

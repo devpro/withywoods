@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using Withywoods.Selenium;
-using Withywoods.WebTesting;
+using Withywoods.WebTesting.TestHost;
 using Xunit;
 
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
@@ -13,7 +13,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
     [Trait("Environment", "Localhost")]
     public class SwaggerResourceTest : IClassFixture<LocalServerFactory<Startup>>, IDisposable
     {
-        private const string _ResourceEndPoint = "swagger";
+        private const string _ResourceEndpoint = "swagger";
 
         private readonly HttpClient _httpClient;
         private readonly RemoteWebDriver _webDriver;
@@ -35,7 +35,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         public void AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk()
         {
             // Arrange & Act
-            _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndPoint}");
+            _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
 
             // Assert
             _webDriver.FindElement(By.ClassName("title"), 360);

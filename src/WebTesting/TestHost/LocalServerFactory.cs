@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 
-namespace Withywoods.WebTesting
+namespace Withywoods.WebTesting.TestHost
 {
     /// <summary>
     /// Local server factory to be able to test a web application from an external driver (such as the one provided by Selenium).
