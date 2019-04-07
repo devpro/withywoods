@@ -12,6 +12,7 @@
                 <ModulePath>.*Withywoods\.Configuration\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.Dal.*\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.Selenium\.dll$</ModulePath>
+                <ModulePath>.*Withywoods\.Serialization\.dll$</ModulePath>
                 <ModulePath>.*Withywoods\.WebTesting\.dll$</ModulePath>
               </Include>
               <Exclude>
@@ -19,6 +20,11 @@
                 <ModulePath>.*Moq.*</ModulePath>
               </Exclude>
             </ModulePaths>
+            <Attributes>
+              <Exclude>
+                <Attribute>^System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute$</Attribute>
+              </Exclude>
+            </Attributes>
             <!-- We recommend you do not change the following values: -->
             <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
             <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
