@@ -53,6 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		docs\DalMongoDB.md = docs\DalMongoDB.md
 		docs\WebApp.md = docs\WebApp.md
 		docs\WebTesting.md = docs\WebTesting.md
+		docs\Selenium.md = docs\Selenium.md
 	EndProjectSection
 EndProject
 Global

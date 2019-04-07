@@ -37,6 +37,8 @@ Details on this [page](./docs/DalMongoDB.md).
 
 #### Selenium
 
+Details on this [page](./docs/Selenium.md).
+
 [![Version](https://img.shields.io/nuget/v/Withywoods.Selenium.svg)](https://www.nuget.org/packages/Withywoods.Selenium/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Selenium.svg)](https://www.nuget.org/packages/Withywoods.Selenium/)
 
@@ -48,6 +50,8 @@ Details on this [page](./docs/WebApp.md).
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.AspNetCore.svg)](https://www.nuget.org/packages/Withywoods.AspNetCore/)
 
 #### Web testing
+
+Details on this [page](./docs/WebTesting.md).
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.WebTesting.svg)](https://www.nuget.org/packages/Withywoods.WebTesting/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.WebTesting.svg)](https://www.nuget.org/packages/Withywoods.WebTesting/)
