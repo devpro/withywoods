@@ -7,7 +7,7 @@ using Withywoods.AspNetCoreApiSample.Dto;
 namespace Withywoods.AspNetCoreApiSample.Controllers
 {
     /// <summary>
-    /// REST controller providing CRUD actions on "Task" ressource.
+    /// REST controller providing CRUD actions on "Task" resource.
     /// </summary>
     [Route("api/tasks")]
     [ApiController]
@@ -130,7 +130,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(404)]
         public IActionResult Update(string id, TaskDto item)
         {
-            if (string.IsNullOrEmpty(id) || item?.Id != id)
+            if (string.IsNullOrEmpty(item?.Id) || item?.Id != id)
                 return BadRequest();
 
             var task = _dbContext.TaskItems.Find(id);
@@ -165,11 +165,11 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         public IActionResult Delete(string id)
         {
             var task = _dbContext.TaskItems.Find(id);
-            if (task == null)
-                return NotFound();
-
-            _dbContext.TaskItems.Remove(task);
-            _dbContext.SaveChanges();
+            if (task != null)
+            {
+                _dbContext.TaskItems.Remove(task);
+                _dbContext.SaveChanges();
+            }
 
             return NoContent();
         }
