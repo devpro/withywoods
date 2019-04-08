@@ -139,3 +139,9 @@ public async Task AspNetCoreApiSampleTaskResourceFullCycle_IsOk()
 - Restore packages (NuGet): `dotnet restore`
 - Build the solution: `dotnet run`
 - Run the tests: `dotnet test`
+
+## Samples
+
+### AspNetCoreApiSample
+
+This is a fully working example, with Swagger generation, API controllers, completely tested by integration tests.
