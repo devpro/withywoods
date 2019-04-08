@@ -5,6 +5,8 @@ This library can be used by an ASP.NET Core 2.2 applications.
 ## Features
 
 - Provide very easily an auto-generated Swagger automatically (documentation + test)
+  - Implement IWebAppConfiguration
+  - Call Swagger extensions in ConfigureServices and Configure methods of Startup class
 
 ## References
 
