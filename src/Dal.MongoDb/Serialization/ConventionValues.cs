@@ -14,7 +14,7 @@
         /// Use camel case for element names.
         /// </summary>
         public const string CamelCaseElementName = "CamelCaseElementName";
-        
+
         /// <summary>
         /// Use enum names.
         /// </summary>

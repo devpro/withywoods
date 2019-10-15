@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal.MongoDb", "src\Dal.MongoDb\Dal.MongoDb.csproj", "{AAD8B37B-D944-4DBB-B9AB-1DF444683BF0}"
 EndProject
@@ -51,10 +51,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	ProjectSection(SolutionItems) = preProject
 		docs\Common.md = docs\Common.md
 		docs\DalMongoDB.md = docs\DalMongoDB.md
+		docs\Selenium.md = docs\Selenium.md
 		docs\WebApp.md = docs\WebApp.md
 		docs\WebTesting.md = docs\WebTesting.md
-		docs\Selenium.md = docs\Selenium.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium.UnitTests", "test\Selenium.UnitTests\Selenium.UnitTests.csproj", "{53BBAD59-19B4-4A94-8110-5D0A9212ADF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +112,10 @@ Global
 		{F17F5F36-4A14-476E-B42A-D8FB4F4F8A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F17F5F36-4A14-476E-B42A-D8FB4F4F8A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F17F5F36-4A14-476E-B42A-D8FB4F4F8A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BBAD59-19B4-4A94-8110-5D0A9212ADF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BBAD59-19B4-4A94-8110-5D0A9212ADF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BBAD59-19B4-4A94-8110-5D0A9212ADF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BBAD59-19B4-4A94-8110-5D0A9212ADF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +137,7 @@ Global
 		{7929D31A-4E57-4E1D-8DEF-F22C106566AD} = {925FF8BE-615A-43E0-BDEE-C0049B4ED80D}
 		{F17F5F36-4A14-476E-B42A-D8FB4F4F8A93} = {925FF8BE-615A-43E0-BDEE-C0049B4ED80D}
 		{92AA8710-909F-4A7D-9F5E-6CFF4BDE06F2} = {3125FF38-E220-4829-8855-66109C5B274B}
+		{53BBAD59-19B4-4A94-8110-5D0A9212ADF2} = {6A5D5F00-FBBD-40DC-97FA-D278AC084E22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1D8CAB3-B815-443A-8591-4519BD081BB6}

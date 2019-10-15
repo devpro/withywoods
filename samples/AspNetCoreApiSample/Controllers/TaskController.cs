@@ -130,7 +130,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(404)]
         public IActionResult Update(string id, TaskDto item)
         {
-            if (string.IsNullOrEmpty(item?.Id) || item?.Id != id)
+            if (string.IsNullOrEmpty(item.Id) || item.Id != id)
                 return BadRequest();
 
             var task = _dbContext.TaskItems.Find(id);

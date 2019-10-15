@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using AutoFixture;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Newtonsoft.Json;
 using Withywoods.AspNetCoreApiSample.Dto;
 using Withywoods.AspNetCoreApiSample.IntegrationTests.Entities;
+using Withywoods.Serialization.Json;
+using Withywoods.WebTesting;
 using Withywoods.WebTesting.Rest;
 using Xunit;
 
@@ -17,13 +22,28 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
     {
         private const string _ResourceEndpoint = "api/tasks";
 
+        private readonly Fixture _fixture;
         private readonly HttpClient _client;
         private readonly RestRunner _restRunner;
+        private readonly BasicRestRunner _basicRestRunner;
 
         public TaskResourceTest(WebApplicationFactory<Startup> factory)
         {
+            _fixture = new Fixture();
             _client = factory.CreateClient();
             _restRunner = new RestRunner { ResourceEndpoint = _ResourceEndpoint };
+            _basicRestRunner = new BasicRestRunner(new WebApplicationHttpClientFactory<Startup>(factory));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourcePost_ReturnsOk()
+        {
+            var input = _fixture.Create<TaskDto>();
+            string response = await _basicRestRunner.Post(_ResourceEndpoint, new StringContent(input.ToJson(), Encoding.UTF8, "application/json"), HttpStatusCode.Created);
+            // example: {"id":"Id4658f8a1-6d6d-498b-ba4e-64ef363aaa75","title":"Title4dc97f92-1c3e-4309-96a8-b03d16099e11","isComplete":true}
+
+            dynamic deserializedValue = JsonConvert.DeserializeObject(response);
+            await _restRunner.DeleteResource(deserializedValue["id"].ToString(), _client);
         }
 
         [Fact]
@@ -115,6 +135,18 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
             await _restRunner.UpdateResource(id, new TaskDto { Id = resourceId, Title = "Bla bla" }, _client, expectedError, HttpStatusCode.BadRequest,
+                config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenNullDto_ReturnsHttpBadRequest()
+        {
+            var expectedError = new ProblemDetails
+            {
+                Title = "One or more validation errors occurred.",
+                Status = 400
+            };
+            await _restRunner.UpdateResource("dummy", (TaskDto)null, _client, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
         }
     }
