@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Withywoods.WebTesting
 {
+    /// <summary>
+    /// Web Application http client factory to be able to use WebApplicationFactory as IHttpClientFactory.
+    /// </summary>
+    /// <typeparam name="TEntryPoint"></typeparam>
     public class WebApplicationHttpClientFactory<TEntryPoint> : IHttpClientFactory where TEntryPoint : class
     {
         private readonly WebApplicationFactory<TEntryPoint> _webApplicationFactory;

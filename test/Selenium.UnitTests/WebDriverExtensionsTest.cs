@@ -14,7 +14,7 @@ namespace Withywoods.Selenium.UnitTests
 
         /// <summary>
         /// Dumb class to have a concrete implementation of IWebElement.
-        /// Only Displayed property is needed.
+        /// Only Displayed property is needed for the tests.
         /// </summary>
         public class DumbWebElement : IWebElement
         {
