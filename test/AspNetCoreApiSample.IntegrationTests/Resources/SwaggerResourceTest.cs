@@ -14,6 +14,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
     public class SwaggerResourceTest : IClassFixture<LocalServerFactory<Startup>>, IDisposable
     {
         private const string _ResourceEndpoint = "swagger";
+        private const string _ChromeDriverEnvironmentVariableName = "ChromeWebDriver";
 
         private readonly HttpClient _httpClient;
         private readonly RemoteWebDriver _webDriver;
@@ -26,9 +27,11 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("--headless");
-            var executingAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var currentLocation = System.IO.Path.GetDirectoryName(executingAssembly.Location);
-            _webDriver = new ChromeDriver(currentLocation, chromeOptions);
+            // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
+            var chromeDriverLocation = string.IsNullOrEmpty(Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName)) ?
+                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) :
+                Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName);
+            _webDriver = new ChromeDriver(chromeDriverLocation, chromeOptions);
         }
 
         [Fact]
