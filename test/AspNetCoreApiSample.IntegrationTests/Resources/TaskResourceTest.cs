@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
@@ -39,7 +38,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         public async Task AspNetCoreApiSampleTaskResourcePost_ReturnsOk()
         {
             var input = _fixture.Create<TaskDto>();
-            string response = await _basicRestRunner.Post(_ResourceEndpoint, new StringContent(input.ToJson(), Encoding.UTF8, "application/json"), HttpStatusCode.Created);
+            string response = await _basicRestRunner.Post(_ResourceEndpoint, input.ToJson(), HttpStatusCode.Created);
             // example: {"id":"Id4658f8a1-6d6d-498b-ba4e-64ef363aaa75","title":"Title4dc97f92-1c3e-4309-96a8-b03d16099e11","isComplete":true}
 
             dynamic deserializedValue = JsonConvert.DeserializeObject(response);
