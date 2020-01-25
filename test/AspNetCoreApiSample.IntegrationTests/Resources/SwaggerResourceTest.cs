@@ -46,13 +46,22 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         {
             _server.RootUri.Should().Be("https://localhost:5001");
 
-            // Arrange & Act
-            _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+            try
+            {
+                // Arrange & Act
+                _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
 
-            // Assert
-            _webDriver.FindElement(By.ClassName("title"), 360);
-            _webDriver.Title.Should().Be("Swagger UI");
-            _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+                // Assert
+                _webDriver.FindElement(By.ClassName("title"), 360);
+                _webDriver.Title.Should().Be("Swagger UI");
+                _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+            }
+            catch
+            {
+                var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
+                screenshot.SaveAsFile("screenshot.png");
+                throw;
+            }
         }
 
         public void Dispose()
