@@ -26,7 +26,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             _httpClient = server.CreateClient();
 
             var chromeOptions = new ChromeOptions();
-            //chromeOptions.AddArguments("--headless");
+            chromeOptions.AddArguments("--headless", "--ignore-certificate-errors");
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
             // for Azure DevOps it's described here for example: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
             var chromeDriverLocation = string.IsNullOrEmpty(Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName)) ?
