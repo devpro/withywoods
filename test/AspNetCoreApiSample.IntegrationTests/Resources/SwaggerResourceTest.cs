@@ -52,7 +52,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
 
                 // Assert
-                _webDriver.FindElement(By.ClassName("title"), 360);
+                _webDriver.FindElement(By.ClassName("title"), 60);
                 _webDriver.Title.Should().Be("Swagger UI");
                 _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
             }
