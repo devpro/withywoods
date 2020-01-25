@@ -26,6 +26,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             _httpClient = server.CreateClient();
 
             var chromeOptions = new ChromeOptions();
+            // if there is an issue with the run in CI, comment the headless part
             chromeOptions.AddArguments("--headless", "--ignore-certificate-errors");
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
             // for Azure DevOps it's described here for example: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
@@ -33,9 +34,6 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) :
                 Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName);
             _webDriver = new ChromeDriver(chromeDriverLocation, chromeOptions);
-
-            //TODO:
-            //voir options de build par défaut (variable development ?)
         }
 
         [Fact]
@@ -63,7 +61,16 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 
         public void Dispose()
         {
-            _webDriver?.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _webDriver?.Dispose();
+            }
         }
     }
 }
