@@ -28,15 +28,24 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("--headless");
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
+            // for Azure DevOps it's described here for example: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
             var chromeDriverLocation = string.IsNullOrEmpty(Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName)) ?
                 System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) :
                 Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName);
             _webDriver = new ChromeDriver(chromeDriverLocation, chromeOptions);
+
+            //TODO:
+            //capture d'écran en cas d'erreur et publication sur le build CI
+            //assert valeur addresse (5001)
+            //voir options de build par défaut (variable development ?)
+            //valider la variable d'environnement sur l'environnement .NET
         }
 
         [Fact]
         public void AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk()
         {
+            _server.RootUri.Should().Be("https://localhost:5001");
+
             // Arrange & Act
             _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
 
