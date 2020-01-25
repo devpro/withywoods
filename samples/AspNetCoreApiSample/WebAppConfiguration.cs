@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Configuration;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using Withywoods.AspNetCore;
 using Withywoods.Configuration;
 
@@ -39,7 +39,7 @@ namespace Withywoods.AspNetCoreApiSample
 
         #region IWebAppConfiguration properties
 
-        Info IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(_ApiDefinitionSectionKey).Get<Info>();
+        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(_ApiDefinitionSectionKey).Get<OpenApiInfo>();
 
         string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 

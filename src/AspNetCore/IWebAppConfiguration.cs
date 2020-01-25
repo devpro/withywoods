@@ -1,4 +1,6 @@
-﻿namespace Withywoods.AspNetCore
+﻿using Microsoft.OpenApi.Models;
+
+namespace Withywoods.AspNetCore
 {
     /// <summary>
     /// ASP.NET Core web application configuration.
@@ -8,7 +10,7 @@
         /// <summary>
         /// Swagger definition.
         /// </summary>
-        Swashbuckle.AspNetCore.Swagger.Info SwaggerDefinition { get; }
+        OpenApiInfo SwaggerDefinition { get; }
 
         /// <summary>
         /// Web application assembly name.
