@@ -29,8 +29,19 @@ namespace Withywoods.AspNetCoreApiSample
             return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    ConfigureWebHost(webBuilder);
                 });
+        }
+
+        /// <summary>
+        /// Configure web host.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static IWebHostBuilder ConfigureWebHost(IWebHostBuilder builder)
+        {
+            builder.UseStartup<Startup>();
+            return builder;
         }
     }
 }

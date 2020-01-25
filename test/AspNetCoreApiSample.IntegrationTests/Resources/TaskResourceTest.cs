@@ -101,7 +101,8 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             var expectedError = new ValidationProblemDetails
             {
                 Title = "One or more validation errors occurred.",
-                Status = 400
+                Status = 400,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
             expectedError.Errors["Title"] = new string[1] { "The Title field is required." };
             await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId }, _client, expectedError, HttpStatusCode.BadRequest,
@@ -115,7 +116,8 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             var expectedError = new LightValidationProblemDetails
             {
                 Title = "One or more validation errors occurred.",
-                Status = 400
+                Status = 400,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
             expectedError.Errors["Title"] = new string[1] { "The Title field is required." };
             await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId }, _client, expectedError, HttpStatusCode.BadRequest);
@@ -143,7 +145,8 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             var expectedError = new ProblemDetails
             {
                 Title = "One or more validation errors occurred.",
-                Status = 400
+                Status = 400,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
             await _restRunner.UpdateResource("dummy", (TaskDto)null, _client, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));

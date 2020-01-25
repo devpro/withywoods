@@ -48,10 +48,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 
         public void Dispose()
         {
-            if (_webDriver != null)
-            {
-                _webDriver.Dispose();
-            }
+            _webDriver?.Dispose();
         }
     }
 }

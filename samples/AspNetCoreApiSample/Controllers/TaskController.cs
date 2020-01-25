@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Withywoods.AspNetCoreApiSample.Dal;
 using Withywoods.AspNetCoreApiSample.Dal.Repositories;
@@ -101,6 +102,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         [ProducesResponseType(400)]
         public ActionResult<TaskDto> Create(TaskDto item)
         {
+            item.Id = Guid.NewGuid().ToString();
             _dbContext.TaskItems.Add(item);
             _dbContext.SaveChanges();
 
