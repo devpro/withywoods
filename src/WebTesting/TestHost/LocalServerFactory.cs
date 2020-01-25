@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -53,6 +54,7 @@ namespace Withywoods.WebTesting.TestHost
             return builder;
         }
 
+        [ExcludeFromCodeCoverage]
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
