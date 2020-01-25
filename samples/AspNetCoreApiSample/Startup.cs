@@ -31,6 +31,9 @@ namespace Withywoods.AspNetCoreApiSample
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // Controllers
+            services.AddControllers();
+
             // Health checks
             services.AddHealthChecks()
                 .AddDbContextCheck<Dal.Efcore.EfcoreDbContext>();
