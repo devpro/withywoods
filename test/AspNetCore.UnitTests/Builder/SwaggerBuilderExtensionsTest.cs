@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder.Internal;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Withywoods.AspNetCore.Builder;
 using Withywoods.AspNetCore.UnitTests.Fakes;

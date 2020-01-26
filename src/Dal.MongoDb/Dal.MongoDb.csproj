@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Withywoods.Dal.MongoDb</AssemblyName>
     <RootNamespace>Withywoods.Dal.MongoDb</RootNamespace>
     <ProjectGuid>{AAD8B37B-D944-4DBB-B9AB-1DF444683BF0}</ProjectGuid>
@@ -18,10 +18,10 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
-    <PackageReference Include="MongoDB.Bson" Version="2.9.2" />
-    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.9.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.1" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.10.1" />
   </ItemGroup>
 
 </Project>

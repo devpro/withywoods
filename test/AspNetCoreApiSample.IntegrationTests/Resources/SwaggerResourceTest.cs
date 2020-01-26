@@ -26,8 +26,10 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             _httpClient = server.CreateClient();
 
             var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments("--headless");
+            // if there is an issue with the run in CI, comment the headless part
+            chromeOptions.AddArguments("--headless", "--ignore-certificate-errors");
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
+            // for Azure DevOps it's described here for example: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
             var chromeDriverLocation = string.IsNullOrEmpty(Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName)) ?
                 System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) :
                 Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName);
@@ -37,20 +39,37 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         [Fact]
         public void AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk()
         {
-            // Arrange & Act
-            _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+            _server.RootUri.Should().Be("https://localhost:5001");
 
-            // Assert
-            _webDriver.FindElement(By.ClassName("title"), 360);
-            _webDriver.Title.Should().Be("Swagger UI");
-            _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+            try
+            {
+                // Arrange & Act
+                _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+
+                // Assert
+                _webDriver.FindElement(By.ClassName("title"), 60);
+                _webDriver.Title.Should().Be("Swagger UI");
+                _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+            }
+            catch
+            {
+                var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
+                screenshot.SaveAsFile("screenshot.png");
+                throw;
+            }
         }
 
         public void Dispose()
         {
-            if (_webDriver != null)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                _webDriver.Dispose();
+                _webDriver?.Dispose();
             }
         }
     }

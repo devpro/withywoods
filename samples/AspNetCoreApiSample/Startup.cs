@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Withywoods.AspNetCore.Builder;
 using Withywoods.AspNetCore.DependencyInjection;
 
@@ -31,9 +31,8 @@ namespace Withywoods.AspNetCoreApiSample
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            // MVC
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // Controllers
+            services.AddControllers();
 
             // Health checks
             services.AddHealthChecks()
@@ -54,7 +53,7 @@ namespace Withywoods.AspNetCoreApiSample
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -71,7 +70,13 @@ namespace Withywoods.AspNetCoreApiSample
             app.UseSwagger(_webAppConfiguration);
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

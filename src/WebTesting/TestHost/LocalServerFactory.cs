@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -25,6 +27,9 @@ namespace Withywoods.WebTesting.TestHost
         public LocalServerFactory()
         {
             ClientOptions.BaseAddress = new Uri(_LocalhostBaseAddress);
+
+            // Breaking change while migrating from 2.2 to 3.1, TestServer was not called anymore
+            CreateServer(CreateWebHostBuilder());
         }
 
         /// <summary>
@@ -42,12 +47,20 @@ namespace Withywoods.WebTesting.TestHost
             return new TestServer(new WebHostBuilder().UseStartup<TStartup>());
         }
 
+        protected override IWebHostBuilder CreateWebHostBuilder()
+        {
+            var builder = WebHost.CreateDefaultBuilder(Array.Empty<string>());
+            builder.UseStartup<TStartup>();
+            return builder;
+        }
+
+        [ExcludeFromCodeCoverage]
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
             if (disposing)
             {
-                _host.Dispose();
+                _host?.Dispose();
             }
         }
     }
