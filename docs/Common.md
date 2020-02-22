@@ -23,3 +23,13 @@ using Withywoods.Serialization.Json;
 var jsonString = myObject.ToJson();
 var newObject = myString.FromJson<MyType>();
 ```
+
+## System
+
+- String extensions
+
+```csharp
+using Withywoods.System;
+
+var newString = "my example".FirstCharToUpper(); // newString = "My example"
+```
