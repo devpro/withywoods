@@ -1,6 +1,6 @@
 ﻿# Devpro Withywoods - Shared .NET libraries
 
-[![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/withywoods-CI?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=12&branchName=master)
+[![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/libraries/withywoods-ci?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=31&branchName=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=withywoods)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=coverage)](https://sonarcloud.io/dashboard?id=withywoods)
 
