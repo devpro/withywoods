@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Withywoods.AspNetCore.DependencyInjection
@@ -23,8 +24,10 @@ namespace Withywoods.AspNetCore.DependencyInjection
             {
                 c.SwaggerDoc(swaggerDefinition.Version, swaggerDefinition);
 
+                // idea: manager Bearer authentication
+
                 var xmlFile = $"{configuration.AssemblyName}.xml";
-                var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
                 c.CustomSchemaIds(GetClassNameWithoutDtoSuffix);
             });
