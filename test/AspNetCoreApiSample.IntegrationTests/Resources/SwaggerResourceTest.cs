@@ -49,12 +49,13 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 // Assert
                 _webDriver.FindElement(By.ClassName("title"), 60);
                 _webDriver.Title.Should().Be("Swagger UI");
-                _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+                _webDriver.FindElementByClassName("title").Text.Should().Contain("Maille API");
             }
             catch
             {
                 var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
-                screenshot.SaveAsFile("screenshot.png");
+                screenshot.SaveAsFile(
+                    $"screenshot_{nameof(AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk)}_{DateTime.UtcNow.ToString("yyyyMMdd_HHmmss")}.png");
                 throw;
             }
         }
