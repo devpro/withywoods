@@ -1,9 +1,6 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using FluentAssertions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using Withywoods.Selenium;
 using Withywoods.WebTesting.TestHost;
 using Xunit;
@@ -11,29 +8,17 @@ using Xunit;
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 {
     [Trait("Environment", "Localhost")]
-    public class SwaggerResourceTest : IClassFixture<LocalServerFactory<Startup>>, IDisposable
+    public class SwaggerResourceTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Startup>>
     {
         private const string _ResourceEndpoint = "swagger";
-        private const string _ChromeDriverEnvironmentVariableName = "ChromeWebDriver";
 
-        private readonly HttpClient _httpClient;
-        private readonly RemoteWebDriver _webDriver;
         private readonly LocalServerFactory<Startup> _server;
 
         public SwaggerResourceTest(LocalServerFactory<Startup> server)
+            : base()
         {
             _server = server;
-            _httpClient = server.CreateClient();
-
-            var chromeOptions = new ChromeOptions();
-            // if there is an issue with the run in CI, comment the headless part
-            chromeOptions.AddArguments("--headless", "--ignore-certificate-errors");
-            // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
-            // for Azure DevOps it's described here for example: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
-            var chromeDriverLocation = string.IsNullOrEmpty(Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName)) ?
-                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) :
-                Environment.GetEnvironmentVariable(_ChromeDriverEnvironmentVariableName);
-            _webDriver = new ChromeDriver(chromeDriverLocation, chromeOptions);
+            _ = _server.CreateClient(); // this call is needed to change state of server
         }
 
         [Fact]
@@ -44,32 +29,19 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             try
             {
                 // Arrange & Act
-                _webDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
 
                 // Assert
-                _webDriver.FindElement(By.ClassName("title"), 60);
-                _webDriver.Title.Should().Be("Swagger UI");
-                _webDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+                WebDriver.FindElement(By.ClassName("title"), 60);
+                WebDriver.Title.Should().Be("Swagger UI");
+                WebDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+
+                TakeScreenShot(nameof(AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk));
             }
             catch
             {
-                var screenshot = (_webDriver as ITakesScreenshot).GetScreenshot();
-                screenshot.SaveAsFile("screenshot.png");
+                TakeScreenShot(nameof(AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk));
                 throw;
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _webDriver?.Dispose();
             }
         }
     }
