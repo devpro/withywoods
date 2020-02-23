@@ -16,13 +16,10 @@ namespace Withywoods.Selenium
         {
             // if there is an issue with the CI run, it is a good advice to debug it locally without the headless option
             var chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--ignore-certificate-errors");
             if (isHeadless)
             {
-                chromeOptions.AddArguments("--headless", "--ignore-certificate-errors");
-            }
-            else
-            {
-                chromeOptions.AddArguments("--ignore-certificate-errors");
+                chromeOptions.AddArgument("--headless");
             }
 
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
@@ -41,7 +38,7 @@ namespace Withywoods.Selenium
         protected void TakeScreenShot(string methodName)
         {
             var screenshot = ((ITakesScreenshot)WebDriver).GetScreenshot();
-            screenshot.SaveAsFile($"screenshot_{methodName}_{DateTime.UtcNow.ToString("yyyyMMdd_HHmmss")}.png");
+            screenshot.SaveAsFile($"screenshot_{methodName}_{DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff")}.png");
         }
 
         public void Dispose()

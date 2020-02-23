@@ -12,14 +12,13 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
     {
         private const string _ResourceEndpoint = "swagger";
 
-        private readonly HttpClient _httpClient;
         private readonly LocalServerFactory<Startup> _server;
 
         public SwaggerResourceTest(LocalServerFactory<Startup> server)
             : base()
         {
             _server = server;
-            _httpClient = server.CreateClient();
+            _ = _server.CreateClient(); // this call is needed to change state of server
         }
 
         [Fact]
@@ -36,6 +35,8 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 WebDriver.FindElement(By.ClassName("title"), 60);
                 WebDriver.Title.Should().Be("Swagger UI");
                 WebDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+
+                TakeScreenShot(nameof(AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk));
             }
             catch
             {
