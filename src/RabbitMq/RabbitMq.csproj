@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Withywoods.RabbitMq</AssemblyName>
+    <RootNamespace>Withywoods.RabbitMq</RootNamespace>
+    <ProjectGuid>{7A3298EE-3E9F-476E-B245-72BAE84325BA}</ProjectGuid>
+    <Authors>devprofr</Authors>
+    <Description>A package that provide classes to ease the use of RabbitMQ message broker .NET client.</Description>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
+  </ItemGroup>
+
+</Project>
