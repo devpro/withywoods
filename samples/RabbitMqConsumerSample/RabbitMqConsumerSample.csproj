@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Withywoods.RabbitMqConsumerSample</AssemblyName>
+    <RootNamespace>Withywoods.RabbitMqConsumerSample</RootNamespace>
+    <ProjectGuid>{A7A4BBEC-A4DD-49BE-A27E-427BF749E258}</ProjectGuid>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\RabbitMq\RabbitMq.csproj" />
+  </ItemGroup>
+
+</Project>

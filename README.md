@@ -45,6 +45,17 @@ Configuration interface and dependency injection will help through defining only
 
 [More information](./docs/DalMongoDB.md).
 
+### Message Brokers
+
+#### RabbitMQ
+
+[![Version](https://img.shields.io/nuget/v/Withywoods.RabbitMq.svg)](https://www.nuget.org/packages/Withywoods.RabbitMq/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.RabbitMq.svg)](https://www.nuget.org/packages/Withywoods.RabbitMq/)
+
+Clean channel factory to ease the use of RabbitMQ as well as enabling decoupling through interfaces.
+
+[More information](./src/RabbitMq/README.md).
+
 ### Web
 
 #### Selenium
