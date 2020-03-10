@@ -43,7 +43,7 @@ No need to dig into MongoDB driver documentation and experimentation, just use t
 
 Configuration interface and dependency injection will help through defining only what is required and you have the choice to configure it the way you want (no forced section names in your configuration file).
 
-[More information](./docs/DalMongoDB.md).
+[More information](./src/Dal.MongoDb/README.md).
 
 ### Message Brokers
 

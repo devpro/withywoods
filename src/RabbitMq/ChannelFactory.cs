@@ -7,9 +7,8 @@ namespace Withywoods.RabbitMq
     {
         private readonly IConnection _connection;
 
-        public ChannelFactory(IRabbitMqConfiguration configuration)
+        public ChannelFactory(IConnectionFactory connectionFactory)
         {
-            var connectionFactory = new ConnectionFactory { HostName = configuration.Hostname, Port = configuration.Port };
             _connection = connectionFactory.CreateConnection();
         }
 

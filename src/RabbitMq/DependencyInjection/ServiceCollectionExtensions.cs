@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using RabbitMQ.Client;
 
 namespace Withywoods.RabbitMq.DependencyInjection
 {
@@ -31,6 +32,7 @@ namespace Withywoods.RabbitMq.DependencyInjection
 
             services.TryAddSingleton<IRabbitMqConfiguration>(configuration);
             services.TryAddScoped<IChannelFactory, ChannelFactory>();
+            services.TryAddTransient<IConnectionFactory>(ctx => new ConnectionFactory { HostName = configuration.Hostname, Port = configuration.Port });
 
             return services;
         }
