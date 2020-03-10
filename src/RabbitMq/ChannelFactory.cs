@@ -1,20 +1,16 @@
-﻿using RabbitMQ.Client;
+﻿using System;
+using RabbitMQ.Client;
 
 namespace Withywoods.RabbitMq
 {
     public class ChannelFactory : IChannelFactory
     {
-        private readonly IRabbitMqConfiguration _configuration;
-
-        private readonly IConnectionFactory _connectionFactory;
-
         private readonly IConnection _connection;
 
         public ChannelFactory(IRabbitMqConfiguration configuration)
         {
-            _configuration = configuration;
-            _connectionFactory = new ConnectionFactory { HostName = _configuration.Hostname, Port = _configuration.Port };
-            _connection = _connectionFactory.CreateConnection();
+            var connectionFactory = new ConnectionFactory { HostName = configuration.Hostname, Port = configuration.Port };
+            _connection = connectionFactory.CreateConnection();
         }
 
         public IModel Create()
@@ -25,6 +21,7 @@ namespace Withywoods.RabbitMq
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
