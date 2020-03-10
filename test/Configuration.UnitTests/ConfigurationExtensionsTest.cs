@@ -7,7 +7,6 @@ using Xunit;
 namespace Withywoods.Configuration.UnitTests
 {
     [Trait("Category", "UnitTests")]
-
     public class ConfigurationExtensionsTest
     {
         [Fact]
