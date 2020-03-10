@@ -2,14 +2,14 @@
 
 This library can be used by an .NET application.
 
-## Features
+## Main classes
 
-- Main classes:
   - `DefaultMongoDbContext`: have one clean database context in your application using the best practices
   - `RepositoryBase`: abstract class for repositories with common fields and methods
   - `ObjectIdToStringConverter` and `StringToObjectIdConverter`: AutoMapper converters
 
-- How to use it:
+## How to use it
+
   - Install `Withywoods.Dal.MongoDb` package from NuGet
   - Implement `IMongoDbConfiguration` interface (let's call it MyCustomConfiguration)
   - Use the extension to register all needed types (in Startup.cs file):
@@ -53,3 +53,13 @@ This library can be used by an .NET application.
     var mapper = config.CreateMapper();
     mapper.ConfigurationProvider.AssertConfigurationIsValid();
   ```
+
+  ## How to use it
+
+  Have a MongoDB instance:
+
+  - With docker
+
+    ```bash
+    docker run --name mongodb423 -d -p 27017:27017 mongo
+    ```
