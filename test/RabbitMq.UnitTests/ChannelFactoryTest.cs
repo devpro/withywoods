@@ -12,7 +12,7 @@ namespace Withywoods.RabbitMq.UnitTests
         public void RabbitMqChannelFactoryCreate_ShouldCreateRabbitMqModel()
         {
             // Arrange
-            var channelFactory = BuildChannelFactory(out var modelMock);
+            using var channelFactory = BuildChannelFactory(out var modelMock);
 
             // Act
             using var channel = channelFactory.Create();
