@@ -10,69 +10,77 @@ All libraries are available on [nuget.org](https://www.nuget.org/). Feel free to
 
 NB: The name _Whithywoods_ comes from [Robin Hobb](https://twitter.com/robinhobb)'s incredible writing.
 
-## Getting started
+## How to use
 
-### Common
-
-#### Configuration
+### Common / Configuration library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Configuration.svg)](https://www.nuget.org/packages/Withywoods.Configuration/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Configuration.svg)](https://www.nuget.org/packages/Withywoods.Configuration/)
 
-New extension method to access configuration: `configuration.TryGetSection()`.
+_tl;dr_ New extension method to access configuration: `configuration.TryGetSection()`
 
-[More information](./docs/Common.md)
+[More information](./src/Configuration/README.md)
 
-#### Serialization
+### Common / Net HTTP library
+
+[![Version](https://img.shields.io/nuget/v/Withywoods.Net.Http.svg)](https://www.nuget.org/packages/Withywoods.Net.Http/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.Net.Http.svg)](https://www.nuget.org/packages/Withywoods.Net.Http/)
+
+_tl;dr_ New exception: `ConnectivityException`
+
+[More information](./src/Net.Http/README.md)
+
+### Common / Serialization library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Serialization.svg)](https://www.nuget.org/packages/Withywoods.Serialization/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Serialization.svg)](https://www.nuget.org/packages/Withywoods.Serialization/)
 
-Small extensions methods: `myObject.ToJson()` and `myString.FromJson()`.
+_tl;dr_ New extension methods to serialize/deserialize from Json: `myObject.ToJson()` and `myString.FromJson()`
 
-[More information](./docs/Common.md)
+[More information](./src/Serialization/README.md)
 
-### Data Access Layer (DAL)
+### Common / System library
 
-#### MongoDB DAL
+[![Version](https://img.shields.io/nuget/v/Withywoods.System.svg)](https://www.nuget.org/packages/Withywoods.System/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.System.svg)](https://www.nuget.org/packages/Withywoods.System/)
+
+_tl;dr_ New string extensions: `myString.FirstCharToUpper()`
+
+[More information](./src/System/README.md)
+
+### Data Access / MongoDB library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.Dal.MongoDb/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.Dal.MongoDb/)
 
-No need to dig into MongoDB driver documentation and experimentation, just use the provided `RepositoryBase`!
+_tl;dr_ Get access to a MongoDB database in a few lines by using best practices.
 
-Configuration interface and dependency injection will help through defining only what is required and you have the choice to configure it the way you want (no forced section names in your configuration file).
+[More information](./src/Dal.MongoDb/README.md)
 
-[More information](./src/Dal.MongoDb/README.md).
-
-### Message Brokers
-
-#### RabbitMQ
+### Message Broker / RabbitMQ library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.RabbitMq.svg)](https://www.nuget.org/packages/Withywoods.RabbitMq/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.RabbitMq.svg)](https://www.nuget.org/packages/Withywoods.RabbitMq/)
 
-Clean channel factory to ease the use of RabbitMQ as well as enabling decoupling through interfaces.
+_tl;dr_ Clean channel factory to ease the use of RabbitMQ as well as enabling decoupling through interfaces.
 
-[More information](./src/RabbitMq/README.md).
+[More information](./src/RabbitMq/README.md)
 
-### Web
-
-#### Selenium
+### Web / Selenium library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Selenium.svg)](https://www.nuget.org/packages/Withywoods.Selenium/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Selenium.svg)](https://www.nuget.org/packages/Withywoods.Selenium/)
 
-New extension method to find an element with a wait: `driver.FindElement(By.ClassName("title"), 360);`.
+_tl;dr_ New extension method to find an element with a wait: `driver.FindElement(By.ClassName("title"), 360);`.
 
-[More information](./docs/Selenium.md).
+[More information](./src/Selenium/README.md)
 
-#### Web application
+### Web / Web Application library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.AspNetCore.svg)](https://www.nuget.org/packages/Withywoods.AspNetCore/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.AspNetCore.svg)](https://www.nuget.org/packages/Withywoods.AspNetCore/)
 
-Easily add Swagger self-generated web page, only two lines in your Startup class!
+_tl;dr_ Easily add Swagger self-generated web page, only two lines in your Startup class!
 
 ```csharp
 services.AddSwaggerGen(_webAppConfiguration); // in ConfigureServices()
@@ -80,14 +88,14 @@ services.AddSwaggerGen(_webAppConfiguration); // in ConfigureServices()
 app.UseSwagger(_webAppConfiguration); // in Configure()
 ```
 
-[More information](./docs/WebApp.md).
+[More information](./src/AspNetCore/README.md)
 
-#### Web testing
+### Web / Web Testing library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.WebTesting.svg)](https://www.nuget.org/packages/Withywoods.WebTesting/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.WebTesting.svg)](https://www.nuget.org/packages/Withywoods.WebTesting/)
 
-Use Selenium web driver inside ASP.NET Integration tests? Yes, that's possible with `LocalServerFactory` class!
+_tl;dr_ Use Selenium web driver inside ASP.NET Integration tests? Yes, that's possible with `LocalServerFactory` class!
 
 ```csharp
 public class SwaggerResourceTest : IClassFixture<LocalServerFactory<Startup>>, IDisposable
@@ -139,20 +147,35 @@ public async Task AspNetCoreApiSampleTaskResourceFullCycle_IsOk()
 }
 ```
 
-[More information](./docs/WebTesting.md).
+[More information](./src/WebTesting/README.md)
 
-## Build & Debug
+## How to build
 
-- .NET Core SDK must be installed ([download](https://dotnet.microsoft.com/download))
-  - Check the version from the command line `dotnet --version` (>= 2.2.104)
-- Clone the repository (replace by the url if it was forked): `git clone https://github.com/devpro/withywoods.git`
-- Enter the directory: `cd withywoods`
-- Restore packages (NuGet): `dotnet restore`
-- Build the solution: `dotnet run`
-- Run the tests: `dotnet test`
+```bash
+# check .NET Core SDK is installed (download from https://dotnet.microsoft.com/download)
+dotnet --version
+
+# restore NuGet packages
+dotnet restore
+
+# build the solution
+dotnet build
+```
+
+## How to test
+
+/!\ MongoDB DAL integration tests require a local MongoDB server (through Docker for instance)
+
+```bash
+dotnet test
+```
 
 ## Samples
 
 ### AspNetCoreApiSample
 
 This is a fully working example, with Swagger generation, API controllers, completely tested by integration tests.
+
+### RabbitMQ
+
+There are two console projects to publish and consumes messages through RabbitMQ, using Withywoods RabbitMQ library.
