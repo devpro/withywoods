@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Withywoods.Net.Http</AssemblyName>
-    <RootNamespace>Withywoods.Net.Http</RootNamespace>
-    <ProjectGuid>{0FA28EC2-F6DA-465A-9E6F-1DB8FCCAAE1C}</ProjectGuid>
+    <AssemblyName>Withywoods.UnitTesting</AssemblyName>
+    <RootNamespace>Withywoods.UnitTesting</RootNamespace>
+    <ProjectGuid>{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7}</ProjectGuid>
     <Authors>devprofr</Authors>
-    <Description>A package that provide additional classes to System.Net.Http.</Description>
+    <Description>A package that eases unit testing .NET.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
     <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
   </PropertyGroup>
@@ -17,12 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Serialization\Serialization.csproj" />
+    <PackageReference Include="Moq" Version="4.13.1" />
   </ItemGroup>
 
 </Project>

@@ -48,6 +48,15 @@ _tl;dr_ New string extensions: `myString.FirstCharToUpper()`
 
 [More information](./src/System/README.md)
 
+### Common / Unit testing
+
+[![Version](https://img.shields.io/nuget/v/Withywoods.UnitTesting.svg)](https://www.nuget.org/packages/Withywoods.UnitTesting/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.UnitTesting.svg)](https://www.nuget.org/packages/Withywoods.UnitTesting/)
+
+_tl;dr_ Enable unit testing on HTTP calls: `HttpRepositoryTestBase` abstract class with `BuildHttpClientFactory()` method
+
+[More information](./src/UnitTesting/README.md)
+
 ### Data Access / MongoDB library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Dal.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.Dal.MongoDb/)

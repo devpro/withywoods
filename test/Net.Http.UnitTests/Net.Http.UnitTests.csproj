@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Net.Http\Net.Http.csproj" />
+    <ProjectReference Include="..\..\src\UnitTesting\UnitTesting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
