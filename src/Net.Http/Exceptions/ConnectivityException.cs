@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 namespace Withywoods.Net.Http.Exceptions
@@ -20,6 +21,7 @@ namespace Withywoods.Net.Http.Exceptions
         {
         }
 
+        [ExcludeFromCodeCoverage]
         protected ConnectivityException(SerializationInfo serializationInfo, StreamingContext streamingContext)
             : base(serializationInfo, streamingContext)
         {
