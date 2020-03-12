@@ -18,36 +18,38 @@ namespace Withywoods.WebTesting.Rest
     {
         private readonly Fixture _fixture;
 
+        private readonly ResourceTestBase _resource;
+
+        private readonly string _resourceEndpoint;
+
         /// <summary>
         /// Creates a new instance of <see cref="RestRunner"/>.
         /// </summary>
-        public RestRunner()
+        /// <param name="fixture"></param>
+        /// <param name="resource"></param>
+        public RestRunner(Fixture fixture, ResourceTestBase resource, string resourceEndpoint)
         {
-            _fixture = new Fixture();
+            _fixture = fixture;
+            _resource = resource;
+            _resourceEndpoint = resourceEndpoint;
         }
-
-        /// <summary>
-        /// Resource endpoint.
-        /// </summary>
-        public string ResourceEndpoint { get; set; }
 
         /// <summary>
         /// Get a resource by it's id.
         /// </summary>
         /// <typeparam name="T">Type of the resource</typeparam>
         /// <param name="id">Resource id</param>
-        /// <param name="httpClient">HTTP client to be used</param>
         /// <param name="expected">Expected output from the request</param>
         /// <param name="httpStatusCode">Expected HTTP status code, OK by default (HTTP 200)</param>
         /// <param name="config">Comparison configuration</param>
         /// <returns></returns>
-        public async Task<T> GetResourceById<T>(string id, HttpClient httpClient, T expected,
-            HttpStatusCode httpStatusCode = HttpStatusCode.OK, Func<EquivalencyAssertionOptions<T>, EquivalencyAssertionOptions<T>> config = null)
+        public async Task<T> GetResourceByIdAsync<T>(
+            string id,
+            T expected,
+            HttpStatusCode httpStatusCode = HttpStatusCode.OK,
+            Func<EquivalencyAssertionOptions<T>, EquivalencyAssertionOptions<T>> config = null)
         {
-            var response = await httpClient.GetAsync($"/{ResourceEndpoint}/{id}");
-            response.StatusCode.Should().Be(httpStatusCode);
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            var output = stringResponse.FromJson<T>();
+            var output = await _resource.GetAsync<T>($"/{_resourceEndpoint}/{id}", httpStatusCode);
             output.Should().NotBeNull();
             if (config != null)
             {
@@ -64,25 +66,18 @@ namespace Withywoods.WebTesting.Rest
         /// Gets all resources.
         /// </summary>
         /// <typeparam name="T">Type of the resource</typeparam>
-        /// <param name="httpClient">HTTP client to be used</param>
         /// <returns></returns>
-        public async Task<List<T>> GetResources<T>(HttpClient httpClient)
+        public async Task<List<T>> GetResourcesAsync<T>()
         {
-            var response = await httpClient.GetAsync($"/{ResourceEndpoint}");
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            var output = stringResponse.FromJson<List<T>>();
-            output.Should().NotBeNull();
-            return output;
+            return await _resource.GetAsync<List<T>>($"/{_resourceEndpoint}");
         }
 
         /// <summary>
         /// Creates a resource.
         /// </summary>
         /// <typeparam name="T">Type of the resource</typeparam>
-        /// <param name="httpClient">HTTP client to be used</param>
         /// <returns></returns>
-        public async Task<T> CreateResource<T>(HttpClient httpClient)
+        public async Task<T> CreateResourceAsync<T>()
         {
             var input = _fixture.Create<T>();
             var idField = typeof(T).GetProperty("Id");
@@ -90,11 +85,7 @@ namespace Withywoods.WebTesting.Rest
             {
                 idField.SetValue(input, null);
             }
-            var response = await httpClient.PostAsync($"/{ResourceEndpoint}", new StringContent(input.ToJson(), Encoding.UTF8, "application/json"));
-            response.StatusCode.Should().Be(HttpStatusCode.Created);
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            var created = stringResponse.FromJson<T>();
-            created.Should().NotBeNull();
+            var created = await _resource.PostAsync<T>($"/{_resourceEndpoint}", new StringContent(input.ToJson(), Encoding.UTF8, "application/json"));
             if (idField != null)
             {
                 var idValue = idField.GetValue(created);
@@ -111,11 +102,10 @@ namespace Withywoods.WebTesting.Rest
         /// <typeparam name="T">Type of the resource</typeparam>
         /// <param name="id">Resource id</param>
         /// <param name="input">New values for the resource</param>
-        /// <param name="httpClient">HTTP client to be used</param>
         /// <returns></returns>
-        public async Task UpdateResource<T>(string id, T input, HttpClient httpClient)
+        public Task UpdateResourceAsync(string id, object input)
         {
-            await UpdateResource<T, object>(id, input, httpClient);
+            return UpdateResourceAsync<object>(id, input);
         }
 
         /// <summary>
@@ -124,25 +114,18 @@ namespace Withywoods.WebTesting.Rest
         /// <typeparam name="T">Type of the resource</typeparam>
         /// <param name="id">Resource id</param>
         /// <param name="input">New values for the resource</param>
-        /// <param name="httpClient">HTTP client to be used</param>
         /// <param name="httpStatusCode">Expected HTTP status code, OK by default (HTTP 200)</param>
         /// <param name="config">Comparison configuration</param>
         /// <returns></returns>
-        public async Task UpdateResource<T, U>(string id, T input, HttpClient httpClient, U expected = null,
-            HttpStatusCode httpStatusCode = HttpStatusCode.NoContent, Func<EquivalencyAssertionOptions<U>, EquivalencyAssertionOptions<U>> config = null)
-            where U : class
+        public async Task UpdateResourceAsync<T>(
+            string id,
+            object input,
+            T expected = null,
+            HttpStatusCode httpStatusCode = HttpStatusCode.NoContent,
+            Func<EquivalencyAssertionOptions<T>, EquivalencyAssertionOptions<T>> config = null)
+            where T : class
         {
-            var response = await httpClient.PutAsync($"/{ResourceEndpoint}/{id}", new StringContent(input.ToJson(), Encoding.UTF8, "application/json"));
-            response.StatusCode.Should().Be(httpStatusCode);
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            if (expected == null)
-            {
-                stringResponse.Should().Be(string.Empty);
-                return;
-            }
-
-            var output = stringResponse.FromJson<U>();
-            output.Should().NotBeNull();
+            var output = await _resource.PutAsync<T>($"/{_resourceEndpoint}/{id}", input.ToJson(), httpStatusCode);
             if (config != null)
             {
                 output.Should().BeEquivalentTo(expected, config);
@@ -157,13 +140,11 @@ namespace Withywoods.WebTesting.Rest
         /// Deletes a resource by making a DELETE HTTP request.
         /// </summary>
         /// <param name="id">Resource id</param>
-        /// <param name="httpClient">HTTP client to be used</param>
+        /// <param name="httpStatusCode">Expected HTTP status code returned</param>
         /// <returns></returns>
-        public async Task DeleteResource(string id, HttpClient httpClient, HttpStatusCode httpStatusCode = HttpStatusCode.NoContent)
+        public async Task DeleteResourceAsync(string id, HttpStatusCode httpStatusCode = HttpStatusCode.NoContent)
         {
-            var response = await httpClient.DeleteAsync($"/{ResourceEndpoint}/{id}");
-            response.StatusCode.Should().Be(httpStatusCode);
-            var stringResponse = await response.Content.ReadAsStringAsync();
+            var stringResponse = await _resource.DeleteAsync($"/{_resourceEndpoint}/{id}", httpStatusCode);
             stringResponse.Should().Be(string.Empty);
         }
     }

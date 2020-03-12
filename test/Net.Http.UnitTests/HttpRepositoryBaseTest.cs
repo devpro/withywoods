@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -96,6 +97,27 @@ namespace Withywoods.Net.Http.UnitTests
             // Assert
             exc.Should().NotBeNull();
             exc.Message.Should().Contain("Invalid data received when calling \"https://does.not.exist/v42/api/fakes\". Error converting");
+        }
+
+        [Fact]
+        public async Task FakeHttpRepositoryFindAllAsync_WhenInvalidMock_ThrowsException()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var responseDto = fixture.Create<int>();
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(responseDto.ToJson())
+            };
+            var repository = BuildRepository(httpResponseMessage, HttpMethod.Get, "https://does.not.exist/v13/api/fakes");
+
+            // Act
+            var exc = await Assert.ThrowsAsync<NotImplementedException>(async () => await repository.FindAllAsync());
+
+            // Assert
+            exc.Should().NotBeNull();
+            exc.Message.Should().Contain("This code shouldn't be executed, the call to https://does.not.exist/v42/api/fakes must be mocked.");
         }
 
         private FakeHttpRepository BuildRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
