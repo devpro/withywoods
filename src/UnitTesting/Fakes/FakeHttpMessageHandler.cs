@@ -9,7 +9,7 @@ namespace Withywoods.UnitTesting.Fakes
     {
         public virtual HttpResponseMessage Send(HttpRequestMessage request)
         {
-            throw new NotImplementedException($"This code shouldn't be executed, the call to {request.RequestUri} must be mocked.");
+            throw new NotImplementedException($"This code shouldn't be executed, the {request.Method} call to {request.RequestUri} must be mocked.");
         }
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

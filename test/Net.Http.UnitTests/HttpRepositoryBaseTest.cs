@@ -18,6 +18,8 @@ namespace Withywoods.Net.Http.UnitTests
     [Trait("Category", "UnitTests")]
     public class HttpRepositoryBaseTest : HttpRepositoryTestBase
     {
+        #region GetAsync tests
+
         [Fact]
         public async Task FakeHttpRepositoryFindAllAsync_ReturnSuccess()
         {
@@ -32,7 +34,7 @@ namespace Withywoods.Net.Http.UnitTests
             var repository = BuildRepository(httpResponseMessage, HttpMethod.Get, "https://does.not.exist/v42/api/fakes");
 
             // Act
-            var output = await repository.FindAllAsync();
+            var output = await repository.FindAllAsync<string>();
 
             // Assert
             output.Should().NotBeNullOrEmpty();
@@ -52,7 +54,7 @@ namespace Withywoods.Net.Http.UnitTests
             var repository = BuildRepository(httpResponseMessage, HttpMethod.Get, "https://does.not.exist/v42/api/fakes");
 
             // Act
-            var exc = await Assert.ThrowsAsync<ConnectivityException>(async () => await repository.FindAllAsync());
+            var exc = await Assert.ThrowsAsync<ConnectivityException>(async () => await repository.FindAllAsync<string>());
 
             // Assert
             exc.Should().NotBeNull();
@@ -71,7 +73,7 @@ namespace Withywoods.Net.Http.UnitTests
             var repository = BuildRepository(httpResponseMessage, HttpMethod.Get, "https://does.not.exist/v42/api/fakes");
 
             // Act
-            var exc = await Assert.ThrowsAsync<ConnectivityException>(async () => await repository.FindAllAsync());
+            var exc = await Assert.ThrowsAsync<ConnectivityException>(async () => await repository.FindAllAsync<string>());
 
             // Assert
             exc.Should().NotBeNull();
@@ -92,7 +94,7 @@ namespace Withywoods.Net.Http.UnitTests
             var repository = BuildRepository(httpResponseMessage, HttpMethod.Get, "https://does.not.exist/v42/api/fakes");
 
             // Act
-            var exc = await Assert.ThrowsAsync<ConnectivityException>(async () => await repository.FindAllAsync());
+            var exc = await Assert.ThrowsAsync<ConnectivityException>(async () => await repository.FindAllAsync<string>());
 
             // Assert
             exc.Should().NotBeNull();
@@ -113,11 +115,11 @@ namespace Withywoods.Net.Http.UnitTests
             var repository = BuildRepository(httpResponseMessage, HttpMethod.Get, "https://does.not.exist/v13/api/fakes");
 
             // Act
-            var exc = await Assert.ThrowsAsync<NotImplementedException>(async () => await repository.FindAllAsync());
+            var exc = await Assert.ThrowsAsync<NotImplementedException>(async () => await repository.FindAllAsync<string>());
 
             // Assert
             exc.Should().NotBeNull();
-            exc.Message.Should().Contain("This code shouldn't be executed, the call to https://does.not.exist/v42/api/fakes must be mocked.");
+            exc.Message.Should().Contain("This code shouldn't be executed, the GET call to https://does.not.exist/v42/api/fakes must be mocked.");
         }
 
         [Fact]
@@ -141,6 +143,104 @@ namespace Withywoods.Net.Http.UnitTests
             output.Count.Should().Be(responseDto.Count);
         }
 
+        #endregion
+
+        #region PostAsync tests
+
+        [Fact]
+        public async Task FakeHttpRepositoryCreateAsync_ReturnSuccess()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var dto = fixture.Create<FakeDto>();
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(dto.ToJson())
+            };
+            var repository = BuildRepository(httpResponseMessage, HttpMethod.Post, "https://does.not.exist/v42/api/fakes");
+
+            // Act
+            var output = await repository.CreateAsync(dto);
+
+            // Assert
+            output.Should().NotBeNull();
+            output.Should().BeEquivalentTo(dto);
+        }
+
+        #endregion
+
+        #region PutAsync tests
+
+        [Fact]
+        public async Task FakeHttpRepositoryUpdateAsync_ReturnSuccess()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var dto = fixture.Create<FakeDto>();
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(dto.ToJson())
+            };
+            var repository = BuildRepository(httpResponseMessage, HttpMethod.Put, "https://does.not.exist/v42/api/fakes/123456");
+
+            // Act
+            await repository.UpdateAsync("123456", dto);
+        }
+
+        [Fact]
+        public async Task FakeHttpRepositoryUpdateAsync_WithNoContent_ReturnSuccess()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var dto = fixture.Create<FakeDto>();
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK
+            };
+            var repository = BuildRepository(httpResponseMessage, HttpMethod.Put, "https://does.not.exist/v42/api/fakes/123456");
+
+            // Act
+            await repository.UpdateAsync("123456", dto);
+        }
+
+        #endregion
+
+        #region DeleteAsync tests
+
+        [Fact]
+        public async Task FakeHttpRepositoryDeleteAsync_ReturnSuccess()
+        {
+            // Arrange
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK
+            };
+            var repository = BuildRepository(httpResponseMessage, HttpMethod.Delete, "https://does.not.exist/v42/api/fakes/123456");
+
+            // Act
+            await repository.DeleteAsync("123456");
+        }
+
+        [Fact]
+        public async Task FakeHttpRepositoryDeleteAsync_WithNotFound_ReturnSucess()
+        {
+            // Arrange
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.NotFound
+            };
+            var repository = BuildRepository(httpResponseMessage, HttpMethod.Delete, "https://does.not.exist/v42/api/fakes/123456");
+
+            // Act
+            await repository.DeleteAsync("123456");
+        }
+
+        #endregion
+
+        #region Private methods tests
+
         private FakeHttpRepository BuildRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
         {
             var logger = ServiceProvider.GetService<ILogger<FakeHttpRepository>>();
@@ -155,5 +255,7 @@ namespace Withywoods.Net.Http.UnitTests
                 ServiceProvider.GetService<ILogger<FakeHttpRepository>>(),
                 BuildHttpClientFactory(httpResponseMessage, httpMethod, "", absoluteUri).Object);
         }
+
+        #endregion
     }
 }
