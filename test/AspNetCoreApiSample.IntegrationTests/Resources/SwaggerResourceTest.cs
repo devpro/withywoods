@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using FluentAssertions;
+﻿using FluentAssertions;
 using OpenQA.Selenium;
 using Withywoods.Selenium;
 using Withywoods.WebTesting.TestHost;
@@ -10,7 +9,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
     [Trait("Environment", "Localhost")]
     public class SwaggerResourceTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Startup>>
     {
-        private const string _ResourceEndpoint = "swagger";
+        private const string ResourceEndpoint = "swagger";
 
         private readonly LocalServerFactory<Startup> _server;
 
@@ -29,7 +28,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             try
             {
                 // Arrange & Act
-                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{ResourceEndpoint}");
 
                 // Assert
                 WebDriver.FindElement(By.ClassName("title"), 60);

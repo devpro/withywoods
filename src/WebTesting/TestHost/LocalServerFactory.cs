@@ -16,7 +16,7 @@ namespace Withywoods.WebTesting.TestHost
     public class LocalServerFactory<TStartup> : WebApplicationFactory<TStartup>
         where TStartup : class
     {
-        private const string _LocalhostBaseAddress = "https://localhost";
+        private const string LocalhostBaseAddress = "https://localhost";
 
         private IWebHost _host;
 
@@ -26,7 +26,7 @@ namespace Withywoods.WebTesting.TestHost
         /// </summary>
         public LocalServerFactory()
         {
-            ClientOptions.BaseAddress = new Uri(_LocalhostBaseAddress);
+            ClientOptions.BaseAddress = new Uri(LocalhostBaseAddress);
 
             // Breaking change while migrating from 2.2 to 3.1, TestServer was not called anymore
             CreateServer(CreateWebHostBuilder());

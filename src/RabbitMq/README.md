@@ -9,6 +9,7 @@ The goal of this library is to ease the use of RabbitMQ in a .NET program and ga
 
 - [rabbitmq.com](https://www.rabbitmq.com/)
   - [.NET/C# RabbitMQ Client Library](https://www.rabbitmq.com/dotnet.html)
+  - [.NET/C# Client API Guide](https://www.rabbitmq.com/dotnet-api-guide.html)
 - [GitHub](https://github.com/rabbitmq)
   - [rabbitmq/rabbitmq-dotnet-client](https://github.com/rabbitmq/rabbitmq-dotnet-client)
   - [rabbitmq/rabbitmq-tutorials](https://github.com/rabbitmq/rabbitmq-tutorials/tree/master/dotnet)

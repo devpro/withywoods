@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -6,6 +8,8 @@ using FluentAssertions;
 
 namespace Withywoods.WebTesting.Rest
 {
+    [Obsolete("This class will soon be removed, please use ResourceTestBase class of the same namespace instead.")]
+    [ExcludeFromCodeCoverage]
     public class BasicRestRunner
     {
         private readonly IHttpClientFactory _httpClientFactory;

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
@@ -10,57 +10,53 @@ using Newtonsoft.Json;
 using Withywoods.AspNetCoreApiSample.Dto;
 using Withywoods.AspNetCoreApiSample.IntegrationTests.Entities;
 using Withywoods.Serialization.Json;
-using Withywoods.WebTesting;
 using Withywoods.WebTesting.Rest;
 using Xunit;
 
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 {
     [Trait("Environment", "Localhost")]
-    public class TaskResourceTest : IClassFixture<WebApplicationFactory<Startup>>
+    public class TaskResourceTest : ResourceTestBase, IClassFixture<WebApplicationFactory<Startup>>
     {
-        private const string _ResourceEndpoint = "api/tasks";
+        private const string ResourceEndpoint = "api/tasks";
 
         private readonly Fixture _fixture;
-        private readonly HttpClient _client;
+
         private readonly RestRunner _restRunner;
-        private readonly BasicRestRunner _basicRestRunner;
 
         public TaskResourceTest(WebApplicationFactory<Startup> factory)
+            : base(factory.CreateClient())
         {
             _fixture = new Fixture();
-            _client = factory.CreateClient();
-            _restRunner = new RestRunner { ResourceEndpoint = _ResourceEndpoint };
-            _basicRestRunner = new BasicRestRunner(new WebApplicationHttpClientFactory<Startup>(factory));
+            _restRunner = new RestRunner(_fixture, this, ResourceEndpoint);
         }
 
         [Fact]
         public async Task AspNetCoreApiSampleTaskResourcePost_ReturnsOk()
         {
             var input = _fixture.Create<TaskDto>();
-            string response = await _basicRestRunner.Post(_ResourceEndpoint, input.ToJson(), HttpStatusCode.Created);
-            // example: {"id":"Id4658f8a1-6d6d-498b-ba4e-64ef363aaa75","title":"Title4dc97f92-1c3e-4309-96a8-b03d16099e11","isComplete":true}
+            var response = await PostAsync($"/{ResourceEndpoint}", input.ToJson(), HttpStatusCode.Created);
 
             dynamic deserializedValue = JsonConvert.DeserializeObject(response);
-            await _restRunner.DeleteResource(deserializedValue["id"].ToString(), _client);
+            await DeleteAsync($"/{ResourceEndpoint}/{deserializedValue["id"]}");
         }
 
         [Fact]
         public async Task AspNetCoreApiSampleTaskResourceFullCycle_IsOk()
         {
-            var initialTasks = await _restRunner.GetResources<TaskDto>(_client);
+            var initialTasks = await GetAsync<List<TaskDto>>($"/{ResourceEndpoint}");
             initialTasks.Count.Should().Be(0);
 
-            var created = await _restRunner.CreateResource<TaskDto>(_client);
+            var created = await _restRunner.CreateResourceAsync<TaskDto>();
 
-            await _restRunner.GetResourceById(created.Id, _client, created);
+            await _restRunner.GetResourceByIdAsync(created.Id, created);
 
-            await _restRunner.UpdateResource(created.Id, created, _client);
+            await _restRunner.UpdateResourceAsync(created.Id, created);
 
-            var existingTasks = await _restRunner.GetResources<TaskDto>(_client);
+            var existingTasks = await _restRunner.GetResourcesAsync<TaskDto>();
             existingTasks.Count.Should().Be(1);
 
-            await _restRunner.DeleteResource(created.Id, _client);
+            await _restRunner.DeleteResourceAsync(created.Id);
 
             var expectedNotFound = new ProblemDetails
             {
@@ -68,16 +64,16 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Status = 404,
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
             };
-            await _restRunner.GetResourceById(created.Id, _client, expectedNotFound, HttpStatusCode.NotFound, config => config.Excluding(x => x.Extensions));
+            await _restRunner.GetResourceByIdAsync(created.Id, expectedNotFound, HttpStatusCode.NotFound, config => config.Excluding(x => x.Extensions));
 
-            var finalTasks = await _restRunner.GetResources<TaskDto>(_client);
+            var finalTasks = await _restRunner.GetResourcesAsync<TaskDto>();
             finalTasks.Count.Should().Be(0);
         }
 
         [Fact]
-        public async Task AspNetCoreApiSampleTaskResourceDelete_WhenResourceDoesNotExist_ReturnsHttpNoContent()
+        public Task AspNetCoreApiSampleTaskResourceDelete_WhenResourceDoesNotExist_ReturnsHttpNoContent()
         {
-            await _restRunner.DeleteResource(new Guid().ToString(), _client);
+            return _restRunner.DeleteResourceAsync(new Guid().ToString());
         }
 
         [Fact]
@@ -90,7 +86,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Status = 404,
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
             };
-            await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId, Title = "Bla bla" }, _client, expectedNotFound, HttpStatusCode.NotFound,
+            await _restRunner.UpdateResourceAsync(taskId, new TaskDto { Id = taskId, Title = "Bla bla" }, expectedNotFound, HttpStatusCode.NotFound,
                 config => config.Excluding(x => x.Extensions));
         }
 
@@ -105,7 +101,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
             expectedError.Errors["Title"] = new string[1] { "The Title field is required." };
-            await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId }, _client, expectedError, HttpStatusCode.BadRequest,
+            await _restRunner.UpdateResourceAsync(taskId, new TaskDto { Id = taskId }, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
         }
 
@@ -120,7 +116,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
             expectedError.Errors["Title"] = new string[1] { "The Title field is required." };
-            await _restRunner.UpdateResource(taskId, new TaskDto { Id = taskId }, _client, expectedError, HttpStatusCode.BadRequest);
+            await _restRunner.UpdateResourceAsync(taskId, new TaskDto { Id = taskId }, expectedError, HttpStatusCode.BadRequest);
         }
 
         [Theory]
@@ -135,7 +131,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Status = 400,
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
-            await _restRunner.UpdateResource(id, new TaskDto { Id = resourceId, Title = "Bla bla" }, _client, expectedError, HttpStatusCode.BadRequest,
+            await _restRunner.UpdateResourceAsync(id, new TaskDto { Id = resourceId, Title = "Bla bla" }, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
         }
 
@@ -148,7 +144,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 Status = 400,
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
-            await _restRunner.UpdateResource("dummy", (TaskDto)null, _client, expectedError, HttpStatusCode.BadRequest,
+            await _restRunner.UpdateResourceAsync("dummy", (TaskDto)null, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
         }
     }
