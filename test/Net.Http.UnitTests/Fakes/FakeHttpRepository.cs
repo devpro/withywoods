@@ -14,10 +14,28 @@ namespace Withywoods.Net.Http.UnitTests.Fakes
 
         protected override string HttpClientName => "FakeApi";
 
-        public async Task<List<string>> FindAllAsync()
+        public async Task<List<T>> FindAllAsync<T>()
         {
             var url = "https://does.not.exist/v42/api/fakes";
-            return await GetAsync<List<string>>(url);
+            return await GetAsync<List<T>>(url);
+        }
+
+        public async Task<T> CreateAsync<T>(T input) where T : class
+        {
+            var url = "https://does.not.exist/v42/api/fakes";
+            return await PostAsync<T>(url, input);
+        }
+
+        public async Task UpdateAsync<T>(string id, T input)
+        {
+            var url = $"https://does.not.exist/v42/api/fakes/{id}";
+            await PutAsync(url, input);
+        }
+
+        public async Task DeleteAsync(string id)
+        {
+            var url = $"https://does.not.exist/v42/api/fakes/{id}";
+            await DeleteAsync(url, true);
         }
     }
 }
