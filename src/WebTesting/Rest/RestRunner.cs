@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
@@ -85,7 +83,7 @@ namespace Withywoods.WebTesting.Rest
             {
                 idField.SetValue(input, null);
             }
-            var created = await _resource.PostAsync<T>($"/{_resourceEndpoint}", new StringContent(input.ToJson(), Encoding.UTF8, "application/json"));
+            var created = await _resource.PostAsync<T>($"/{_resourceEndpoint}", input.ToJson());
             if (idField != null)
             {
                 var idValue = idField.GetValue(created);
