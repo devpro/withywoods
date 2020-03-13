@@ -120,12 +120,40 @@ namespace Withywoods.Net.Http.UnitTests
             exc.Message.Should().Contain("This code shouldn't be executed, the call to https://does.not.exist/v42/api/fakes must be mocked.");
         }
 
+        [Fact]
+        public async Task FakeHttpRepositoryFindAllAsync_WhenUnnamedClient_ReturnSuccess()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var responseDto = fixture.Create<List<string>>();
+            var httpResponseMessage = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(responseDto.ToJson())
+            };
+            var repository = BuildUnnamedClientRepository(httpResponseMessage, HttpMethod.Get, "https://still.not.here/api/fakes");
+
+            // Act
+            var output = await repository.FindAllAsync();
+
+            // Assert
+            output.Should().NotBeNullOrEmpty();
+            output.Count.Should().Be(responseDto.Count);
+        }
+
         private FakeHttpRepository BuildRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
         {
             var logger = ServiceProvider.GetService<ILogger<FakeHttpRepository>>();
             var httpClientFactoryMock = BuildHttpClientFactory(httpResponseMessage, httpMethod, "FakeApi", absoluteUri);
 
             return new FakeHttpRepository(logger, httpClientFactoryMock.Object);
+        }
+
+        private FakeHttpUnnamedClientRepository BuildUnnamedClientRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
+        {
+            return new FakeHttpUnnamedClientRepository(
+                ServiceProvider.GetService<ILogger<FakeHttpRepository>>(),
+                BuildHttpClientFactory(httpResponseMessage, httpMethod, "", absoluteUri).Object);
         }
     }
 }

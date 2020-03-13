@@ -58,7 +58,7 @@ namespace Withywoods.Net.Http
 
             if (!response.IsSuccessStatusCode)
             {
-                Logger.LogDebug($"Status code doesn't indicate success [HttpRequestUrl={url}] [HttpResponseStatusCode={response.StatusCode}] [HttpResponseContent={stringResult ?? ""}]");
+                Logger.LogDebug($"Status code doesn't indicate success [HttpRequestUrl={url}] [HttpResponseStatusCode={response.StatusCode}] [HttpResponseContent={stringResult}]");
                 throw new ConnectivityException($"The response status \"{response.StatusCode}\" is not a success (reason=\"{response.ReasonPhrase}\")");
             }
 
