@@ -12,31 +12,70 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
     [Trait("Category", "UnitTests")]
     public class ServiceCollectionExtensionsTest
     {
+        private readonly Fixture _fixture;
+
+        public ServiceCollectionExtensionsTest()
+        {
+            _fixture = new Fixture();
+        }
+
         [Fact]
-        public void AddTwohireClient_ShouldProvideChannelFactory()
+        public void AddRabbitMqFactory_WithUriAndRequestedHeartbeatAndContinuationTimeout_ShouldProvideConfiguration()
         {
             // Arrange
-            var fixture = new Fixture();
             var serviceCollection = new ServiceCollection();
-            var configuration = fixture.Create<DefaultRabbitMqConfiguration>();
+            var configuration = new DefaultRabbitMqConfiguration
+            {
+                Uri = new Uri("amqp://localhost:5672/%2F"),
+                RequestedHeartbeat = 30,
+                ContinuationTimeout = new TimeSpan(1, 0, 0)
+            };
 
             // Act
             serviceCollection.AddRabbitMqFactory(configuration);
 
             // Assert
             var services = serviceCollection.BuildServiceProvider();
-            var exc = Assert.Throws<BrokerUnreachableException>(() => services.GetRequiredService<IChannelFactory>());
-            exc.Should().NotBeNull();
-            exc.Message.Should().Be("None of the specified endpoints were reachable"); // no RabbitMQ is running in CI environment
+            services.GetRequiredService<IRabbitMqConfiguration>().Should().NotBeNull();
+            services.GetRequiredService<IRabbitMqConfiguration>().Should().BeEquivalentTo(configuration);
+            var connectionFactory = services.GetRequiredService<IConnectionFactory>() as ConnectionFactory;
+            connectionFactory.Should().NotBeNull();
+            connectionFactory.Uri.Should().Be(configuration.Uri);
+            connectionFactory.RequestedHeartbeat.Should().Be(configuration.RequestedHeartbeat.Value);
+            connectionFactory.ContinuationTimeout.Should().Be(configuration.ContinuationTimeout.Value);
         }
 
         [Fact]
-        public void AddTwohireClient_ShouldProvideConnectionFactory()
+        public void AddRabbitMqFactory_WithHotnameOnly_ShouldProvideConnectionFactory()
         {
             // Arrange
-            var fixture = new Fixture();
             var serviceCollection = new ServiceCollection();
-            var configuration = fixture.Create<DefaultRabbitMqConfiguration>();
+            var configuration = new DefaultRabbitMqConfiguration
+            {
+                Hostname = "localhost"
+            };
+
+            // Act
+            serviceCollection.AddRabbitMqFactory(configuration);
+
+            // Assert
+            var services = serviceCollection.BuildServiceProvider();
+            var connectionFactory = services.GetRequiredService<IConnectionFactory>() as ConnectionFactory;
+            connectionFactory.Should().NotBeNull();
+            connectionFactory.HostName.Should().Be(configuration.Hostname);
+            connectionFactory.Port.Should().Be(5672);
+        }
+
+        [Fact]
+        public void AddRabbitMqFactory_WithInvalidHostnameAndPort_ShouldProvideChannelFactory()
+        {
+            // Arrange
+            var serviceCollection = new ServiceCollection();
+            var configuration = new DefaultRabbitMqConfiguration
+            {
+                Hostname = "does.not.exist",
+                Port = 1234
+            };
 
             // Act
             serviceCollection.AddRabbitMqFactory(configuration);
@@ -47,32 +86,17 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
             connectionFactory.Should().NotBeNull();
             connectionFactory.HostName.Should().Be(configuration.Hostname);
             connectionFactory.Port.Should().Be(configuration.Port);
+            var exc = Assert.Throws<BrokerUnreachableException>(() => services.GetRequiredService<IChannelFactory>());
+            exc.Should().NotBeNull();
+            exc.Message.Should().Be("None of the specified endpoints were reachable"); // no RabbitMQ is running in CI environment
         }
 
         [Fact]
-        public void AddTwohireClient_ShouldProvideConfiguration()
+        public void AddRabbitMqFactory_ShouldThrowExceptionIfServiceCollectionIsNull()
         {
             // Arrange
-            var fixture = new Fixture();
-            var serviceCollection = new ServiceCollection();
-            var configuration = fixture.Create<DefaultRabbitMqConfiguration>();
-
-            // Act
-            serviceCollection.AddRabbitMqFactory(configuration);
-
-            // Assert
-            var services = serviceCollection.BuildServiceProvider();
-            services.GetRequiredService<IRabbitMqConfiguration>().Should().NotBeNull();
-            services.GetRequiredService<IRabbitMqConfiguration>().Should().BeEquivalentTo(configuration);
-        }
-
-        [Fact]
-        public void AddTwohireClient_ShouldThrowExceptionIfServiceCollectionIsNull()
-        {
-            // Arrange
-            var fixture = new Fixture();
             var serviceCollection = (ServiceCollection)null;
-            var configuration = fixture.Create<DefaultRabbitMqConfiguration>();
+            var configuration = _fixture.Create<DefaultRabbitMqConfiguration>();
 
             // Act
             var exc = Assert.Throws<ArgumentNullException>(() => serviceCollection.AddRabbitMqFactory(configuration));
@@ -83,7 +107,7 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
         }
 
         [Fact]
-        public void AddTwohireClient_ShouldThrowExceptionIfConfigurationIsNull()
+        public void AddRabbitMqFactory_ShouldThrowExceptionIfConfigurationIsNull()
         {
             // Arrange
             var serviceCollection = new ServiceCollection();
