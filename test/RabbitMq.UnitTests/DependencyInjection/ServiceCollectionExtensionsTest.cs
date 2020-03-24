@@ -58,7 +58,7 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
             var connectionFactory = services.GetRequiredService<IConnectionFactory>() as ConnectionFactory;
             connectionFactory.Should().NotBeNull();
             connectionFactory.HostName.Should().Be(configuration.Hostname);
-            connectionFactory.Port.Should().Be(configuration.Port);
+            connectionFactory.Port.Should().Be(5672);
         }
 
         [Fact]
