@@ -31,10 +31,37 @@ namespace Withywoods.RabbitMq.DependencyInjection
             }
 
             services.TryAddSingleton<IRabbitMqConfiguration>(configuration);
+            services.TryAddTransient<IConnectionFactory>(ctx => BuildConnectionFactory(configuration));
             services.TryAddScoped<IChannelFactory, ChannelFactory>();
-            services.TryAddTransient<IConnectionFactory>(ctx => new ConnectionFactory { HostName = configuration.Hostname, Port = configuration.Port });
 
             return services;
+        }
+
+        private static ConnectionFactory BuildConnectionFactory(IRabbitMqConfiguration configuration)
+        {
+            var factory = new ConnectionFactory();
+
+            if (configuration.Uri != null)
+            {
+                factory.Uri = configuration.Uri;
+            }
+            else
+            {
+                factory.HostName = configuration.Hostname;
+                factory.Port = configuration.Port ?? 5672;
+            }
+
+            if (configuration.ContinuationTimeout != null)
+            {
+                factory.ContinuationTimeout = configuration.ContinuationTimeout;
+            }
+
+            if (configuration.RequestedHeartbeat.HasValue)
+            {
+                factory.RequestedHeartbeat = configuration.RequestedHeartbeat.Value;
+            }
+
+            return factory;
         }
     }
 }
