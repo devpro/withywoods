@@ -32,6 +32,6 @@ namespace Withywoods.RabbitMq
         /// <summary>
         /// Continuation timeout.
         /// </summary>
-        TimeSpan ContinuationTimeout { get; }
+        TimeSpan? ContinuationTimeout { get; }
     }
 }

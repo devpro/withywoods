@@ -20,7 +20,7 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
         }
 
         [Fact]
-        public void AddRabbitMqFactory_ShouldProvideConfiguration()
+        public void AddRabbitMqFactory_WithUriAndRequestedHeartbeatAndContinuationTimeout_ShouldProvideConfiguration()
         {
             // Arrange
             var serviceCollection = new ServiceCollection();
@@ -38,10 +38,15 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
             var services = serviceCollection.BuildServiceProvider();
             services.GetRequiredService<IRabbitMqConfiguration>().Should().NotBeNull();
             services.GetRequiredService<IRabbitMqConfiguration>().Should().BeEquivalentTo(configuration);
+            var connectionFactory = services.GetRequiredService<IConnectionFactory>() as ConnectionFactory;
+            connectionFactory.Should().NotBeNull();
+            connectionFactory.Uri.Should().Be(configuration.Uri);
+            connectionFactory.RequestedHeartbeat.Should().Be(configuration.RequestedHeartbeat.Value);
+            connectionFactory.ContinuationTimeout.Should().Be(configuration.ContinuationTimeout.Value);
         }
 
         [Fact]
-        public void AddRabbitMqFactory_ShouldProvideConnectionFactory()
+        public void AddRabbitMqFactory_WithHotnameOnly_ShouldProvideConnectionFactory()
         {
             // Arrange
             var serviceCollection = new ServiceCollection();
@@ -62,7 +67,7 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
         }
 
         [Fact]
-        public void AddRabbitMqFactory_ShouldProvideChannelFactory()
+        public void AddRabbitMqFactory_WithInvalidHostnameAndPort_ShouldProvideChannelFactory()
         {
             // Arrange
             var serviceCollection = new ServiceCollection();
@@ -77,6 +82,10 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
 
             // Assert
             var services = serviceCollection.BuildServiceProvider();
+            var connectionFactory = services.GetRequiredService<IConnectionFactory>() as ConnectionFactory;
+            connectionFactory.Should().NotBeNull();
+            connectionFactory.HostName.Should().Be(configuration.Hostname);
+            connectionFactory.Port.Should().Be(configuration.Port);
             var exc = Assert.Throws<BrokerUnreachableException>(() => services.GetRequiredService<IChannelFactory>());
             exc.Should().NotBeNull();
             exc.Message.Should().Be("None of the specified endpoints were reachable"); // no RabbitMQ is running in CI environment

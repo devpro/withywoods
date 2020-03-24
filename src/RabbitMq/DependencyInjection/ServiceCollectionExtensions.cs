@@ -51,9 +51,9 @@ namespace Withywoods.RabbitMq.DependencyInjection
                 factory.Port = configuration.Port ?? 5672;
             }
 
-            if (configuration.ContinuationTimeout != null)
+            if (configuration.ContinuationTimeout.HasValue)
             {
-                factory.ContinuationTimeout = configuration.ContinuationTimeout;
+                factory.ContinuationTimeout = configuration.ContinuationTimeout.Value;
             }
 
             if (configuration.RequestedHeartbeat.HasValue)
