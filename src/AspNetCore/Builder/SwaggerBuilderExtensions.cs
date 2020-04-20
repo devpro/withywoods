@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-using Swashbuckle.AspNetCore.Swagger;
+﻿using Microsoft.AspNetCore.Builder;
 
 namespace Withywoods.AspNetCore.Builder
 {
@@ -16,7 +14,7 @@ namespace Withywoods.AspNetCore.Builder
         /// <param name="configuration"></param>
         /// <param name="setupAction"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, IWebAppConfiguration configuration, Action<SwaggerOptions> setupAction = null)
+        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, IWebAppConfiguration configuration)
         {
             var swaggerDefinition = configuration.SwaggerDefinition;
 
@@ -24,7 +22,7 @@ namespace Withywoods.AspNetCore.Builder
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint($"/swagger/{swaggerDefinition?.Version ?? "1.0"}/swagger.json", swaggerDefinition?.Title ?? "");
+                c.SwaggerEndpoint($"/swagger/{swaggerDefinition?.Version ?? "1.0"}/swagger.json", swaggerDefinition?.Title ?? string.Empty);
             });
 
             return app;

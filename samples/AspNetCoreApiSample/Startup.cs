@@ -31,12 +31,12 @@ namespace Withywoods.AspNetCoreApiSample
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            // Controllers
-            services.AddControllers();
-
             // Health checks
             services.AddHealthChecks()
                 .AddDbContextCheck<Dal.Efcore.EfcoreDbContext>();
+
+            // Controllers
+            services.AddControllers();
 
             // Swagger
             services.AddSwaggerGen(_webAppConfiguration);
@@ -65,8 +65,6 @@ namespace Withywoods.AspNetCoreApiSample
                 app.UseHsts();
             }
 
-            app.UseHealthChecks(_webAppConfiguration.HealthChecksEndpoint);
-
             app.UseSwagger(_webAppConfiguration);
 
             app.UseHttpsRedirection();
@@ -75,6 +73,7 @@ namespace Withywoods.AspNetCoreApiSample
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks(_webAppConfiguration.HealthChecksEndpoint);
                 endpoints.MapControllers();
             });
         }
