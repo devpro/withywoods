@@ -10,7 +10,7 @@ namespace Withywoods.AspNetCoreApiSample
     {
         #region Private constants
 
-        private const string _ApiDefinitionSectionKey = "ApiDefinition";
+        private const string ApiDefinitionSectionKey = "ApiDefinition";
 
         #endregion
 
@@ -31,15 +31,15 @@ namespace Withywoods.AspNetCoreApiSample
 
         #region Public properties
 
-        public string InMemoryDatabaseName = "TaskList";
+        public string InMemoryDatabaseName { get => "TaskList"; }
 
-        public string HealthChecksEndpoint = "/health";
+        public string HealthChecksEndpoint { get => "/health"; }
 
         #endregion
 
         #region IWebAppConfiguration properties
 
-        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(_ApiDefinitionSectionKey).Get<OpenApiInfo>();
+        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(ApiDefinitionSectionKey).Get<OpenApiInfo>();
 
         string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 

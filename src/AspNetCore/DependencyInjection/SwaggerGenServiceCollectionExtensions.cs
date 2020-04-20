@@ -9,7 +9,7 @@ namespace Withywoods.AspNetCore.DependencyInjection
     /// </summary>
     public static class SwaggerGenServiceCollectionExtensions
     {
-        private const string _DtoClassPrefix = "Dto";
+        private const string DtoClassPrefix = "Dto";
 
         /// <summary>
         /// Add Swagger generation in ASP.NET Core dependency injection mechanism.
@@ -24,7 +24,7 @@ namespace Withywoods.AspNetCore.DependencyInjection
             {
                 c.SwaggerDoc(swaggerDefinition.Version, swaggerDefinition);
 
-                // idea: manager Bearer authentication
+                // idea: manage Bearer authentication
 
                 var xmlFile = $"{configuration.AssemblyName}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -45,8 +45,8 @@ namespace Withywoods.AspNetCore.DependencyInjection
             // idea: read a prefix list in the configuration so it can be defined at application level
 
             var returnedValue = classType.Name;
-            if (returnedValue.EndsWith(_DtoClassPrefix, StringComparison.InvariantCultureIgnoreCase))
-                returnedValue = returnedValue.Replace(_DtoClassPrefix, string.Empty, StringComparison.InvariantCultureIgnoreCase);
+            if (returnedValue.EndsWith(DtoClassPrefix, StringComparison.InvariantCultureIgnoreCase))
+                returnedValue = returnedValue.Replace(DtoClassPrefix, string.Empty, StringComparison.InvariantCultureIgnoreCase);
 
             return returnedValue;
         }

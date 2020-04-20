@@ -16,7 +16,7 @@ namespace Withywoods.AspNetCore.Builder
         /// <param name="configuration"></param>
         /// <param name="setupAction"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, IWebAppConfiguration configuration, Action<SwaggerOptions> setupAction = null)
+        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, IWebAppConfiguration configuration)
         {
             var swaggerDefinition = configuration.SwaggerDefinition;
 
