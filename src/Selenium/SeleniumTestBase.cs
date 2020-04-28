@@ -33,12 +33,22 @@ namespace Withywoods.Selenium
             WebDriver = new ChromeDriver(chromeDriverLocation, chromeOptions);
         }
 
+        protected SeleniumTestBase(RemoteWebDriver webDriver)
+        {
+            WebDriver = webDriver;
+        }
+
+        protected SeleniumTestBase(SeleniumTestBase otherPage)
+        {
+            WebDriver = otherPage.WebDriver;
+        }
+
         protected RemoteWebDriver WebDriver { get; private set; }
 
         protected void TakeScreenShot(string methodName)
         {
             var screenshot = ((ITakesScreenshot)WebDriver).GetScreenshot();
-            screenshot.SaveAsFile($"screenshot_{methodName}_{DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff")}.png");
+            screenshot.SaveAsFile($"screenshot_{methodName}_{DateTime.UtcNow:yyyyMMdd_HHmmss_fff}.png");
         }
 
         public void Dispose()
