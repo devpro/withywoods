@@ -16,7 +16,7 @@ using Xunit;
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 {
     [Trait("Environment", "Localhost")]
-    public class TaskResourceTest : ResourceTestBase, IClassFixture<WebApplicationFactory<Startup>>
+    public class TaskResourceTest : RestClient, IClassFixture<WebApplicationFactory<Startup>>
     {
         private const string ResourceEndpoint = "api/tasks";
 

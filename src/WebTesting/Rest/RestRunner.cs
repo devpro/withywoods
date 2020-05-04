@@ -16,7 +16,7 @@ namespace Withywoods.WebTesting.Rest
     {
         private readonly Fixture _fixture;
 
-        private readonly ResourceTestBase _resource;
+        private readonly RestClient _resource;
 
         private readonly string _resourceEndpoint;
 
@@ -25,7 +25,7 @@ namespace Withywoods.WebTesting.Rest
         /// </summary>
         /// <param name="fixture"></param>
         /// <param name="resource"></param>
-        public RestRunner(Fixture fixture, ResourceTestBase resource, string resourceEndpoint)
+        public RestRunner(Fixture fixture, RestClient resource, string resourceEndpoint)
         {
             _fixture = fixture;
             _resource = resource;

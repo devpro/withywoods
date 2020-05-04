@@ -10,21 +10,22 @@ namespace Withywoods.Selenium
     /// Selenium test base.
     /// Chrome is the only driver implemented for the moment.
     /// </summary>
-    public class SeleniumTestBase : IDisposable
+    public abstract class SeleniumTestBase : IDisposable
     {
-        protected SeleniumTestBase(bool isHeadless = true, string chromeDriverEnvironmentVariableName = "ChromeWebDriver")
+        protected SeleniumTestBase(WebDriverOptions webDriverOptions)
         {
             // if there is an issue with the CI run, it is a good advice to debug it locally without the headless option
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--ignore-certificate-errors");
-            if (isHeadless)
+            chromeOptions.AddArgument($"--window-size={webDriverOptions.WindowWidth},{webDriverOptions.WindowHeight}");
+            if (webDriverOptions.IsHeadless)
             {
                 chromeOptions.AddArgument("--headless");
             }
 
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
             // for Azure DevOps it's described here for example: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
-            var chromeDriverLocation = Environment.GetEnvironmentVariable(chromeDriverEnvironmentVariableName);
+            var chromeDriverLocation = Environment.GetEnvironmentVariable(webDriverOptions.ChromeDriverEnvironmentVariableName);
             if (string.IsNullOrEmpty(chromeDriverLocation))
             {
                 chromeDriverLocation = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -43,7 +44,7 @@ namespace Withywoods.Selenium
             WebDriver = otherPage.WebDriver;
         }
 
-        protected RemoteWebDriver WebDriver { get; private set; }
+        protected RemoteWebDriver WebDriver { get; }
 
         protected void TakeScreenShot(string methodName)
         {

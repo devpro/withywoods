@@ -8,7 +8,7 @@ namespace Withywoods.Selenium.UnitTests
     public class FakeSeleniumTest : SeleniumTestBase
     {
         public FakeSeleniumTest()
-            : base(true, "variable_does_not_exist")
+            : base(new WebDriverOptions { IsHeadless = true, ChromeDriverEnvironmentVariableName = "variable_does_not_exist" })
         {
         }
 
