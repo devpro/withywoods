@@ -15,7 +15,7 @@ namespace Withywoods.WebTesting.Rest
     {
         private const string MediaTypeJson = "application/json";
 
-        protected RestClient(string baseAddress)
+        public RestClient(string baseAddress)
             : this(new HttpClient { BaseAddress = new Uri(baseAddress) })
         {
         }
