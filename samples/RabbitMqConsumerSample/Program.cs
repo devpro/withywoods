@@ -36,9 +36,9 @@ namespace Withywoods.RabbitMqConsumerSample
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += (model, ea) =>
             {
-                var body = ea.Body;
+                var body = ea.Body.Span;
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine(" [x] Received {0}", message);
+                Console.WriteLine($" [x] Received {message}");
             };
             channel.BasicConsume(queue: "hello",
                 autoAck: true,

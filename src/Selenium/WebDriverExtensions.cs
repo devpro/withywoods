@@ -32,7 +32,43 @@ namespace Withywoods.Selenium
         public static IWebElement FindElementNotDisplayed(this IWebDriver driver, By by, int timeoutInSeconds)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-            return wait.Until(drv => (drv.FindElement(by) != null && !drv.FindElement(by).Displayed) ? drv.FindElement(by) : null);
+            return wait.Until(drv =>
+                (drv.FindElement(by) != null && !drv.FindElement(by).Displayed)
+                ? drv.FindElement(by)
+                : null);
+        }
+
+        /// <summary>
+        /// Find an element that must be present and whose text is not empty.
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="by"></param>
+        /// <param name="timeoutInSeconds"></param>
+        /// <returns></returns>
+        public static IWebElement FindElementWithNoEmptyText(this IWebDriver driver, By by, int timeoutInSeconds)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            return wait.Until(drv =>
+                (drv.FindElement(by) != null && drv.FindElement(by).Displayed && !string.IsNullOrEmpty(drv.FindElement(by).Text))
+                ? drv.FindElement(by)
+                : null);
+        }
+
+        /// <summary>
+        /// Find an element that must be present and whose text is the one we expect.
+        /// Can be useful on async changes in a page.
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="by"></param>
+        /// <param name="timeoutInSeconds"></param>
+        /// <returns></returns>
+        public static IWebElement FindElementWithExpectedText(this IWebDriver driver, By by, string expected, int timeoutInSeconds)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            return wait.Until(drv =>
+                (drv.FindElement(by) != null && drv.FindElement(by).Displayed && !string.IsNullOrEmpty(drv.FindElement(by).Text) && drv.FindElement(by).Text == expected)
+                ? drv.FindElement(by)
+                : null);
         }
     }
 }

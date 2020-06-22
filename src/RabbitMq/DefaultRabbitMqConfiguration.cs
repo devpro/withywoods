@@ -12,6 +12,6 @@ namespace Withywoods.RabbitMq
 
         public TimeSpan? ContinuationTimeout { get; set; }
 
-        public ushort? RequestedHeartbeat { get; set; }
+        public TimeSpan? RequestedHeartbeat { get; set; }
     }
 }

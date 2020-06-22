@@ -27,7 +27,7 @@ namespace Withywoods.RabbitMq.UnitTests.DependencyInjection
             var configuration = new DefaultRabbitMqConfiguration
             {
                 Uri = new Uri("amqp://localhost:5672/%2F"),
-                RequestedHeartbeat = 30,
+                RequestedHeartbeat = new TimeSpan(0, 0, 30),
                 ContinuationTimeout = new TimeSpan(1, 0, 0)
             };
 

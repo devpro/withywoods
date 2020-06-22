@@ -14,7 +14,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         private readonly LocalServerFactory<Startup> _server;
 
         public SwaggerResourceTest(LocalServerFactory<Startup> server)
-            : base()
+            : base(new WebDriverOptions())
         {
             _server = server;
             _ = _server.CreateClient(); // this call is needed to change state of server

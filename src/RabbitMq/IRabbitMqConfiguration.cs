@@ -13,9 +13,9 @@ namespace Withywoods.RabbitMq
         Uri Uri { get; }
 
         /// <summary>
-        /// Continuation timeout.
+        /// Requested heart beat.
         /// </summary>
-        ushort? RequestedHeartbeat { get; }
+        TimeSpan? RequestedHeartbeat { get; }
 
         /// <summary>
         /// Hostname.
