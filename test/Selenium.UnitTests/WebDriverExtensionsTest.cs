@@ -16,7 +16,7 @@ namespace Withywoods.Selenium.UnitTests
         /// Dumb class to have a concrete implementation of IWebElement.
         /// Only Displayed property is needed for the tests.
         /// </summary>
-        public class DumbWebElement : IWebElement
+        internal class DumbWebElement : IWebElement
         {
             public string TagName => throw new System.NotImplementedException();
 
