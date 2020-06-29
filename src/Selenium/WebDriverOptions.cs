@@ -6,6 +6,8 @@
 
         public string ChromeDriverEnvironmentVariableName { get; set; } = "ChromeWebDriver";
 
+        public string UserLanguages { get; set; } = "";
+
         public int WindowWidth { get; set; } = 1600;
 
         public int WindowHeight { get; set; } = 900;

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace Withywoods.Selenium
@@ -41,6 +42,19 @@ namespace Withywoods.Selenium
         {
             var select = new SelectElement(element);
             select.SelectByValue(value);
+            return element;
+        }
+
+        /// <summary>
+        /// Place the mouse over an element.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="webDriver"></param>
+        /// <returns></returns>
+        public static IWebElement MouseOver(this IWebElement element, IWebDriver webDriver)
+        {
+            var action = new Actions(webDriver);
+            action.MoveToElement(element).Perform();
             return element;
         }
     }

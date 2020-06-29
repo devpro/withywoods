@@ -22,6 +22,10 @@ namespace Withywoods.Selenium
             {
                 chromeOptions.AddArgument("--headless");
             }
+            if (!string.IsNullOrEmpty(webDriverOptions.UserLanguages))
+            {
+                chromeOptions.AddUserProfilePreference("intl.accept_languages", webDriverOptions.UserLanguages);
+            }
 
             // chrome driver is sensitive to chrome browser version, CI build should provide the path to driver
             // for Azure DevOps it's described here: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
