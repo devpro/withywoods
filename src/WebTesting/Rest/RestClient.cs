@@ -56,6 +56,20 @@ namespace Withywoods.WebTesting.Rest
             return output;
         }
 
+        public Task<T> PatchAsync<T>(string url, string body, HttpStatusCode httpStatusCode = HttpStatusCode.NoContent)
+        {
+            return PatchAsync<T>(url, new StringContent(body, Encoding.UTF8, MediaTypeJson), httpStatusCode);
+        }
+
+        public async Task<T> PatchAsync<T>(string url, HttpContent bodyContent, HttpStatusCode httpStatusCode = HttpStatusCode.NoContent)
+        {
+            var response = await HttpClient.PatchAsync(url, bodyContent);
+            response.StatusCode.Should().Be(httpStatusCode);
+            var stringResponse = await response.Content.ReadAsStringAsync();
+
+            return stringResponse.FromJson<T>();
+        }
+
         public Task<string> PostAsync(string url, string body, HttpStatusCode httpStatusCode = HttpStatusCode.Created)
         {
             return PostAsync(url, new StringContent(body, Encoding.UTF8, MediaTypeJson), httpStatusCode);
