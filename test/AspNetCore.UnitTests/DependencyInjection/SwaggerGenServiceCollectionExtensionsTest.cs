@@ -23,5 +23,21 @@ namespace Withywoods.AspNetCore.UnitTests.DependencyInjection
             serviceCollection.AddSwaggerGen(configuration);
             serviceCollection.BuildServiceProvider();
         }
+
+        /// <summary>
+        /// Verifies that AddSwaggerGenWithBasicAuthSecurity does not throw an exception.
+        /// </summary>
+        /// <see cref="https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/src/Swashbuckle.AspNetCore.SwaggerGen/Application/SwaggerGenServiceCollectionExtensions.cs"/>
+        [Fact]
+        public void AspNetCoreAddSwaggerGenAndConfigureOptions_DoesNotThrowException()
+        {
+            // Arrange
+            var serviceCollection = new ServiceCollection();
+            var configuration = new FakeConfiguration();
+
+            // Act & Assert
+            serviceCollection.AddSwaggerGenWithBasicAuthSecurity(configuration);
+            serviceCollection.BuildServiceProvider();
+        }
     }
 }
