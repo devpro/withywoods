@@ -53,6 +53,8 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 
             await _restRunner.UpdateResourceAsync(created.Id, created);
 
+            await _restRunner.PatchResourceAsync(created.Id, created);
+
             var existingTasks = await _restRunner.GetResourcesAsync<TaskDto>();
             existingTasks.Count.Should().Be(1);
 
@@ -106,7 +108,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLighBadRequest()
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLightBadRequest()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new LightValidationProblemDetails
@@ -146,6 +148,66 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             };
             await _restRunner.UpdateResourceAsync("dummy", (TaskDto)null, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenResourceDoesNotExist_ReturnsHttpNotFound()
+        {
+            var taskId = Guid.NewGuid().ToString();
+            var expectedNotFound = new ProblemDetails
+            {
+                Title = "Not Found",
+                Status = 404,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
+            };
+            await _restRunner.PatchResourceAsync(taskId, new TaskPatchDto { Title = "Bla bla bla bla" }, expectedNotFound, HttpStatusCode.NotFound,
+                config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpNotFound()
+        {
+            var taskId = Guid.NewGuid().ToString();
+            var expectedError = new ValidationProblemDetails
+            {
+                Title = "Not Found",
+                Status = 404,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
+            };
+            await _restRunner.PatchResourceAsync(taskId, new TaskPatchDto { Id = taskId }, expectedError, HttpStatusCode.NotFound,
+                config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenNullDto_ReturnsHttpBadRequest()
+        {
+            var expectedError = new ProblemDetails
+            {
+                Title = "One or more validation errors occurred.",
+                Status = 400,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            };
+            await _restRunner.PatchResourceAsync("dummy", (TaskPatchDto)null, expectedError, HttpStatusCode.BadRequest,
+                config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenModifyOneProperty_ReturnsExpectedObject()
+        {
+            //Arrange
+            var created = await _restRunner.CreateResourceAsync<TaskPatchDto>();
+            dynamic patch1 = new { IsComplete = true };
+            dynamic patch2 = new { Title = (null as string) };
+            var expected1 = new TaskPatchDto() { Id = created.Id, Title = created.Title, IsComplete = true };
+            var expected2 = new TaskPatchDto() { Id = created.Id, Title = null, IsComplete = true };
+
+            //Act/Assert
+            await _restRunner.PatchResourceAsync(created.Id, patch1);
+            await _restRunner.GetResourceByIdAsync(created.Id, expected1);
+            await _restRunner.PatchResourceAsync(created.Id, patch2);
+            await _restRunner.GetResourceByIdAsync(created.Id, expected2);
+
+            await DeleteAsync($"/{ResourceEndpoint}/{created.Id}");
         }
     }
 }

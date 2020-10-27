@@ -44,7 +44,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         ///     GET /api/tasks
         ///     {
         ///     }
-        /// 
+        ///
         /// </remarks>
         /// <returns>List of <see cref="TaskDto"/></returns>
         [HttpGet]
@@ -63,7 +63,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         ///     GET /api/tasks/5
         ///     {
         ///     }
-        /// 
+        ///
         /// </remarks>
         /// <param name="id"></param>
         /// <returns>One <see cref="TaskDto"/> if it exists</returns>
@@ -96,7 +96,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         /// <param name="item"></param>
         /// <returns>A newly created <see cref="TaskDto"/></returns>
         /// <response code="201">Returns the newly created item</response>
-        /// <response code="400">If the item is null</response>            
+        /// <response code="400">If the item is null</response>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -149,6 +149,55 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         }
 
         /// <summary>
+        /// Patches a task.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PATCH api/tasks/5
+        ///     {
+        ///        "title": "Item5_Patched",
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="id"></param>
+        /// <param name="item"></param>
+        /// <returns>No content</returns>
+        [HttpPatch("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult Patch(string id, TaskPatchDto item)
+        {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+
+            var task = _dbContext.TaskItems.Find(id);
+            if (task == null)
+                return NotFound();
+
+            if (item.ChangedProperties.Contains(nameof(item.Id)))
+            {
+                task.Id = item.Id;
+            }
+
+            if (item.ChangedProperties.Contains(nameof(item.Title)))
+            {
+                task.Title = item.Title;
+            }
+
+            if (item.ChangedProperties.Contains(nameof(item.IsComplete)))
+            {
+                task.IsComplete = item.IsComplete;
+            }
+
+            _dbContext.TaskItems.Update(task);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        /// <summary>
         /// Deletes a specific task.
         /// </summary>
         /// <remarks>
@@ -159,7 +208,7 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
         ///     }
         ///
         /// </remarks>
-        /// <param name="id"></param>        
+        /// <param name="id"></param>
         /// <returns>No content</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]

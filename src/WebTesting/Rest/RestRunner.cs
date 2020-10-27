@@ -25,6 +25,7 @@ namespace Withywoods.WebTesting.Rest
         /// </summary>
         /// <param name="fixture"></param>
         /// <param name="resource"></param>
+        /// <param name="resourceEndpoint"></param>
         public RestRunner(Fixture fixture, RestClient resource, string resourceEndpoint)
         {
             _fixture = fixture;
@@ -57,6 +58,7 @@ namespace Withywoods.WebTesting.Rest
             {
                 output.Should().BeEquivalentTo(expected);
             }
+
             return output;
         }
 
@@ -83,6 +85,7 @@ namespace Withywoods.WebTesting.Rest
             {
                 idField.SetValue(input, null);
             }
+
             var created = await _resource.PostAsync<T>($"/{_resourceEndpoint}", input.ToJson());
             if (idField != null)
             {
@@ -90,6 +93,7 @@ namespace Withywoods.WebTesting.Rest
                 idValue.Should().NotBeNull();
                 idField.SetValue(input, idValue);
             }
+
             created.Should().BeEquivalentTo(input);
             return input;
         }
@@ -112,6 +116,7 @@ namespace Withywoods.WebTesting.Rest
         /// <typeparam name="T">Type of the resource</typeparam>
         /// <param name="id">Resource id</param>
         /// <param name="input">New values for the resource</param>
+        /// <param name="expected">Expected output response</param>
         /// <param name="httpStatusCode">Expected HTTP status code, OK by default (HTTP 200)</param>
         /// <param name="config">Comparison configuration</param>
         /// <returns></returns>
@@ -144,6 +149,45 @@ namespace Withywoods.WebTesting.Rest
         {
             var stringResponse = await _resource.DeleteAsync($"/{_resourceEndpoint}/{id}", httpStatusCode);
             stringResponse.Should().Be(string.Empty);
+        }
+
+        /// <summary>
+        /// Patch a resource by making a PATCH HTTP request.
+        /// </summary>
+        /// <param name="id">Resource id</param>
+        /// <param name="input">New patched values for the resource</param>
+        /// <returns></returns>
+        public Task PatchResourceAsync(string id, object input)
+        {
+            return PatchResourceAsync<object>(id, input);
+        }
+
+        /// <summary>
+        /// Patch a resource by making a PATCH HTTP request.
+        /// </summary>
+        /// <param name="id">Resource id</param>
+        /// <param name="input">New patched values for the resource</param>
+        /// <param name="expected">Expected output response</param>
+        /// <param name="httpStatusCode">Expected HTTP status code returned</param>
+        /// <param name="config">Comparison configuration</param>
+        /// <returns></returns>
+        public async Task PatchResourceAsync<T>(
+            string id,
+            object input,
+            T expected = null,
+            HttpStatusCode httpStatusCode = HttpStatusCode.NoContent,
+            Func<EquivalencyAssertionOptions<T>, EquivalencyAssertionOptions<T>> config = null)
+            where T : class
+        {
+            var output = await _resource.PatchAsync<T>($"/{_resourceEndpoint}/{id}", input.ToJson(), httpStatusCode);
+            if (config != null)
+            {
+                output.Should().BeEquivalentTo(expected, config);
+            }
+            else
+            {
+                output.Should().BeEquivalentTo(expected);
+            }
         }
     }
 }
