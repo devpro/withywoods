@@ -93,8 +93,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task
-            AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpBadRequest()
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpBadRequest()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new ValidationProblemDetails
@@ -109,8 +108,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task
-            AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLightBadRequest()
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLightBadRequest()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new LightValidationProblemDetails
@@ -167,8 +165,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task
-            AspNetCoreApiSampleTaskResourcePatch_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpNotFound()
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpNotFound()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new ValidationProblemDetails
