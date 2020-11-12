@@ -109,8 +109,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task
-            AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLightBadRequest()
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpLightBadRequest()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new LightValidationProblemDetails
@@ -167,8 +166,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task
-            AspNetCoreApiSampleTaskResourcePatch_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpNotFound()
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpNotFound()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new ValidationProblemDetails
@@ -192,6 +190,25 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
             };
             await _restRunner.PatchResourceAsync("dummy", (TaskPatchDto)null, expectedError, HttpStatusCode.BadRequest,
                 config => config.Excluding(x => x.Extensions));
+        }
+
+        [Fact]
+        public async Task AspNetCoreApiSampleTaskResourcePatch_WhenModifyOneProperty_ReturnsExpectedObject()
+        {
+            //Arrange
+            var created = await _restRunner.CreateResourceAsync<TaskPatchDto>();
+            dynamic patch1 = new { IsComplete = true };
+            dynamic patch2 = new { Title = (null as string) };
+            var expected1 = new TaskPatchDto() { Id = created.Id, Title = created.Title, IsComplete = true };
+            var expected2 = new TaskPatchDto() { Id = created.Id, Title = null, IsComplete = true };
+
+            //Act/Assert
+            await _restRunner.PatchResourceAsync(created.Id, patch1);
+            await _restRunner.GetResourceByIdAsync(created.Id, expected1);
+            await _restRunner.PatchResourceAsync(created.Id, patch2);
+            await _restRunner.GetResourceByIdAsync(created.Id, expected2);
+
+            await DeleteAsync($"/{ResourceEndpoint}/{created.Id}");
         }
     }
 }
