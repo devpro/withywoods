@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Withywoods.AspNetCore.DependencyInjection
@@ -34,7 +33,7 @@ namespace Withywoods.AspNetCore.DependencyInjection
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
                 c.CustomSchemaIds(GetClassNameWithoutDtoSuffix);
-                if(!configCallback is null)
+                if (!(configCallback is null))
                 {
                     configCallback(c);
                 }

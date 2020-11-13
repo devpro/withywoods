@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Withywoods.AspNetCore.DependencyInjection;
 using Withywoods.AspNetCore.UnitTests.Fakes;
 using Xunit;
@@ -36,7 +37,10 @@ namespace Withywoods.AspNetCore.UnitTests.DependencyInjection
             var configuration = new FakeConfiguration();
 
             // Act & Assert
-            serviceCollection.AddSwaggerGenWithBasicAuthSecurity(configuration);
+            serviceCollection.AddSwaggerGen(configuration, c =>
+            {
+                c.AddSecurityDefinition("BasicAuthentication", new OpenApiSecurityScheme() { Scheme = "Basic", In = ParameterLocation.Header, Name = "Authorization", Type = SecuritySchemeType.Http });
+            });
             serviceCollection.BuildServiceProvider();
         }
     }
