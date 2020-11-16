@@ -93,8 +93,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Fact]
-        public async Task
-            AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpBadRequest()
+        public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenResourceDoesNotExistAndNewTitleIsNull_ReturnsHttpBadRequest()
         {
             var taskId = Guid.NewGuid().ToString();
             var expectedError = new ValidationProblemDetails
