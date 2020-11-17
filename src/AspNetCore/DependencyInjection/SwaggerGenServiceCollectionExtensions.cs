@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Withywoods.AspNetCore.DependencyInjection
 {
@@ -15,8 +16,10 @@ namespace Withywoods.AspNetCore.DependencyInjection
         /// Add Swagger generation in ASP.NET Core dependency injection mechanism.
         /// </summary>
         /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="configCallback">Optional additionnal configuration for SwaggerGen</param>
         /// <returns></returns>
-        public static IServiceCollection AddSwaggerGen(this IServiceCollection services, IWebAppConfiguration configuration)
+        public static IServiceCollection AddSwaggerGen(this IServiceCollection services, IWebAppConfiguration configuration, Action<SwaggerGenOptions> configCallback = null)
         {
             var swaggerDefinition = configuration.SwaggerDefinition;
 
@@ -30,6 +33,10 @@ namespace Withywoods.AspNetCore.DependencyInjection
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
                 c.CustomSchemaIds(GetClassNameWithoutDtoSuffix);
+                if (!(configCallback is null))
+                {
+                    configCallback(c);
+                }
             });
 
             return services;
