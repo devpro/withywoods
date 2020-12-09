@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Withywoods.Dal.MongoDb.IntegrationTests</AssemblyName>
     <RootNamespace>Withywoods.Dal.MongoDb.IntegrationTests</RootNamespace>
     <ProjectGuid>{87E5A904-44E0-4CBD-87FB-3F363AD08AA2}</ProjectGuid>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Withywoods.System.UnitTests</AssemblyName>
     <RootNamespace>Withywoods.System.UnitTests</RootNamespace>
     <ProjectGuid>{A1B9502A-1C47-4C6C-BB76-2DCF24051493}</ProjectGuid>
