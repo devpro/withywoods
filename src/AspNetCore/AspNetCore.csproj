@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Withywoods.AspNetCore</AssemblyName>
     <RootNamespace>Withywoods.AspNetCore</RootNamespace>
     <ProjectGuid>{65DEB22B-098A-4071-84F4-1C42CD262283}</ProjectGuid>
@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
 </Project>
