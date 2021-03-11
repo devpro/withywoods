@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Xunit;
 using Withywoods.Dal.MongoDb.UnitTests.Fakes;
+using Xunit;
 
 namespace Withywoods.Dal.MongoDb.UnitTests
 {
