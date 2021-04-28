@@ -1,0 +1,71 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Swashbuckle.AspNetCore.Swagger
+    versions:
+    - 6.1.1
+    - 6.1.2
+  - dependency-name: AutoFixture
+    versions:
+    - 4.15.0
+    - 4.16.0
+  - dependency-name: MongoDB.Bson
+    versions:
+    - 2.11.6
+    - 2.12.0
+    - 2.12.1
+  - dependency-name: MongoDB.Driver.Core
+    versions:
+    - 2.12.0
+    - 2.12.1
+  - dependency-name: MongoDB.Driver
+    versions:
+    - 2.12.0
+    - 2.12.1
+  - dependency-name: Newtonsoft.Json
+    versions:
+    - 13.0.1
+  - dependency-name: Swashbuckle.AspNetCore
+    versions:
+    - 6.1.1
+  - dependency-name: Microsoft.AspNetCore.Mvc.Testing
+    versions:
+    - 5.0.2
+    - 5.0.3
+    - 5.0.4
+  - dependency-name: Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore
+    versions:
+    - 5.0.2
+    - 5.0.3
+    - 5.0.4
+  - dependency-name: Microsoft.EntityFrameworkCore.InMemory
+    versions:
+    - 5.0.2
+    - 5.0.3
+    - 5.0.4
+  - dependency-name: Microsoft.EntityFrameworkCore
+    versions:
+    - 5.0.2
+    - 5.0.3
+    - 5.0.4
+  - dependency-name: Selenium.WebDriver.ChromeDriver
+    versions:
+    - 88.0.4324.9600
+    - 89.0.4389.2300
+  - dependency-name: Moq
+    versions:
+    - 4.16.0
+    - 4.16.1
+  - dependency-name: coverlet.collector
+    versions:
+    - 3.0.2
+    - 3.0.3
+  - dependency-name: Microsoft.Extensions.DependencyInjection
+    versions:
+    - 5.0.1
