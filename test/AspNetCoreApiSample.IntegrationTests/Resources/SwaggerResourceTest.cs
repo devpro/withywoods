@@ -33,7 +33,7 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
                 // Assert
                 WebDriver.FindElement(By.ClassName("title"), 60);
                 WebDriver.Title.Should().Be("Swagger UI");
-                WebDriver.FindElementByClassName("title").Text.Should().Contain("My API");
+                WebDriver.FindElement(By.ClassName("title")).Text.Should().Contain("My API");
 
                 TakeScreenShot(nameof(AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk));
             }
