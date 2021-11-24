@@ -48,7 +48,7 @@ namespace Withywoods.Selenium
             WebDriver = otherPage.WebDriver;
         }
 
-        protected RemoteWebDriver WebDriver { get; }
+        protected IWebDriver WebDriver { get; }
 
         protected virtual void OpenUrl(string rootUrl) => WebDriver.Navigate().GoToUrl($"{rootUrl}");
 

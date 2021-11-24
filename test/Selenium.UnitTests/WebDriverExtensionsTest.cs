@@ -62,7 +62,22 @@ namespace Withywoods.Selenium.UnitTests
                 throw new System.NotImplementedException();
             }
 
+            public string GetDomAttribute(string attributeName)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public string GetDomProperty(string propertyName)
+            {
+                throw new System.NotImplementedException();
+            }
+
             public string GetProperty(string propertyName)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public ISearchContext GetShadowRoot()
             {
                 throw new System.NotImplementedException();
             }
