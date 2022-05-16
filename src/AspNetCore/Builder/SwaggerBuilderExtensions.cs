@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.OpenApi.Models;
 
 namespace Withywoods.AspNetCore.Builder
 {
@@ -11,20 +12,12 @@ namespace Withywoods.AspNetCore.Builder
         /// Use Swagger.
         /// </summary>
         /// <param name="app"></param>
-        /// <param name="configuration"></param>
-        /// <param name="setupAction"></param>
+        /// <param name="openApi"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, IWebAppConfiguration configuration)
+        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, OpenApiInfo openApi)
         {
-            var swaggerDefinition = configuration.SwaggerDefinition;
-
             app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint($"/swagger/{swaggerDefinition?.Version ?? "1.0"}/swagger.json", swaggerDefinition?.Title ?? string.Empty);
-            });
-
+            app.UseSwaggerUI(options => options.SwaggerEndpoint($"/swagger/{openApi.Version}/swagger.json", $"{openApi.Title} {openApi.Version}"));
             return app;
         }
     }

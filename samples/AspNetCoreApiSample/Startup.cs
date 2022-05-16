@@ -5,7 +5,7 @@ var configuration = new WebAppConfiguration(builder.Configuration);
 // adds services to the container
 builder.Services.AddHealthChecks().AddDbContextCheck<Withywoods.AspNetCoreApiSample.Dal.Efcore.EfcoreDbContext>();
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen(configuration);
+builder.Services.AddSwaggerGen(configuration.OpenApi);
 builder.Services.AddScoped<Withywoods.AspNetCoreApiSample.Dal.ITaskDbContext, Withywoods.AspNetCoreApiSample.Dal.Efcore.EfcoreDbContext>();
 builder.Services.AddScoped<Withywoods.AspNetCoreApiSample.Dal.Repositories.ITaskRepository, Withywoods.AspNetCoreApiSample.Dal.Efcore.Repositories.TaskRepository>();
 builder.Services.AddDbContext<Withywoods.AspNetCoreApiSample.Dal.Efcore.EfcoreDbContext>(opt => opt.UseInMemoryDatabase(global::Withywoods.AspNetCoreApiSample.WebAppConfiguration.InMemoryDatabaseName));
@@ -21,7 +21,7 @@ else
 {
     app.UseHsts();
 }
-app.UseSwagger(configuration);
+app.UseSwagger(configuration.OpenApi);
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseEndpoints(endpoints =>

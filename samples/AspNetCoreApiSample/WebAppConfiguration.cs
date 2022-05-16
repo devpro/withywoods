@@ -1,12 +1,9 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.OpenApi.Models;
-using Withywoods.AspNetCore;
+﻿using Microsoft.OpenApi.Models;
 using Withywoods.Configuration;
 
 namespace Withywoods.AspNetCoreApiSample
 {
-    internal class WebAppConfiguration : IWebAppConfiguration
+    internal class WebAppConfiguration
     {
         public const string InMemoryDatabaseName = "TaskList";
 
@@ -19,8 +16,6 @@ namespace Withywoods.AspNetCoreApiSample
             _configuration = configuration;
         }
 
-        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection("ApiDefinition").Get<OpenApiInfo>();
-
-        string IWebAppConfiguration.AssemblyName => typeof(Program).GetTypeInfo().Assembly.GetName().Name ?? "Withywoods.AspNetCoreApiSample";
+        public OpenApiInfo OpenApi => _configuration.TryGetSection("ApiDefinition").Get<OpenApiInfo>();
     }
 }

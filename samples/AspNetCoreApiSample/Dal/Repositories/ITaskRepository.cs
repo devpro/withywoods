@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Withywoods.AspNetCoreApiSample.Dto;
+﻿using Withywoods.AspNetCoreApiSample.Dto;
 
 namespace Withywoods.AspNetCoreApiSample.Dal.Repositories
 {

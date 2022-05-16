@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Withywoods.AspNetCoreApiSample.Dto;
+﻿using Withywoods.AspNetCoreApiSample.Dto;
 
 namespace Withywoods.AspNetCoreApiSample.Dal
 {
