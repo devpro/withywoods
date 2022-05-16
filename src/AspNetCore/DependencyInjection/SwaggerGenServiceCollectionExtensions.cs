@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Withywoods.AspNetCore.DependencyInjection
 {
@@ -15,9 +13,8 @@ namespace Withywoods.AspNetCore.DependencyInjection
         /// </summary>
         /// <param name="services"></param>
         /// <param name="openApi"></param>
-        /// <param name="configCallback">Optional additionnal configuration for SwaggerGen</param>
         /// <returns></returns>
-        public static IServiceCollection AddSwaggerGen(this IServiceCollection services, OpenApiInfo openApi, Action<SwaggerGenOptions> configCallback = null)
+        public static IServiceCollection AddSwaggerGen(this IServiceCollection services, OpenApiInfo openApi)
         {
             services.AddSwaggerGen(options =>
             {
