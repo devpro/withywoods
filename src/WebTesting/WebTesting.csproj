@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Withywoods.WebTesting</AssemblyName>
     <RootNamespace>Withywoods.WebTesting</RootNamespace>
     <ProjectGuid>{09BD8721-6F8C-44A2-BA49-545A3CCD5690}</ProjectGuid>

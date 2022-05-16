@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Withywoods.RabbitMq.UnitTests</AssemblyName>
     <RootNamespace>Withywoods.RabbitMq.UnitTests</RootNamespace>
     <ProjectGuid>{7FE2EDFE-E4ED-477C-B31F-0153B1260F5E}</ProjectGuid>

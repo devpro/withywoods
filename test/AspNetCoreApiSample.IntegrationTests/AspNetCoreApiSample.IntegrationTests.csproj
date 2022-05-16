@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Withywoods.AspNetCoreApiSample.IntegrationTests</AssemblyName>
     <RootNamespace>Withywoods.AspNetCoreApiSample.IntegrationTests</RootNamespace>
     <ProjectGuid>{B8812C10-04A5-4DA9-958A-29B4AED1A793}</ProjectGuid>

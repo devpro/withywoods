@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Withywoods.Dal.MongoDb.UnitTests</AssemblyName>
     <RootNamespace>Withywoods.Dal.MongoDb.UnitTests</RootNamespace>
     <ProjectGuid>{A7D0A7F8-D1FE-44E0-81D3-F500B731F937}</ProjectGuid>

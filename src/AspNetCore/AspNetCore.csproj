@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Withywoods.AspNetCore</AssemblyName>
     <RootNamespace>Withywoods.AspNetCore</RootNamespace>
     <ProjectGuid>{65DEB22B-098A-4071-84F4-1C42CD262283}</ProjectGuid>
