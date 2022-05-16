@@ -7,13 +7,9 @@ namespace Withywoods.Dal.MongoDb
     /// </summary>
     public class MongoClientFactory : IMongoClientFactory
     {
-        #region IMongoClientFactory Methods
-
         public IMongoClient CreateClient(string connectionString)
         {
             return new MongoClient(connectionString);
         }
-
-        #endregion
     }
 }

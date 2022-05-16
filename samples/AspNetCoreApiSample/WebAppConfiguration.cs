@@ -8,41 +8,19 @@ namespace Withywoods.AspNetCoreApiSample
 {
     internal class WebAppConfiguration : IWebAppConfiguration
     {
-        #region Private constants
+        public const string InMemoryDatabaseName = "TaskList";
 
-        private const string ApiDefinitionSectionKey = "ApiDefinition";
-
-        #endregion
-
-        #region Private fields & Constructor
+        public const string HealthChecksEndpoint = "/health";
 
         private readonly IConfiguration _configuration;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="configuration"></param>
         public WebAppConfiguration(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        #endregion
+        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection("ApiDefinition").Get<OpenApiInfo>();
 
-        #region Public properties
-
-        public string InMemoryDatabaseName { get => "TaskList"; }
-
-        public string HealthChecksEndpoint { get => "/health"; }
-
-        #endregion
-
-        #region IWebAppConfiguration properties
-
-        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(ApiDefinitionSectionKey).Get<OpenApiInfo>();
-
-        string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
-        #endregion
+        string IWebAppConfiguration.AssemblyName => typeof(Program).GetTypeInfo().Assembly.GetName().Name ?? "Withywoods.AspNetCoreApiSample";
     }
 }

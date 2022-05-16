@@ -5,14 +5,13 @@
     <AssemblyName>Withywoods.AspNetCoreApiSample</AssemblyName>
     <RootNamespace>Withywoods.AspNetCoreApiSample</RootNamespace>
     <ProjectGuid>{67803E8A-D87F-4AA2-BD1B-E9EFB25B2BAE}</ProjectGuid>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
     <UserSecretsId>8d7a8d27-9a5c-4655-842f-b5d8cdf4d9d3</UserSecretsId>
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,7 +23,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.5" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.5" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.1" />
   </ItemGroup>
 

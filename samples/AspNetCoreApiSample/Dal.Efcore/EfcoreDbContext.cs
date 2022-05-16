@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Withywoods.AspNetCoreApiSample.Dto;
+﻿using Withywoods.AspNetCoreApiSample.Dto;
 
 namespace Withywoods.AspNetCoreApiSample.Dal.Efcore
 {
@@ -12,7 +11,9 @@ namespace Withywoods.AspNetCoreApiSample.Dal.Efcore
         /// Create a new instance of <see cref="EfcoreDbContext"/>.
         /// </summary>
         /// <param name="options"></param>
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public EfcoreDbContext(DbContextOptions options)
+#pragma warning restore CS8618
             : base(options)
         {
         }

@@ -7,8 +7,10 @@ namespace Withywoods.AspNetCoreApiSample.Dto
     /// </summary>
     public class TaskPatchDto : PropertiesChangedTracker
     {
-        private string _id;
-        private string _title;
+        private string _id = string.Empty;
+
+        private string _title = string.Empty;
+
         private bool _isComplete;
 
         /// <summary>

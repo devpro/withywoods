@@ -10,7 +10,7 @@ namespace Withywoods.System
             {
                 null => throw new ArgumentNullException(nameof(input)),
                 "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => $"{input.First().ToString().ToUpper()}{input.Substring(1)}"
+                _ => $"{input.First().ToString().ToUpper()}{input[1..]}"
             };
     }
 }

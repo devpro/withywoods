@@ -2,7 +2,7 @@
 
 This library can be used by an .NET project.
 
-- Extension on IConfiguration to help read configuration
+# IConfiguration extensions to help read configuration
 
 ```csharp
 using Withywoods.Configuration;

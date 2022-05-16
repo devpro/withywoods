@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Withywoods.AspNetCoreApiSample.Dal.Repositories;
+﻿using Withywoods.AspNetCoreApiSample.Dal.Repositories;
 using Withywoods.AspNetCoreApiSample.Dto;
 
 namespace Withywoods.AspNetCoreApiSample.Dal.Efcore.Repositories

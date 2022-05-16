@@ -18,7 +18,7 @@ namespace Withywoods.Net.Http.UnitTests
     [Trait("Category", "UnitTests")]
     public class HttpRepositoryBaseTest : HttpRepositoryTestBase
     {
-        #region GetAsync tests
+        // GetAsync tests
 
         [Fact]
         public async Task FakeHttpRepositoryFindAllAsync_ReturnSuccess()
@@ -143,9 +143,7 @@ namespace Withywoods.Net.Http.UnitTests
             output.Count.Should().Be(responseDto.Count);
         }
 
-        #endregion
-
-        #region PostAsync tests
+        // PostAsync tests
 
         [Fact]
         public async Task FakeHttpRepositoryCreateAsync_ReturnSuccess()
@@ -168,9 +166,7 @@ namespace Withywoods.Net.Http.UnitTests
             output.Should().BeEquivalentTo(dto);
         }
 
-        #endregion
-
-        #region PutAsync tests
+        // PutAsync tests
 
         [Fact]
         public async Task FakeHttpRepositoryUpdateAsync_ReturnSuccess()
@@ -205,9 +201,7 @@ namespace Withywoods.Net.Http.UnitTests
             await repository.UpdateAsync("123456", dto);
         }
 
-        #endregion
-
-        #region DeleteAsync tests
+        // DeleteAsync tests
 
         [Fact]
         public async Task FakeHttpRepositoryDeleteAsync_ReturnSuccess()
@@ -237,9 +231,7 @@ namespace Withywoods.Net.Http.UnitTests
             await repository.DeleteAsync("123456");
         }
 
-        #endregion
-
-        #region Private methods tests
+        // Private methods tests
 
         private FakeHttpRepository BuildRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
         {
@@ -255,7 +247,5 @@ namespace Withywoods.Net.Http.UnitTests
                 ServiceProvider.GetService<ILogger<FakeHttpRepository>>(),
                 BuildHttpClientFactory(httpResponseMessage, httpMethod, "", absoluteUri).Object);
         }
-
-        #endregion
     }
 }

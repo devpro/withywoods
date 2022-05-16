@@ -7,13 +7,13 @@ using Xunit;
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 {
     [Trait("Environment", "Localhost")]
-    public class SwaggerResourceTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Startup>>
+    public class SwaggerResourceTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Program>>
     {
         private const string ResourceEndpoint = "swagger";
 
-        private readonly LocalServerFactory<Startup> _server;
+        private readonly LocalServerFactory<Program> _server;
 
-        public SwaggerResourceTest(LocalServerFactory<Startup> server)
+        public SwaggerResourceTest(LocalServerFactory<Program> server)
             : base(new WebDriverOptions())
         {
             _server = server;

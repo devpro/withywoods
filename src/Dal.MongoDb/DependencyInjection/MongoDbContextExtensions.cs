@@ -18,7 +18,9 @@ namespace Withywoods.Dal.MongoDb.DependencyInjection
             where T : class, IMongoDbConfiguration
         {
             if (services == null)
+            {
                 throw new ArgumentNullException(nameof(services));
+            }
 
             services.TryAddTransient<IMongoDbConfiguration, T>();
             services.TryAddTransient<IMongoClientFactory, MongoClientFactory>();
