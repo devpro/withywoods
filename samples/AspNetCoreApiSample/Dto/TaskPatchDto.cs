@@ -7,7 +7,7 @@ namespace Withywoods.AspNetCoreApiSample.Dto
     /// </summary>
     public class TaskPatchDto : PropertiesChangedTracker
     {
-        private string _id = string.Empty;
+        private string? _id;
 
         private string _title = string.Empty;
 
@@ -16,7 +16,7 @@ namespace Withywoods.AspNetCoreApiSample.Dto
         /// <summary>
         /// Task id.
         /// </summary>
-        public string Id { get { return _id; } set { OnPropertyChanged(); _id = value; } }
+        public string? Id { get { return _id; } set { OnPropertyChanged(); _id = value; } }
 
         /// <summary>
         /// Task title.

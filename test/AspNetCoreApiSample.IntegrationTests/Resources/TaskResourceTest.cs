@@ -122,7 +122,6 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         }
 
         [Theory]
-        [InlineData("dummy", null)]
         [InlineData("dummy", "")]
         [InlineData("dummy", "42")]
         public async Task AspNetCoreApiSampleTaskResourceUpdate_WhenInvalidIdProvided_ReturnsHttpBadRequest(string id, string resourceId)
@@ -194,14 +193,14 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
         [Fact]
         public async Task AspNetCoreApiSampleTaskResourcePatch_WhenModifyOneProperty_ReturnsExpectedObject()
         {
-            //Arrange
+            // Arrange
             var created = await _restRunner.CreateResourceAsync<TaskPatchDto>();
             dynamic patch1 = new { IsComplete = true };
-            dynamic patch2 = new { Title = (null as string) };
-            var expected1 = new TaskPatchDto() { Id = created.Id, Title = created.Title, IsComplete = true };
-            var expected2 = new TaskPatchDto() { Id = created.Id, Title = null, IsComplete = true };
+            dynamic patch2 = new { Title = string.Empty };
+            var expected1 = new TaskPatchDto { Id = created.Id, Title = created.Title, IsComplete = true };
+            var expected2 = new TaskPatchDto { Id = created.Id, Title = string.Empty, IsComplete = true };
 
-            //Act/Assert
+            // Act & Assert
             await _restRunner.PatchResourceAsync(created.Id, patch1);
             await _restRunner.GetResourceByIdAsync(created.Id, expected1);
             await _restRunner.PatchResourceAsync(created.Id, patch2);

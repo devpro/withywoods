@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal.MongoDb", "src\Dal.MongoDb\Dal.MongoDb.csproj", "{AAD8B37B-D944-4DBB-B9AB-1DF444683BF0}"
 EndProject
@@ -69,7 +69,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Http", "src\Net.Http\Ne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Http.UnitTests", "test\Net.Http.UnitTests\Net.Http.UnitTests.csproj", "{99A3C33A-E631-4FAF-B048-B40D8F007DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "src\UnitTesting\UnitTesting.csproj", "{7215664C-AEE7-483F-BBB4-B2286F3D6CB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "src\UnitTesting\UnitTesting.csproj", "{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWebAppSample", "samples\RazorWebAppSample\RazorWebAppSample.csproj", "{88F7437F-B85C-422A-95E5-1E6EEC5D39DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorWebAppSample.IntegrationTests", "test\RazorWebAppSample.IntegrationTests\RazorWebAppSample.IntegrationTests.csproj", "{11009050-7897-4D32-B2E0-B0D50269D03F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,10 +169,18 @@ Global
 		{99A3C33A-E631-4FAF-B048-B40D8F007DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99A3C33A-E631-4FAF-B048-B40D8F007DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99A3C33A-E631-4FAF-B048-B40D8F007DFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7215664C-AEE7-483F-BBB4-B2286F3D6CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7215664C-AEE7-483F-BBB4-B2286F3D6CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7215664C-AEE7-483F-BBB4-B2286F3D6CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7215664C-AEE7-483F-BBB4-B2286F3D6CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88F7437F-B85C-422A-95E5-1E6EEC5D39DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F7437F-B85C-422A-95E5-1E6EEC5D39DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F7437F-B85C-422A-95E5-1E6EEC5D39DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F7437F-B85C-422A-95E5-1E6EEC5D39DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11009050-7897-4D32-B2E0-B0D50269D03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11009050-7897-4D32-B2E0-B0D50269D03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11009050-7897-4D32-B2E0-B0D50269D03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11009050-7897-4D32-B2E0-B0D50269D03F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -198,7 +210,9 @@ Global
 		{7FE2EDFE-E4ED-477C-B31F-0153B1260F5E} = {9D1893AF-1643-4BFF-B2FF-90045C10670F}
 		{0FA28EC2-F6DA-465A-9E6F-1DB8FCCAAE1C} = {925FF8BE-615A-43E0-BDEE-C0049B4ED80D}
 		{99A3C33A-E631-4FAF-B048-B40D8F007DFC} = {925FF8BE-615A-43E0-BDEE-C0049B4ED80D}
-		{7215664C-AEE7-483F-BBB4-B2286F3D6CB0} = {925FF8BE-615A-43E0-BDEE-C0049B4ED80D}
+		{058228A4-CFB6-434F-A7EF-1A9DFDDE4BD7} = {925FF8BE-615A-43E0-BDEE-C0049B4ED80D}
+		{88F7437F-B85C-422A-95E5-1E6EEC5D39DD} = {209DD7EF-BDA8-49E6-B457-5D822D02AC4A}
+		{11009050-7897-4D32-B2E0-B0D50269D03F} = {209DD7EF-BDA8-49E6-B457-5D822D02AC4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1D8CAB3-B815-443A-8591-4519BD081BB6}
