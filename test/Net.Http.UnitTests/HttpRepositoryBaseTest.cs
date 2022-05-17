@@ -98,7 +98,7 @@ namespace Withywoods.Net.Http.UnitTests
 
             // Assert
             exc.Should().NotBeNull();
-            exc.Message.Should().Contain("Invalid data received when calling \"https://does.not.exist/v42/api/fakes\". Error converting");
+            exc.Message.Should().Contain("Invalid data received when calling \"https://does.not.exist/v42/api/fakes\": Error converting");
         }
 
         [Fact]
