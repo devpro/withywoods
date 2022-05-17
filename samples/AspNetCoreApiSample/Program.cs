@@ -17,12 +17,9 @@ if (builder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
-else
-{
-    app.UseHsts();
-}
-app.UseSwagger(configuration.OpenApi);
 app.UseHttpsRedirection();
+app.UseHsts();
+app.UseSwagger(configuration.OpenApi);
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {

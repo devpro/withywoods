@@ -27,6 +27,7 @@ namespace Withywoods.RazorWebAppSample.IntegrationTests
         [InlineData("/", "Welcome")]
         [InlineData("/Index", "Welcome")]
         [InlineData("/Privacy", "Privacy Policy")]
+        [InlineData("/Error", "Error.")]
         public void Get_EndpointsReturnSuccessAndCorrectContentType(string url, string expected)
         {
             try

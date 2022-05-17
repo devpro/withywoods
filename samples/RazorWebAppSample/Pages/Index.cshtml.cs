@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RazorWebAppSample.Pages
 {
@@ -14,7 +13,7 @@ namespace RazorWebAppSample.Pages
 
         public void OnGet()
         {
-
+            // nothing more to be done
         }
     }
 }
