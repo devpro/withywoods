@@ -175,7 +175,7 @@ namespace Withywoods.Net.Http
                 Logger.LogWarning($"Cannot deserialize {httpMethodName} call response content [HttpRequestUrl={url}] [SerializationType={typeof(T)}] [ExceptionMessage={exc.Message}]");
                 Logger.LogDebug($"[HttpResponseContent={result}]");
                 Logger.LogDebug($"[Stacktrace={exc.StackTrace}]");
-                throw new ConnectivityException($"Invalid data received when calling \"{url}\". {exc.Message}.", exc);
+                throw new ConnectivityException($"Invalid data received when calling \"{url}\": {exc.Message}", exc);
             }
         }
     }
