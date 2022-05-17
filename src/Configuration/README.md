@@ -2,10 +2,10 @@
 
 This library can be used by an .NET project.
 
-- Extension on IConfiguration to help read configuration
+## IConfiguration extensions
 
-```csharp
-using Withywoods.Configuration;
+- `TryGetSection` extension method
 
-var section = configuration.TryGetSection("mySectionName"); // will throw an exception with an explicit error message if the section doesn't exist
-```
+## Configuration base class
+
+- `ConfigurationBase` abstract class

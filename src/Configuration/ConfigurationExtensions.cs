@@ -10,6 +10,7 @@ namespace Withywoods.Configuration
     {
         /// <summary>
         /// Get configuration section.
+        /// Throws an ArgumentException with a clear message if the section is not found.
         /// </summary>
         /// <param name="configuration"></param>
         /// <param name="sectionKey"></param>
@@ -18,7 +19,9 @@ namespace Withywoods.Configuration
         {
             var section = configuration.GetSection(sectionKey);
             if (section == null)
-                throw new ArgumentException($"Missing section \"{sectionKey}\" in configuration");
+            {
+                throw new ArgumentException($"Missing section \"{sectionKey}\" in configuration", nameof(sectionKey));
+            }
 
             return section;
         }

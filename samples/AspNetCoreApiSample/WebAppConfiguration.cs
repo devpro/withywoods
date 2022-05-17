@@ -1,48 +1,19 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.OpenApi.Models;
-using Withywoods.AspNetCore;
+﻿using Microsoft.OpenApi.Models;
 using Withywoods.Configuration;
 
 namespace Withywoods.AspNetCoreApiSample
 {
-    internal class WebAppConfiguration : IWebAppConfiguration
+    internal class WebAppConfiguration : ConfigurationBase
     {
-        #region Private constants
+        public const string InMemoryDatabaseName = "TaskList";
 
-        private const string ApiDefinitionSectionKey = "ApiDefinition";
+        public const string HealthChecksEndpoint = "/health";
 
-        #endregion
-
-        #region Private fields & Constructor
-
-        private readonly IConfiguration _configuration;
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="configuration"></param>
         public WebAppConfiguration(IConfiguration configuration)
+            : base(configuration)
         {
-            _configuration = configuration;
         }
 
-        #endregion
-
-        #region Public properties
-
-        public string InMemoryDatabaseName { get => "TaskList"; }
-
-        public string HealthChecksEndpoint { get => "/health"; }
-
-        #endregion
-
-        #region IWebAppConfiguration properties
-
-        OpenApiInfo IWebAppConfiguration.SwaggerDefinition => _configuration.TryGetSection(ApiDefinitionSectionKey).Get<OpenApiInfo>();
-
-        string IWebAppConfiguration.AssemblyName => typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
-        #endregion
+        public OpenApiInfo OpenApi => TryGetSection("ApiDefinition").Get<OpenApiInfo>();
     }
 }

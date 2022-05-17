@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Withywoods.AspNetCore.Builder;
 using Withywoods.AspNetCore.DependencyInjection;
-using Withywoods.AspNetCore.UnitTests.Fakes;
 using Xunit;
 
 namespace Withywoods.AspNetCore.UnitTests.Builder
@@ -18,15 +18,15 @@ namespace Withywoods.AspNetCore.UnitTests.Builder
         public void AspNetCoreUseSwagger_DoesNotThrowException()
         {
             // Arrange
-            var configuration = new FakeConfiguration();
+            var openApiInfo = new OpenApiInfo { Version = "42.0", Title = "Fake API", Contact = new OpenApiContact { Name = "John Doe" }, Description = "Fake fake fake" };
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddControllers();
-            serviceCollection.AddSwaggerGen(configuration);
+            serviceCollection.AddSwaggerGen(openApiInfo);
             var services = serviceCollection.BuildServiceProvider();
             var app = new ApplicationBuilder(services);
 
             // Act & Assert
-            app.UseSwagger(configuration);
+            app.UseSwagger(openApiInfo);
         }
     }
 }

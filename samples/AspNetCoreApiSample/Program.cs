@@ -1,47 +1,35 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+﻿var builder = WebApplication.CreateBuilder(args);
 
-namespace Withywoods.AspNetCoreApiSample
+var configuration = new WebAppConfiguration(builder.Configuration);
+
+// adds services to the container
+builder.Services.AddHealthChecks().AddDbContextCheck<Withywoods.AspNetCoreApiSample.Dal.Efcore.EfcoreDbContext>();
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen(configuration.OpenApi);
+builder.Services.AddScoped<Withywoods.AspNetCoreApiSample.Dal.ITaskDbContext, Withywoods.AspNetCoreApiSample.Dal.Efcore.EfcoreDbContext>();
+builder.Services.AddScoped<Withywoods.AspNetCoreApiSample.Dal.Repositories.ITaskRepository, Withywoods.AspNetCoreApiSample.Dal.Efcore.Repositories.TaskRepository>();
+builder.Services.AddDbContext<Withywoods.AspNetCoreApiSample.Dal.Efcore.EfcoreDbContext>(opt => opt.UseInMemoryDatabase(global::Withywoods.AspNetCoreApiSample.WebAppConfiguration.InMemoryDatabaseName));
+
+var app = builder.Build();
+
+// configures the HTTP request pipeline
+if (builder.Environment.IsDevelopment())
 {
-    /// <summary>
-    /// Application main class.
-    /// </summary>
-    public static class Program
-    {
-        /// <summary>
-        /// Entry point.
-        /// </summary>
-        /// <param name="args"></param>
-        [ExcludeFromCodeCoverage]
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        /// <summary>
-        /// Create web host builder.
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    ConfigureWebHost(webBuilder);
-                });
-        }
-
-        /// <summary>
-        /// Configure web host.
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <returns></returns>
-        public static IWebHostBuilder ConfigureWebHost(IWebHostBuilder builder)
-        {
-            builder.UseStartup<Startup>();
-            return builder;
-        }
-    }
+    app.UseDeveloperExceptionPage();
 }
+app.UseHttpsRedirection();
+app.UseHsts();
+app.UseSwagger(configuration.OpenApi);
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHealthChecks(global::Withywoods.AspNetCoreApiSample.WebAppConfiguration.HealthChecksEndpoint);
+    endpoints.MapControllers();
+});
+
+app.Run();
+
+// fix: make Program class public for tests
+#pragma warning disable CA1050 // Declare types in namespaces
+public partial class Program { }
+#pragma warning restore CA1050

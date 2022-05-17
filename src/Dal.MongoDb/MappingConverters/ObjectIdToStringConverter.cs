@@ -18,7 +18,9 @@ namespace Withywoods.Dal.MongoDb.MappingConverters
         public string Convert(ObjectId source, string destination, ResolutionContext context)
         {
             if (source == ObjectId.Empty)
+            {
                 return null;
+            }
 
             return source.ToString();
         }

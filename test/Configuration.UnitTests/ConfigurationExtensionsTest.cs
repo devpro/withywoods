@@ -36,7 +36,7 @@ namespace Withywoods.Configuration.UnitTests
 
             // Assert
             exc.Should().NotBeNull();
-            exc.Message.Should().Be("Missing section \"dummy\" in configuration");
+            exc.Message.Should().Be("Missing section \"dummy\" in configuration (Parameter 'sectionKey')");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Withywoods.AspNetCoreApiSample.Utils
         /// <summary>
         /// Property changed event handler
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// PropertiesChangedTracker class constructor

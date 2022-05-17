@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Withywoods.AspNetCoreApiSample.Dal;
 using Withywoods.AspNetCoreApiSample.Dal.Repositories;
 using Withywoods.AspNetCoreApiSample.Dto;
@@ -15,8 +13,6 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
     [Produces("application/json")]
     public class TaskController : ControllerBase
     {
-        #region Private members & Constructor
-
         private readonly ITaskDbContext _dbContext;
         private readonly ITaskRepository _taskRepository;
 
@@ -30,10 +26,6 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
             _dbContext = dbContext;
             _taskRepository = taskRepository;
         }
-
-        #endregion
-
-        #region Public actions
 
         /// <summary>
         /// Retrieves all tasks.
@@ -224,7 +216,5 @@ namespace Withywoods.AspNetCoreApiSample.Controllers
 
             return NoContent();
         }
-
-        #endregion
     }
 }

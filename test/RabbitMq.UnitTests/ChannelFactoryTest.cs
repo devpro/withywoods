@@ -22,7 +22,7 @@ namespace Withywoods.RabbitMq.UnitTests
             channel.Should().BeEquivalentTo(modelMock.Object);
         }
 
-        private IChannelFactory BuildChannelFactory(out Mock<IModel> modelMock)
+        private static IChannelFactory BuildChannelFactory(out Mock<IModel> modelMock)
         {
             modelMock = new Mock<IModel>();
 

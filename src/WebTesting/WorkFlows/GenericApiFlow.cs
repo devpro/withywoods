@@ -11,7 +11,7 @@ namespace Withywoods.WebTesting.WorkFlows
     {
         private readonly RestClient _restClient;
 
-        private readonly List<HttpRequestModel> _httpRequests = new List<HttpRequestModel>();
+        private readonly List<HttpRequestModel> _httpRequests = new();
 
         public GenericApiFlow(string baseAddress)
         {

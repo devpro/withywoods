@@ -9,7 +9,7 @@ using Xunit;
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 {
     [Trait("Environment", "Localhost")]
-    public class HealthResourceTest : IClassFixture<WebApplicationFactory<Startup>>
+    public class HealthResourceTest : IClassFixture<WebApplicationFactory<Program>>
     {
         private const string ResourceEndpoint = "health";
 
@@ -17,12 +17,12 @@ namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public HealthResourceTest(WebApplicationFactory<Startup> factory)
+        public HealthResourceTest(WebApplicationFactory<Program> factory)
         {
             _client = factory.CreateClient();
 
             // it's another way to be able to create an HttpClient if we must go through an abstraction layer
-            _httpClientFactory = new WebApplicationHttpClientFactory<Startup>(factory);
+            _httpClientFactory = new WebApplicationHttpClientFactory<Program>(factory);
         }
 
         [Fact]

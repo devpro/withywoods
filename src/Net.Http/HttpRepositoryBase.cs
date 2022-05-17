@@ -14,8 +14,6 @@ namespace Withywoods.Net.Http
     /// </summary>
     public abstract class HttpRepositoryBase
     {
-        #region Constructor & protected fields
-
         /// <summary>
         /// Assign required services during object instanciation.
         /// </summary>
@@ -42,10 +40,6 @@ namespace Withywoods.Net.Http
         /// Can be left empty.
         /// </summary>
         protected abstract string HttpClientName { get; }
-
-        #endregion
-
-        #region Protected methods
 
         /// <summary>
         /// Enrich the HTTP client object that will be used in the HTTP calls.
@@ -143,10 +137,6 @@ namespace Withywoods.Net.Http
             }
         }
 
-        #endregion
-
-        #region Private methods
-
         private HttpClient CreateHttpClient()
         {
             var client = string.IsNullOrEmpty(HttpClientName) ? HttpClientFactory.CreateClient()
@@ -185,10 +175,8 @@ namespace Withywoods.Net.Http
                 Logger.LogWarning($"Cannot deserialize {httpMethodName} call response content [HttpRequestUrl={url}] [SerializationType={typeof(T)}] [ExceptionMessage={exc.Message}]");
                 Logger.LogDebug($"[HttpResponseContent={result}]");
                 Logger.LogDebug($"[Stacktrace={exc.StackTrace}]");
-                throw new ConnectivityException($"Invalid data received when calling \"{url}\". {exc.Message}.", exc);
+                throw new ConnectivityException($"Invalid data received when calling \"{url}\": {exc.Message}", exc);
             }
         }
-
-        #endregion
     }
 }

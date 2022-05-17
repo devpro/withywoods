@@ -1,34 +1,32 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
 using Withywoods.Selenium;
-using Withywoods.WebTesting.TestHost;
+using Withywoods.WebTesting;
 using Xunit;
 
 namespace Withywoods.AspNetCoreApiSample.IntegrationTests.Resources
 {
     [Trait("Environment", "Localhost")]
-    public class SwaggerResourceTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Startup>>
+    public class SwaggerResourceTest : SeleniumTestBase, IClassFixture<WebApplicationFactoryFixture<Program>>
     {
         private const string ResourceEndpoint = "swagger";
 
-        private readonly LocalServerFactory<Startup> _server;
+        private readonly string _webUrl = "https://localhost:5001";
 
-        public SwaggerResourceTest(LocalServerFactory<Startup> server)
+        public SwaggerResourceTest(WebApplicationFactoryFixture<Program> factory)
             : base(new WebDriverOptions())
         {
-            _server = server;
-            _ = _server.CreateClient(); // this call is needed to change state of server
+            factory.HostUrl = _webUrl;
+            factory.CreateDefaultClient();
         }
 
         [Fact]
         public void AspNetCoreApiSampleSwaggerResourceGet_ReturnsHttpOk()
         {
-            _server.RootUri.Should().Be("https://localhost:5001");
-
             try
             {
                 // Arrange & Act
-                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{ResourceEndpoint}");
+                WebDriver.Navigate().GoToUrl($"{_webUrl}/{ResourceEndpoint}");
 
                 // Assert
                 WebDriver.FindElement(By.ClassName("title"), 60);
