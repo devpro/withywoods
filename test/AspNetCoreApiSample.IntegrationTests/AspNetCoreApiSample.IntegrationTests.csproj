@@ -28,8 +28,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\samples\AspNetCoreApiSample\AspNetCoreApiSample.csproj" />
-    <ProjectReference Include="..\..\src\Selenium\Selenium.csproj" />
-    <ProjectReference Include="..\..\src\Serialization\Serialization.csproj" />
     <ProjectReference Include="..\..\src\WebTesting\WebTesting.csproj" />
   </ItemGroup>
 

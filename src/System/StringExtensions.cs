@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Linq;
 
-namespace Withywoods.System
+namespace Withywoods.System;
+
+public static class StringExtensions
 {
-    public static class StringExtensions
-    {
-        public static string FirstCharToUpper(this string input) =>
-            input switch
-            {
-                null => throw new ArgumentNullException(nameof(input)),
-                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => $"{input.First().ToString().ToUpper()}{input[1..]}"
-            };
-    }
+    public static string FirstCharToUpper(this string? input) =>
+        input switch
+        {
+            null => throw new ArgumentNullException(nameof(input)),
+            "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
+            _ => $"{input.First().ToString().ToUpper()}{input[1..]}"
+        };
 }

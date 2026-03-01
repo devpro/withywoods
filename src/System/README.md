@@ -2,7 +2,7 @@
 
 This library can be used by an .NET project.
 
-- String extensions
+## String extensions
 
 ```csharp
 using Withywoods.System;

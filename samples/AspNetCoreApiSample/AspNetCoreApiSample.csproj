@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AspNetCore\AspNetCore.csproj" />
     <ProjectReference Include="..\..\src\Configuration\Configuration.csproj" />
   </ItemGroup>
 

@@ -4,7 +4,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=withywoods)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=coverage)](https://sonarcloud.io/dashboard?id=withywoods)
 
-Whithywoods is a set of small independant .NET libraries (Standard/Core). The goal is to do better with less code and capitalize on best practices (#KISS #DRY).
+Withywoods is a set of small independant .NET libraries (Standard/Core). The goal is to do better with less code and capitalize on best practices (#KISS #DRY).
 
 All libraries are available on [nuget.org](https://www.nuget.org/). Feel free to report any issue or ask for a change. You can also contribute with Pull Requests on GitHub!
 

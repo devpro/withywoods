@@ -2,10 +2,9 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Withywoods.Net.Http.Exceptions;
-using Withywoods.Serialization.Json;
 
 namespace Withywoods.Net.Http
 {
@@ -28,12 +27,12 @@ namespace Withywoods.Net.Http
         /// <summary>
         /// Logger.
         /// </summary>
-        protected ILogger Logger { get; private set; }
+        protected ILogger Logger { get; }
 
         /// <summary>
         /// HttpClient factory.
         /// </summary>
-        protected IHttpClientFactory HttpClientFactory { get; private set; }
+        protected IHttpClientFactory HttpClientFactory { get; }
 
         /// <summary>
         /// HTTP client name, gives the possibility to customize the calls to an API (authentication in particular).
@@ -59,7 +58,7 @@ namespace Withywoods.Net.Http
         /// <param name="url"></param>
         /// <returns></returns>
         /// <exception cref="ConnectivityException"></exception>
-        protected virtual async Task<T> GetAsync<T>(string url) where T : class
+        protected virtual async Task<T?> GetAsync<T>(string url) where T : class
         {
             var client = CreateHttpClient();
 
@@ -82,11 +81,11 @@ namespace Withywoods.Net.Http
         /// <param name="mediaType">Message body media type, "application/json" by default</param>
         /// <returns></returns>
         /// <exception cref="ConnectivityException"></exception>
-        protected virtual async Task<T> PostAsync<T>(string url, object body, string mediaType = "application/json") where T : class
+        protected virtual async Task<T?> PostAsync<T>(string url, object body, string mediaType = "application/json") where T : class
         {
             var client = CreateHttpClient();
 
-            var response = await client.PostAsync(url, new StringContent(body.ToJson(), Encoding.UTF8, mediaType));
+            var response = await client.PostAsync(url, new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, mediaType));
 
             var stringResult = await response.Content.ReadAsStringAsync();
 
@@ -108,9 +107,9 @@ namespace Withywoods.Net.Http
         {
             var client = CreateHttpClient();
 
-            var response = await client.PutAsync(url, new StringContent(body.ToJson(), Encoding.UTF8, mediaType));
+            var response = await client.PutAsync(url, new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, mediaType));
 
-            var stringResult = response.Content != null ? await response.Content.ReadAsStringAsync() : string.Empty;
+            var stringResult = await response.Content.ReadAsStringAsync();
 
             CheckStatusCode(url, response, stringResult);
         }
@@ -129,7 +128,7 @@ namespace Withywoods.Net.Http
 
             var response = await client.DeleteAsync(url);
 
-            var stringResult = response.Content != null ? await response.Content.ReadAsStringAsync() : string.Empty;
+            var stringResult = await response.Content.ReadAsStringAsync();
 
             if (!ignoreNotFound || response.StatusCode != HttpStatusCode.NotFound)
             {
@@ -164,17 +163,17 @@ namespace Withywoods.Net.Http
             }
         }
 
-        private T Deserialize<T>(string url, string httpMethodName, string result)
+        private T? Deserialize<T>(string url, string httpMethodName, string result)
         {
             try
             {
-                return result.FromJson<T>();
+                return JsonSerializer.Deserialize<T>(result);
             }
             catch (Exception exc)
             {
-                Logger.LogWarning($"Cannot deserialize {httpMethodName} call response content [HttpRequestUrl={url}] [SerializationType={typeof(T)}] [ExceptionMessage={exc.Message}]");
-                Logger.LogDebug($"[HttpResponseContent={result}]");
-                Logger.LogDebug($"[Stacktrace={exc.StackTrace}]");
+                Logger.LogWarning("Cannot deserialize {HttpMethodName} call response content [HttpRequestUrl={Url}] [SerializationType={Type}] [ExceptionMessage={ExcMessage}]", httpMethodName, url, typeof(T), exc.Message);
+                Logger.LogDebug("[HttpResponseContent={Result}]", result);
+                Logger.LogDebug("[Stacktrace={ExcStackTrace}]", exc.StackTrace);
                 throw new ConnectivityException($"Invalid data received when calling \"{url}\": {exc.Message}", exc);
             }
         }

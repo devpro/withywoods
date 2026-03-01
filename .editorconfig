@@ -6,13 +6,13 @@ root = true
 end_of_line = lf
 indent_style = space
 insert_final_newline = true
+max_line_length = 140
 
 [*.{cs,sln}]
-charset = utf-8-bom
 indent_size = 4
 trim_trailing_whitespace = true
 
-[*.{config,csproj,json,md,sh,yml,yaml}]
+[*.{config,csproj,json,md,props,runsettings,sh,tf,xml,yml,yaml}]
 indent_size = 2
 trim_trailing_whitespace = true
 
@@ -37,6 +37,7 @@ dotnet_style_null_propagation = true:suggestion
 dotnet_style_explicit_tuple_names = true:suggestion
 # Non-private static fields are PascalCase
 dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.symbols = non_private_static_fields
+dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.severity = unset
 dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.style = non_private_static_field_style
 dotnet_naming_symbols.non_private_static_fields.applicable_kinds = field
 dotnet_naming_symbols.non_private_static_fields.applicable_accessibilities = public, protected, internal, protected_internal, private_protected
@@ -44,6 +45,7 @@ dotnet_naming_symbols.non_private_static_fields.required_modifiers = static
 dotnet_naming_style.non_private_static_field_style.capitalization = pascal_case
 # Non-private readonly fields are PascalCase
 dotnet_naming_rule.non_private_readonly_fields_should_be_pascal_case.symbols = non_private_readonly_fields
+dotnet_naming_rule.non_private_readonly_fields_should_be_pascal_case.severity = unset
 dotnet_naming_rule.non_private_readonly_fields_should_be_pascal_case.style = non_private_readonly_field_style
 dotnet_naming_symbols.non_private_readonly_fields.applicable_kinds = field
 dotnet_naming_symbols.non_private_readonly_fields.applicable_accessibilities = public, protected, internal, protected_internal, private_protected
@@ -130,7 +132,7 @@ csharp_space_after_dot = false
 csharp_space_after_keywords_in_control_flow_statements = true
 csharp_space_after_semicolon_in_for_statement = true
 csharp_space_around_binary_operators = before_and_after
-csharp_space_around_declaration_statements = do_not_ignore
+csharp_space_around_declaration_statements = unset
 csharp_space_before_colon_in_inheritance_clause = true
 csharp_space_before_comma = false
 csharp_space_before_dot = false
