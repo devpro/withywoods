@@ -1,8 +1,12 @@
 ﻿# Devpro Withywoods - Shared .NET libraries
 
-[![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/libraries/withywoods-ci?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=31&branchName=master)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=alert_status)](https://sonarcloud.io/dashboard?id=withywoods)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=withywoods&metric=coverage)](https://sonarcloud.io/dashboard?id=withywoods)
+[![CI](https://github.com/devpro/withywoods/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/devpro/withywoods/actions/workflows/ci.yaml)
+[![PKG](https://github.com/devpro/withywoods/actions/workflows/pkg.yaml/badge.svg?branch=main)](https://github.com/devpro/withywoods/actions/workflows/pkg.yaml)
+[![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/libraries/withywoods-ci?branchName=main)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=31&branchName=main)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devpro_withywoods&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=devpro_withywoods)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=devpro_withywoods&metric=coverage)](https://sonarcloud.io/dashboard?id=devpro_withywoods)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods?ref=badge_shield&issueType=license)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods.svg?type=shield&issueType=security)](https://app.fossa.com/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods?ref=badge_shield&issueType=security)
 
 Withywoods is a set of small independant .NET libraries (Standard/Core). The goal is to do better with less code and capitalize on best practices (#KISS #DRY).
 
