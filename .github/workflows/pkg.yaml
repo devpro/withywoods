@@ -1,0 +1,18 @@
+﻿name: PKG
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# purpose: Continuous Delivery (aka Packaging & Shipping)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  package-publication:
+    name: Image
+    runs-on: ubuntu-latest
+    steps:
+      - run: "TODO"
+    # uses: devpro/github-workflow-parts/.github/workflows/reusable-nuget-publication.yml@7ea45917e8d4e9d1ecf2a180b6bab24327323343
+    # with:
+    # secrets:
