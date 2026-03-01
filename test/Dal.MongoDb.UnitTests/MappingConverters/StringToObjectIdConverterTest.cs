@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using FluentAssertions;
+using AwesomeAssertions;
+using Microsoft.Extensions.Logging.Abstractions;
 using MongoDB.Bson;
 using Withywoods.Dal.MongoDb.MappingConverters;
 using Xunit;
@@ -18,7 +19,7 @@ namespace Withywoods.Dal.MongoDb.UnitTests.MappingConverters
                 x.CreateMap<string, ObjectId>()
                     .ConvertUsing<StringToObjectIdConverter>();
                 x.AllowNullCollections = true;
-            });
+            }, NullLoggerFactory.Instance);
             _mapper = config.CreateMapper();
         }
 

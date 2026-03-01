@@ -1,28 +1,22 @@
 ﻿using AutoMapper;
 using MongoDB.Bson;
 
-namespace Withywoods.Dal.MongoDb.MappingConverters
+namespace Withywoods.Dal.MongoDb.MappingConverters;
+
+/// <summary>
+/// AutoMapper type Converter from <see cref="ObjectId"/> to <see cref="string"/>.
+/// </summary>
+public class ObjectIdToStringConverter : ITypeConverter<ObjectId, string>
 {
     /// <summary>
-    /// AutoMapper type Converter from <see cref="ObjectId"/> to <see cref="string"/>.
+    /// Convert source to destination using context.
     /// </summary>
-    public class ObjectIdToStringConverter : ITypeConverter<ObjectId, string>
+    /// <param name="source"></param>
+    /// <param name="destination"></param>
+    /// <param name="context"></param>
+    /// <returns>String value of the object id, null if the object id is empty</returns>
+    public string Convert(ObjectId source, string destination, ResolutionContext context)
     {
-        /// <summary>
-        /// Convert source to destination using context.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destination"></param>
-        /// <param name="context"></param>
-        /// <returns>String value of the object id, null if the object id is empty</returns>
-        public string Convert(ObjectId source, string destination, ResolutionContext context)
-        {
-            if (source == ObjectId.Empty)
-            {
-                return null;
-            }
-
-            return source.ToString();
-        }
+        return source == ObjectId.Empty ? string.Empty : source.ToString();
     }
 }

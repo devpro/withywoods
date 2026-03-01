@@ -2,42 +2,9 @@
 
 This library can be used by an .NET application.
 
-## Main classes
-
-  - `DefaultMongoDbContext`: have one clean database context in your application using the best practices
-  - `RepositoryBase`: abstract class for repositories with common fields and methods
-  - `ObjectIdToStringConverter` and `StringToObjectIdConverter`: AutoMapper converters
-
 ## How to use it
 
   - Install `Withywoods.Dal.MongoDb` package from NuGet
-  - Implement `IMongoDbConfiguration` interface (let's call it MyCustomConfiguration)
-  - Use the extension to register all needed types (in Startup.cs file):
-
-  ```csharp
-    // Add this line in Startup class in ConfigureServices method (MyCustom)
-    service.AddMongoDbContext<MyCustomConfiguration>();
-  ```
-
-  - Use RepositoryBase asbtract class on your repositories and enjoy querying MongoDB!
-
-  ```csharp
-    public class UserRepository : RepositoryBase
-    {
-        public UserRepository(IMongoDbContext mongoDbContext, ILogger<UserRepository> logger, IMapper mapper)
-            : base(mongoDbContext, logger, mapper)
-        {
-        }
-
-        public async Task<List<UserModel>> FindAllAsync()
-        {
-            var collection = GetCollection<User>();
-            var results = collection.Find({});
-            return Mapper.Map<List<UserModel>>(await results.ToListAsync());
-        }
-    }
-  ```
-
   - (Optional) register AutoMapper converters:
 
   ```csharp
@@ -53,13 +20,3 @@ This library can be used by an .NET application.
     var mapper = config.CreateMapper();
     mapper.ConfigurationProvider.AssertConfigurationIsValid();
   ```
-
-  ## How to use it
-
-  Have a MongoDB instance:
-
-  - With docker
-
-    ```bash
-    docker run --name mongodb423 -d -p 27017:27017 mongo
-    ```

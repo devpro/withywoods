@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>Withywoods.Configuration</AssemblyName>
     <RootNamespace>Withywoods.Configuration</RootNamespace>
+    <Nullable>enable</Nullable>
     <Authors>devprofr</Authors>
     <Description>A package that provide classes to add configuration methods.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
