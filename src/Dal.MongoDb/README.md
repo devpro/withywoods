@@ -4,8 +4,8 @@ This library can be used by an .NET application.
 
 ## How to use it
 
-  - Install `Withywoods.Dal.MongoDb` package from NuGet
-  - (Optional) register AutoMapper converters:
+- Install `Withywoods.Dal.MongoDb` package from NuGet
+- (Optional) register AutoMapper converters:
 
   ```csharp
     var config = new MapperConfiguration(x =>
