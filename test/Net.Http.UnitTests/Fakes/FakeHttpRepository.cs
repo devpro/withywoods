@@ -22,7 +22,10 @@ public class FakeHttpRepository(ILogger<FakeHttpRepository> logger, IHttpClientF
 
     public async Task UpdateAsync<T>(string id, T input)
     {
-        await PutAsync($"https://does.not.exist/v42/api/fakes/{id}", input);
+        if (input != null)
+        {
+            await PutAsync($"https://does.not.exist/v42/api/fakes/{id}", input);
+        }
     }
 
     public async Task DeleteAsync(string id)

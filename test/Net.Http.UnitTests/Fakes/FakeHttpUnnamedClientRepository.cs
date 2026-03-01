@@ -10,7 +10,7 @@ public class FakeHttpUnnamedClientRepository(ILogger<FakeHttpRepository> logger,
 {
     protected override string HttpClientName => "";
 
-    public async Task<List<string>> FindAllAsync()
+    public async Task<List<string>?> FindAllAsync()
     {
         return await GetAsync<List<string>>("https://still.not.here/api/fakes");
     }

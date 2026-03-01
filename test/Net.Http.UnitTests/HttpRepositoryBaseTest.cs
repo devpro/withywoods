@@ -167,7 +167,9 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
     public async Task FakeHttpRepositoryUpdateAsync_ReturnSuccess()
     {
         // Arrange
-        var dto = new Faker<FakeDto>().Generate();
+        var dto = new Faker<FakeDto>()
+            .Rules((f, o) => { o.Id = f.Random.AlphaNumeric(8); o.Name = f.Random.AlphaNumeric(8); })
+            .Generate();
         var httpResponseMessage = new HttpResponseMessage
         {
             StatusCode = HttpStatusCode.OK,
@@ -183,7 +185,9 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
     public async Task FakeHttpRepositoryUpdateAsync_WithNoContent_ReturnSuccess()
     {
         // Arrange
-        var dto = new Faker<FakeDto>().Generate();
+        var dto = new Faker<FakeDto>()
+            .Rules((f, o) => { o.Id = f.Random.AlphaNumeric(8); o.Name = f.Random.AlphaNumeric(8); })
+            .Generate();
         var httpResponseMessage = new HttpResponseMessage
         {
             StatusCode = HttpStatusCode.OK
@@ -228,7 +232,7 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
 
     private FakeHttpRepository BuildRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
     {
-        var logger = ServiceProvider.GetService<ILogger<FakeHttpRepository>>();
+        var logger = ServiceProvider.GetService<ILogger<FakeHttpRepository>>() ?? throw new NullReferenceException(nameof(FakeHttpRepository));
         var httpClientFactoryMock = BuildHttpClientFactory(httpResponseMessage, httpMethod, "FakeApi", absoluteUri);
 
         return new FakeHttpRepository(logger, httpClientFactoryMock.Object);
@@ -237,7 +241,7 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
     private FakeHttpUnnamedClientRepository BuildUnnamedClientRepository(HttpResponseMessage httpResponseMessage, HttpMethod httpMethod, string absoluteUri)
     {
         return new FakeHttpUnnamedClientRepository(
-            ServiceProvider.GetService<ILogger<FakeHttpRepository>>(),
+            ServiceProvider.GetService<ILogger<FakeHttpRepository>>() ?? throw new NullReferenceException(nameof(FakeHttpRepository)),
             BuildHttpClientFactory(httpResponseMessage, httpMethod, "", absoluteUri).Object);
     }
 }
