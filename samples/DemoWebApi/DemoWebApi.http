@@ -1,6 +1,16 @@
-@DemoWebApi_HostAddress = http://localhost:5186
+@baseUrl = http://localhost:5186
 
-GET {{DemoWebApi_HostAddress}}/weatherforecast/
+### Health Check (auxiliary)
+GET {{baseUrl}}/health
+
+### OpenAPI JSON (auxiliary)
+GET {{baseUrl}}/openapi/v1.json
 Accept: application/json
 
-###
+### Scalar UI (auxiliary)
+GET {{baseUrl}}/scalar
+
+### Weather Forecast (read)
+### Expected: 200
+GET {{baseUrl}}/weather-forecast/
+Accept: application/json

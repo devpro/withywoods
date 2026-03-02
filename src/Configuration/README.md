@@ -5,5 +5,4 @@
 
 The `Withywoods.Configuration` package provides:
 
-- `ConfigurationBase` abstract class
-- `TryGetSection` IConfiguration extension method
+- `TryGetSection` and `TryGetSection<T>` IConfiguration extension methods

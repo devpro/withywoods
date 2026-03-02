@@ -17,8 +17,14 @@ public static class ConfigurationExtensions
     /// <exception cref="ArgumentException">If the section is not found</exception>
     public static IConfigurationSection TryGetSection(this IConfiguration configuration, string sectionKey)
     {
-        var section = configuration.GetSection(sectionKey);
-        return section
+        return configuration.GetSection(sectionKey)
                ?? throw new ArgumentException($"Missing section \"{sectionKey}\" in configuration", nameof(sectionKey));
+    }
+
+    public static T TryGetSection<T>(this IConfiguration configuration, string sectionKey)
+    {
+        var section = configuration.TryGetSection(sectionKey);
+        return section.Get<T>()
+               ?? throw new InvalidOperationException($"Section \"{sectionKey}\" value cannot be read as \"{nameof(T)}\"");
     }
 }

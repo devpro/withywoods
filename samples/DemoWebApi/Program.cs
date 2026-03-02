@@ -1,23 +1,31 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddHealthChecks();
+
+var configuration = ApplicationConfiguration.Create(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (configuration.IsScalarEnabled)
 {
     app.MapOpenApi();
+    app.MapScalarApiReference(options =>
+    {
+        options
+            .WithTitle(configuration.OpenApiInfo.Title ?? "Demo Web Api")
+            .WithTheme(ScalarTheme.Kepler)
+            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+    });
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+if (configuration.IsHttpsRedirectionEnabled)
+{
+    app.UseHttpsRedirection();
+}
 
 app.MapControllers();
+app.MapHealthChecks(ApplicationConfiguration.HealthCheckEndpoint);
 
 app.Run();

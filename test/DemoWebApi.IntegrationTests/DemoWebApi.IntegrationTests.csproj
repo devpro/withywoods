@@ -5,7 +5,6 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>Withywoods.DemoWebApi.IntegrationTests</AssemblyName>
     <RootNamespace>Withywoods.DemoWebApi.IntegrationTests</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
@@ -20,6 +19,10 @@
     <PackageReference Include="Microsoft.Testing.Extensions.TrxReport" />
     <PackageReference Include="Verify.XunitV3" />
     <PackageReference Include="xunit.v3.mtp-v2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\samples\DemoWebApi\DemoWebApi.csproj" />
   </ItemGroup>
 
 </Project>
