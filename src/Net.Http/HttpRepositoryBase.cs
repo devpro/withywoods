@@ -146,11 +146,21 @@ public abstract class HttpRepositoryBase
 
     private void CheckStatusCode(string url, HttpResponseMessage response, string result)
     {
-        if (!response.IsSuccessStatusCode)
+        if (response.IsSuccessStatusCode)
         {
-            Logger.LogDebug($"Status code doesn't indicate success [HttpRequestUrl={url}] [HttpResponseStatusCode={response.StatusCode}] [HttpResponseContent={result}]");
-            throw new ConnectivityException($"The response status \"{response.StatusCode}\" is not a success (reason=\"{response.ReasonPhrase}\")");
+            return;
         }
+
+        if (Logger.IsEnabled(LogLevel.Debug))
+        {
+            Logger.LogDebug(
+                "Status code doesn't indicate success [HttpRequestUrl={Url}] [HttpResponseStatusCode={ResponseStatusCode}] [HttpResponseContent={Result}]",
+                url,
+                response.StatusCode,
+                result);
+        }
+
+        throw new ConnectivityException($"The response status \"{response.StatusCode}\" is not a success (reason=\"{response.ReasonPhrase}\")");
     }
 
     private void CheckStatusCodeAndResult(string url, HttpResponseMessage response, string result)
@@ -171,9 +181,19 @@ public abstract class HttpRepositoryBase
         }
         catch (Exception exc)
         {
-            Logger.LogWarning("Cannot deserialize {HttpMethodName} call response content [HttpRequestUrl={Url}] [SerializationType={Type}] [ExceptionMessage={ExcMessage}]", httpMethodName, url, typeof(T), exc.Message);
-            Logger.LogDebug("[HttpResponseContent={Result}]", result);
-            Logger.LogDebug("[Stacktrace={ExcStackTrace}]", exc.StackTrace);
+            Logger.LogWarning(
+                "Cannot deserialize {HttpMethodName} call response content [HttpRequestUrl={Url}] [SerializationType={Type}] [ExceptionMessage={ExcMessage}]",
+                httpMethodName,
+                url,
+                typeof(T),
+                exc.Message);
+
+            if (Logger.IsEnabled(LogLevel.Debug))
+            {
+                Logger.LogDebug("[HttpResponseContent={Result}]", result);
+                Logger.LogDebug("[Stacktrace={ExcStackTrace}]", exc.StackTrace);
+            }
+
             throw new ConnectivityException($"Invalid data received when calling \"{url}\": {exc.Message}", exc);
         }
     }
