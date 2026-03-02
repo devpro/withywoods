@@ -1,0 +1,6 @@
+﻿services:
+  demowebapi:
+    image: demowebapi
+    build:
+      context: .
+      dockerfile: samples/DemoWebApi/Dockerfile
