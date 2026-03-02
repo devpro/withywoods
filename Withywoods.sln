@@ -34,7 +34,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "azure-pipelines", "azure-pipelines", "{01965C37-5D2F-49E6-962F-F0C81889F9C6}"
 	ProjectSection(SolutionItems) = preProject
 		.azure\pipelines\ci.yml = .azure\pipelines\ci.yml
-		.azure\pipelines\pkg.yml = .azure\pipelines\pkg.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github-actions", "github-actions", "{86574972-920F-4138-B811-6145F4B4B593}"

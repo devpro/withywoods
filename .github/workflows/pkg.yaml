@@ -4,15 +4,35 @@
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch: {}
+    branches:
+      - main
+    paths:
+      - 'Directory.Build.props'
+  workflow_dispatch:
+    inputs:
+      push-enabled:
+        description: 'Push packages?'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   package-publication:
-    name: Image
+    name: Package publication
     runs-on: ubuntu-latest
     steps:
-      - run: "TODO"
-    # uses: devpro/github-workflow-parts/.github/workflows/reusable-nuget-publication.yml@7ea45917e8d4e9d1ecf2a180b6bab24327323343
-    # with:
-    # secrets:
+      - name: Clone repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Checkout workflow parts
+        uses: actions/checkout@v6
+        with:
+          repository: devpro/github-workflow-parts
+          ref: f854fcfd5da5ae32ff8a4e5ac911fbdfd1577ae7
+          path: workflow-parts
+      - name: Pack & push .NET projects
+        uses: ./workflow-parts/actions/dotnet/pack-push
+        with:
+          registry-token: ${{ secrets.NUGET_API_KEY }}
+          push-enabled: ${{ github.event_name != 'workflow_dispatch' || inputs.push-enabled }}
