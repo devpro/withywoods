@@ -8,6 +8,7 @@
     <File Path="CONTRIBUTING.md" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
     <File Path="README.md" />
   </Folder>
   <Folder Name="/Solution Items/azure-pipelines/">
@@ -24,6 +25,7 @@
   <Project Path="src/System/System.csproj" />
   <Project Path="test/AutoMapper.MongoDb.UnitTests/AutoMapper.MongoDb.UnitTests.csproj" />
   <Project Path="test/Configuration.UnitTests/Configuration.UnitTests.csproj" />
+  <Project Path="test/DemoWebApi.IntegrationTests/DemoWebApi.IntegrationTests.csproj" />
   <Project Path="test/Net.Http.UnitTests/Net.Http.UnitTests.csproj" />
   <Project Path="test/System.UnitTests/System.UnitTests.csproj" />
 </Solution>
