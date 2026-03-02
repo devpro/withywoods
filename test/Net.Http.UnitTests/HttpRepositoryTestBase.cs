@@ -21,7 +21,7 @@ public abstract class HttpRepositoryTestBase
 
     protected ServiceProvider ServiceProvider { get; private set; }
 
-    private Mock<FakeHttpMessageHandler> HttpMessageHandlerMock { get; }
+    protected Mock<FakeHttpMessageHandler> HttpMessageHandlerMock { get; }
 
     /// <summary>
     /// Use this method to build a client factory.

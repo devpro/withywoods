@@ -8,6 +8,7 @@ using AwesomeAssertions;
 using Bogus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Moq;
 using Withywoods.Net.Http.UnitTests.Fakes;
 using Xunit;
 
@@ -95,7 +96,8 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
 
         // Assert
         exc.Should().NotBeNull();
-        exc.Message.Should().Contain("Invalid data received when calling \"https://does.not.exist/v42/api/fakes\": The JSON value could not be converted to System.Collections.Generic.List`1[System.String]. Path: $ | LineNumber: 0 | BytePositionInLine: 2.");
+        exc.Message.Should().Contain(
+            "Invalid data received when calling \"https://does.not.exist/v42/api/fakes\": The JSON value could not be converted to System.Collections.Generic.List`1[System.String]. Path: $ | LineNumber: 0 | BytePositionInLine: 2.");
     }
 
     [Fact]
@@ -179,6 +181,11 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
 
         // Act
         await repository.UpdateAsync("123456", dto);
+
+        // Assert
+        HttpMessageHandlerMock.Verify(
+            x => x.Send(It.IsAny<HttpRequestMessage>()),
+            Times.Once());
     }
 
     [Fact]
@@ -196,6 +203,11 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
 
         // Act
         await repository.UpdateAsync("123456", dto);
+
+        // Assert
+        HttpMessageHandlerMock.Verify(
+            x => x.Send(It.IsAny<HttpRequestMessage>()),
+            Times.Once());
     }
 
     // DeleteAsync tests
@@ -212,6 +224,11 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
 
         // Act
         await repository.DeleteAsync("123456");
+
+        // Assert
+        HttpMessageHandlerMock.Verify(
+            x => x.Send(It.IsAny<HttpRequestMessage>()),
+            Times.Once());
     }
 
     [Fact]
@@ -226,6 +243,11 @@ public class HttpRepositoryBaseTest : HttpRepositoryTestBase
 
         // Act
         await repository.DeleteAsync("123456");
+
+        // Assert
+        HttpMessageHandlerMock.Verify(
+            x => x.Send(It.IsAny<HttpRequestMessage>()),
+            Times.Once());
     }
 
     // Private methods tests
