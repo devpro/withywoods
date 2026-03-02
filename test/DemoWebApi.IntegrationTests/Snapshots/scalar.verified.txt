@@ -1,0 +1,23 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Withywoods Demo Wen API</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script src="scalar.js"></script>
+    <script type="module" src="scalar.aspnetcore.js"></script>
+    <script type="module">
+        import { initialize } from './scalar.aspnetcore.js'
+        initialize(
+        '%2Fscalar%2F',
+        false,
+        {"defaultHttpClient":{"targetKey":"csharp","clientKey":"httpclient"},"theme":"kepler","favicon":"favicon.svg","_integration":"dotnet","sources":[{"title":"v1","url":"openapi/v1.json"}]},
+        '')
+    </script>
+</body>
+</html>
