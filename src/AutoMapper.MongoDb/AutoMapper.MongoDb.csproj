@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <Authors>devprofr</Authors>
-    <Description>A package that provide classes to ease the use of MongoDB driver.</Description>
+    <Description>A package that provide classes to ease the use of MongoDB with AutoMapper.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
     <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -17,6 +17,10 @@
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="MongoDB.Bson" />
     <PackageReference Include="MongoDB.Driver" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
