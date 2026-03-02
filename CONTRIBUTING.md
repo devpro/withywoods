@@ -18,8 +18,11 @@
     # runs the tests
     dotnet test
    
-    # run one specific test project (here Configuration.UnitTests) 
+    # runs one specific test project (here Configuration.UnitTests) 
     dotnet test --project test\Configuration.UnitTests
+   
+    # creates the packages
+    dotnet pack
     ```
 
 3. Develop in an IDE (Rider - recommended, Visual Studio 2026 or Visual Studio Code)

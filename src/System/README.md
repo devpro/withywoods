@@ -5,7 +5,7 @@
 
 The `Withywoods.System` package provides:
 
-- `FirstCharToUpper` string extension 
+- `FirstCharToUpper` string extension
 
 ## How to use it
 
