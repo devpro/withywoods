@@ -1,6 +1,13 @@
 ﻿# Withywoods AutoMapper MongoDB library
 
-This library can be used by an .NET application.
+[![Version](https://img.shields.io/nuget/v/Withywoods.AutoMapper.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.AutoMapper.MongoDb/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.AutoMapper.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.AutoMapper.MongoDb/)
+
+The `Withywoods.AutoMapper.MongoDb` package provides:
+
+- Two mapper converters:
+  - `ObjectIdToStringConverter`
+  - `StringToObjectIdConverter`
 
 ## How to use it
 
@@ -8,15 +15,15 @@ This library can be used by an .NET application.
 - Register AutoMapper converters:
 
   ```csharp
-    var config = new MapperConfiguration(x =>
-    {
-        x.CreateMap<MongoDB.Bson.ObjectId, string>()
-          .ConvertUsing<Withywoods.Dal.MongoDb.MappingConverters.ObjectIdToStringConverter>();
-        x.CreateMap<string, MongoDB.Bson.ObjectId>()
-          .ConvertUsing<Withywoods.Dal.MongoDb.MappingConverters.StringToObjectIdConverter>();
-        x.AllowNullCollections = true;
-    });
+  var config = new MapperConfiguration(x =>
+  {
+      x.CreateMap<MongoDB.Bson.ObjectId, string>()
+        .ConvertUsing<Withywoods.AutoMapper.MongoDb.ObjectIdToStringConverter>();
+      x.CreateMap<string, MongoDB.Bson.ObjectId>()
+        .ConvertUsing<Withywoods.AutoMapper.MongoDb.StringToObjectIdConverter>();
+      x.AllowNullCollections = true;
+  });
 
-    var mapper = config.CreateMapper();
-    mapper.ConfigurationProvider.AssertConfigurationIsValid();
+  var mapper = config.CreateMapper();
+  mapper.ConfigurationProvider.AssertConfigurationIsValid();
   ```

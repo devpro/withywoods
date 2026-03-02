@@ -5,10 +5,12 @@
     <AssemblyName>Withywoods.Net.Http</AssemblyName>
     <RootNamespace>Withywoods.Net.Http</RootNamespace>
     <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
     <Authors>devprofr</Authors>
     <Description>A package that provide additional classes to System.Net.Http.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
     <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>

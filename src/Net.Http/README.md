@@ -1,18 +1,8 @@
-﻿# Withywoods Common Configuration Library
+﻿# Withywoods Net HTTP Library
 
-This library can be used by an .NET project.
+[![Version](https://img.shields.io/nuget/v/Withywoods.Net.Http.svg)](https://www.nuget.org/packages/Withywoods.Net.Http/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.Net.Http.svg)](https://www.nuget.org/packages/Withywoods.Net.Http/)
 
-- Specialized connectivity exception, while calling an API for example
+The `Withywoods.Net.Http` package provides:
 
-```csharp
-using Withywoods.Net.Http.Exceptions;
-
-var response = await client.GetAsync(url);
-
-// ...
-
-if (string.IsNullOrEmpty(stringResult))
-{
-    throw new ConnectivityException($"Empty response received while calling {url}");
-}
-```
+- `HttpRepositoryBase` is an asbtract class to make easy to call a REST API

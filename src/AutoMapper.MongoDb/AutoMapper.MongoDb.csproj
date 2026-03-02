@@ -5,10 +5,12 @@
     <AssemblyName>Withywoods.AutoMapper.MongoDb</AssemblyName>
     <RootNamespace>Withywoods.AutoMapper.MongoDb</RootNamespace>
     <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
     <Authors>devprofr</Authors>
     <Description>A package that provide classes to ease the use of MongoDB driver.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
     <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
