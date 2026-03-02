@@ -26,12 +26,12 @@ permissions:
 jobs:
   markup-lint:
     name: Markup
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@16f2838aead0737e30443c10ec8e2bb41620dc1c
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@79ef8b68e376c0cb3df0fc82e25961cc649023db
 
   code-quality:
     name: Code
     if: github.event_name != 'workflow_dispatch' || inputs.run-code-quality
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@16f2838aead0737e30443c10ec8e2bb41620dc1c
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@79ef8b68e376c0cb3df0fc82e25961cc649023db
     with:
       dotnet-test-args: "--report-xunit-trx --coverage --coverage-output-format cobertura"
       fossa-enabled: true
@@ -39,7 +39,7 @@ jobs:
       sonar-organization: ${{ vars.SONAR_ORG }}
       sonar-project-key: ${{ vars.SONAR_PROJECT_KEY }}
       sonar-project-name: Withywoods
-      workflow-parts-version: 16f2838aead0737e30443c10ec8e2bb41620dc1c
+      workflow-parts-version: 79ef8b68e376c0cb3df0fc82e25961cc649023db
     secrets:
       fossa-api-key: ${{ secrets.FOSSA_API_KEY }}
       sonar-token: ${{ secrets.SONAR_TOKEN }}
