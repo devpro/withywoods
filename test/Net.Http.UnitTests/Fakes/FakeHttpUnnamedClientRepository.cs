@@ -3,21 +3,15 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace Withywoods.Net.Http.UnitTests.Fakes
+namespace Withywoods.Net.Http.UnitTests.Fakes;
+
+public class FakeHttpUnnamedClientRepository(ILogger<FakeHttpRepository> logger, IHttpClientFactory httpClientFactory)
+    : HttpRepositoryBase(logger, httpClientFactory)
 {
-    public class FakeHttpUnnamedClientRepository : HttpRepositoryBase
+    protected override string HttpClientName => "";
+
+    public async Task<List<string>?> FindAllAsync()
     {
-        public FakeHttpUnnamedClientRepository(ILogger<FakeHttpRepository> logger, IHttpClientFactory httpClientFactory)
-            : base(logger, httpClientFactory)
-        {
-        }
-
-        protected override string HttpClientName => "";
-
-        public async Task<List<string>> FindAllAsync()
-        {
-            var url = "https://still.not.here/api/fakes";
-            return await GetAsync<List<string>>(url);
-        }
+        return await GetAsync<List<string>>("https://still.not.here/api/fakes");
     }
 }

@@ -1,19 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Withywoods.Configuration
+namespace Withywoods.Configuration;
+
+public abstract class ConfigurationBase(IConfiguration configuration)
 {
-    public abstract class ConfigurationBase
+    protected IConfiguration Configuration { get; } = configuration;
+
+    protected IConfigurationSection TryGetSection(string sectionKey)
     {
-        protected ConfigurationBase(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        protected IConfiguration Configuration { get; }
-
-        protected IConfigurationSection TryGetSection(string sectionKey)
-        {
-            return Configuration.TryGetSection(sectionKey);
-        }
+        return Configuration.TryGetSection(sectionKey);
     }
 }

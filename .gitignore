@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Local debug files
 Local.runsettings
+
+# JetBrains IDE (Rider) local configuration
+.idea
