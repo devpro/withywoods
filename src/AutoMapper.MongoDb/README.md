@@ -1,11 +1,11 @@
-﻿# Withywoods MongoDB DAL library
+﻿# Withywoods AutoMapper MongoDB library
 
 This library can be used by an .NET application.
 
 ## How to use it
 
-- Install `Withywoods.Dal.MongoDb` package from NuGet
-- (Optional) register AutoMapper converters:
+- Install `Withywoods.AutoMapper.MongoDb` package from NuGet
+- Register AutoMapper converters:
 
   ```csharp
     var config = new MapperConfiguration(x =>

@@ -2,10 +2,10 @@
 using AwesomeAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using MongoDB.Bson;
-using Withywoods.Dal.MongoDb.MappingConverters;
+using Withywoods.AutoMapper.MongoDb.MappingConverters;
 using Xunit;
 
-namespace Withywoods.Dal.MongoDb.UnitTests.MappingConverters;
+namespace Withywoods.AutoMapper.MongoDb.UnitTests.MappingConverters;
 
 [Trait("Category", "UnitTests")]
 public class ObjectIdToStringConverterTest
