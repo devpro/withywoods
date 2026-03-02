@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>Exe</OutputType>
-    <AssemblyName>Withywoods.Dal.MongoDb.UnitTests</AssemblyName>
-    <RootNamespace>Withywoods.Dal.MongoDb.UnitTests</RootNamespace>
+    <AssemblyName>Withywoods.AutoMapper.MongoDb.UnitTests</AssemblyName>
+    <RootNamespace>Withywoods.AutoMapper.MongoDb.UnitTests</RootNamespace>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Dal.MongoDb\Dal.MongoDb.csproj" />
+    <ProjectReference Include="..\..\src\AutoMapper.MongoDb\AutoMapper.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,9 @@
-﻿# Withywoods Common Configuration Library
+﻿# Withywoods Configuration Library
 
-This library can be used by an .NET project.
+[![Version](https://img.shields.io/nuget/v/Withywoods.Configuration.svg)](https://www.nuget.org/packages/Withywoods.Configuration/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.Configuration.svg)](https://www.nuget.org/packages/Withywoods.Configuration/)
 
-## IConfiguration extensions
-
-- `TryGetSection` extension method
-
-## Configuration base class
+The `Withywoods.Configuration` package provides:
 
 - `ConfigurationBase` abstract class
+- `TryGetSection` IConfiguration extension method

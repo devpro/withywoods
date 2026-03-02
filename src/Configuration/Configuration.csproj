@@ -5,14 +5,20 @@
     <AssemblyName>Withywoods.Configuration</AssemblyName>
     <RootNamespace>Withywoods.Configuration</RootNamespace>
     <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
     <Authors>devprofr</Authors>
     <Description>A package that provide classes to add configuration methods.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
     <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,15 @@
-﻿# Withywoods Common System Library
+﻿# Withywoods System Library
 
-This library can be used by an .NET project.
+[![Version](https://img.shields.io/nuget/v/Withywoods.System.svg)](https://www.nuget.org/packages/Withywoods.System/)
+[![Downloads](https://img.shields.io/nuget/dt/Withywoods.System.svg)](https://www.nuget.org/packages/Withywoods.System/)
 
-## String extensions
+The `Withywoods.System` package provides:
+
+- `FirstCharToUpper` string extension
+
+## How to use it
+
+- Install `Withywoods.System` package from NuGet
 
 ```csharp
 using Withywoods.System;

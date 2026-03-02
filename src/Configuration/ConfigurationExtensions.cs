@@ -10,11 +10,11 @@ public static class ConfigurationExtensions
 {
     /// <summary>
     /// Get configuration section.
-    /// Throws an ArgumentException with a clear message if the section is not found.
     /// </summary>
     /// <param name="configuration"></param>
     /// <param name="sectionKey"></param>
     /// <returns></returns>
+    /// <exception cref="ArgumentException">If the section is not found</exception>
     public static IConfigurationSection TryGetSection(this IConfiguration configuration, string sectionKey)
     {
         var section = configuration.GetSection(sectionKey);
