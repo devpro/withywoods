@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 namespace Withywoods.DemoBlazorWebApp.PlaywrightTests.Pages;
@@ -18,6 +17,8 @@ public abstract class PageBase(IPage page)
 
     private ILocator HomeLink => Page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Home" });
 
+    private ILocator CounterLink => Page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Count" });
+
     private ILocator WeatherForecastLink => Page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Weather" });
 
     // assertions
@@ -26,16 +27,6 @@ public abstract class PageBase(IPage page)
     {
         await Assertions.Expect(Page).ToHaveTitleAsync(WebPageTitle);
         await Assertions.Expect(PageHeader).ToBeVisibleAsync();
-    }
-
-    public virtual async Task VerifyPageHeaderAsync(string header)
-    {
-        await Assertions.Expect(PageHeader).ToHaveTextAsync(header);
-    }
-
-    public virtual async Task VerifyPageHeaderAsync(Regex header)
-    {
-        await Assertions.Expect(PageHeader).ToHaveTextAsync(header);
     }
 
     // actions
@@ -48,11 +39,19 @@ public abstract class PageBase(IPage page)
         return homePage;
     }
 
+    public async Task<CounterPage> OpenCounterAsync()
+    {
+        await CounterLink.ClickAsync();
+        var counterPage = new CounterPage(Page);
+        await counterPage.WaitForReadyAsync();
+        return counterPage;
+    }
+
     public async Task<WeatherForecastPage> OpenWeatherForecastAsync()
     {
         await WeatherForecastLink.ClickAsync();
-        var todoPage = new WeatherForecastPage(Page);
-        await todoPage.WaitForReadyAsync();
-        return todoPage;
+        var weatherForecastPage = new WeatherForecastPage(Page);
+        await weatherForecastPage.WaitForReadyAsync();
+        return weatherForecastPage;
     }
 }

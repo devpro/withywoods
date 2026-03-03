@@ -52,7 +52,7 @@
 5. Demo containers images
 
     - Start containers
-   
+
        ```bash
        docker compose up
        ```

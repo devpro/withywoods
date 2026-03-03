@@ -5,16 +5,17 @@ using Xunit;
 
 namespace Withywoods.DemoBlazorWebApp.PlaywrightTests.Smoke;
 
-public class WeatherForecastSmokeTest(KestrelWebAppFactory<Program> factory)
+public class CounterSmokeTest(KestrelWebAppFactory<Program> factory)
     : PlaywrightTestBase(factory)
 {
     [Fact]
     [ScreenshotOnFailure]
-    public async Task SmokeViewWeatherForecast_Succeeds()
+    public async Task SmokeClickCounter_Succeeds()
     {
         var homePage = await OpenHomePageAsync();
-        var weatherForecastPage = await homePage.OpenWeatherForecastAsync();
-        await weatherForecastPage.HasTableRowAsync();
-        await weatherForecastPage.OpenHomeAsync();
+        var counterPage = await homePage.OpenCounterAsync();
+        await counterPage.ClickAndCheckAsync(0, 1);
+        await counterPage.ClickAndCheckAsync(1, 3);
+        await counterPage.OpenHomeAsync();
     }
 }

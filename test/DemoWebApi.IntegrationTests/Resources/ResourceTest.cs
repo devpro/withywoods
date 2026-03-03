@@ -1,14 +1,18 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AwesomeAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using VerifyXunit;
+using Withywoods.DemoWebApi.Dto;
 using Xunit;
 
 namespace Withywoods.DemoWebApi.IntegrationTests.Resources;
 
 [Trait("Category", "IntegrationTests")]
-public class AuxiliaryResourceTest(WebApplicationFactory<Program> factory)
+public class ResourceTest(WebApplicationFactory<Program> factory)
     : IClassFixture<WebApplicationFactory<Program>>
 {
     [Trait("Mode", "Readonly")]
@@ -29,14 +33,30 @@ public class AuxiliaryResourceTest(WebApplicationFactory<Program> factory)
         response.Content.Headers.ContentType?.ToString().Should().Be(expectedContentType);
 
         var result = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
-        await VerifyResult(result, expectedContentType, expectedContent, "../Snapshots", SnapshotNameFromUrl(url));
+        await VerifyResult(result, "../Snapshots", SnapshotNameFromUrl(url), expectedContentType, expectedContent);
+    }
+
+    [Trait("Mode", "Readonly")]
+    [Fact]
+    public async Task WeatherForecastResource_Get_ReturnsExpectedResponse()
+    {
+
+        var client = factory.CreateClient();
+
+        var response = await client.GetAsync("/weather-forecast", TestContext.Current.CancellationToken);
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+        response.Content.Headers.ContentType?.ToString().Should().Be("application/json; charset=utf-8");
+
+        var result = await response.Content.ReadFromJsonAsync<List<WeatherForecastDto>>(TestContext.Current.CancellationToken);
+        result.Should().HaveCountGreaterThan(1);
     }
 
     private static async Task VerifyResult(string result,
-        string expectedContentType,
-        string? expectedContent,
         string snapshotDirectory,
-        string snapshotName)
+        string snapshotName,
+        string expectedContentType,
+        string? expectedContent)
     {
         if (!string.IsNullOrEmpty(expectedContent))
         {
