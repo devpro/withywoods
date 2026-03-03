@@ -31,6 +31,12 @@ public abstract class PageBase(IPage page)
 
     // actions
 
+    public async Task NavigateToAsync(string baseAddress)
+    {
+        await Page.GotoAsync(baseAddress);
+        await WaitForReadyAsync();
+    }
+
     public async Task<HomePage> OpenHomeAsync()
     {
         await HomeLink.ClickAsync();

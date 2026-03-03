@@ -3,18 +3,29 @@
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
-
-<p role="status">Current count: @_currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+@if (_isReady)
+{
+    <h1>Counter</h1>
+    <p role="status">Current count: @_currentCount</p>
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+}
 
 @code {
+    private bool _isReady;
     private int _currentCount = 0;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(1);
+            _isReady = true;
+            StateHasChanged();
+        }
+    }
 
     private void IncrementCount()
     {
         _currentCount++;
     }
-
 }

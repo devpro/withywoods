@@ -7,11 +7,15 @@ public class CounterPage(IPage page) : PageBase(page)
 {
     protected override string WebPageTitle => "Counter";
 
-    private ILocator TableRow => Page.Locator("table.table > li");
-
     private ILocator ClickMeButton => Page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Click Me" });
 
     private ILocator StatusMessage => Page.GetByRole(AriaRole.Status);
+
+    public override async Task WaitForReadyAsync()
+    {
+        await base.WaitForReadyAsync();
+        await Assertions.Expect(ClickMeButton).ToBeVisibleAsync();
+    }
 
     public async Task ClickAndCheckAsync(int initialCount, int clickCount = 1)
     {
