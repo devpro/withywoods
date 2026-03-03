@@ -6,7 +6,7 @@ namespace Withywoods.Configuration;
 /// <summary>
 /// Extensions on <see cref="IConfiguration"/>
 /// </summary>
-public static class ConfigurationExtensions
+public static class IConfigurationExtensions
 {
     /// <summary>
     /// Get configuration section.
