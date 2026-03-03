@@ -28,4 +28,4 @@ if (configuration.IsHttpsRedirectionEnabled)
 app.MapControllers();
 app.MapHealthChecks(ApplicationConfiguration.HealthCheckEndpoint);
 
-app.Run();
+await app.RunAsync();
