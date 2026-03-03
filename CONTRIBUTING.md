@@ -43,11 +43,24 @@
    
     # ensures EOL is correct
     find . -type f \( -name "*.cs" -o -name "*.csproj" -o -name "*.slnx" -o -name "*.js" -o -name "*.razor" -o -name "*.css" \) -exec sed -i 's/\r$//' {} +
-    ```
-
-5. Container images
-
-    ```bash
+    
+    # ensures container build is successful
     docker build . -t withywoods-demoblazorwebapp:local -f samples/DemoBlazorWebApp/Dockerfile
     docker build . -t withywoods-demoblazorwebapp:local -f samples/DemoWebApi/Dockerfile
     ```
+
+5. Demo containers images
+
+    - Start containers
+   
+       ```bash
+       docker compose up
+       ```
+
+    - Open the web app in a browser: [DemoBlazorWebApp](http://localhost:9001), [DemoWebApi](http://localhost:9002/scalar)
+
+    - Clean-up
+
+       ```bash
+       docker compose rm
+       ```
