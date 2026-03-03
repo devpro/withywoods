@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\System\System.csproj" />
+    <ProjectReference Include="..\..\src\System\System.csproj"/>
   </ItemGroup>
 
 </Project>

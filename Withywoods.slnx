@@ -1,0 +1,34 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path=".markdownlint.yml" />
+    <File Path=".yamllint.yaml" />
+    <File Path="compose.yaml" />
+    <File Path="CONTRIBUTING.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/azure-pipelines/">
+    <File Path=".azure/pipelines/ci.yml" />
+  </Folder>
+  <Folder Name="/Solution Items/github-actions/">
+    <File Path=".github/workflows/ci.yaml" />
+    <File Path=".github/workflows/pkg.yaml" />
+  </Folder>
+  <Project Path="samples/DemoBlazorWebApp/DemoBlazorWebApp.csproj" />
+  <Project Path="samples/DemoWebApi/DemoWebApi.csproj" />
+  <Project Path="src/AspNetCore.Mvc.Testing/AspNetCore.Mvc.Testing.csproj" />
+  <Project Path="src/AutoMapper.MongoDb/AutoMapper.MongoDb.csproj" />
+  <Project Path="src/Configuration/Configuration.csproj" />
+  <Project Path="src/Net.Http/Net.Http.csproj" />
+  <Project Path="src/System/System.csproj" />
+  <Project Path="test/AutoMapper.MongoDb.UnitTests/AutoMapper.MongoDb.UnitTests.csproj" />
+  <Project Path="test/Configuration.UnitTests/Configuration.UnitTests.csproj" />
+  <Project Path="test/DemoBlazorWebApp.PlaywrightTests/DemoBlazorWebApp.PlaywrightTests.csproj" />
+  <Project Path="test/DemoWebApi.IntegrationTests/DemoWebApi.IntegrationTests.csproj" />
+  <Project Path="test/Net.Http.UnitTests/Net.Http.UnitTests.csproj" />
+  <Project Path="test/System.UnitTests/System.UnitTests.csproj" />
+</Solution>

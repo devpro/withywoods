@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AutoMapper.MongoDb\AutoMapper.MongoDb.csproj" />
+    <ProjectReference Include="..\..\src\AutoMapper.MongoDb\AutoMapper.MongoDb.csproj"/>
   </ItemGroup>
 
 </Project>

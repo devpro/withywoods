@@ -7,10 +7,10 @@ using Xunit;
 namespace Withywoods.Configuration.UnitTests;
 
 [Trait("Category", "UnitTests")]
-public class ConfigurationExtensionsTest
+public class IConfigurationExtensionsTest
 {
     [Fact]
-    public void ConfigurationExtensionGetSection_WhenSectionExists_ReturnData()
+    public void IConfigurationExtensionGetSection_WhenSectionExists_ReturnData()
     {
         // Arrange
         var configurationSectionMock = new Mock<IConfigurationSection>();

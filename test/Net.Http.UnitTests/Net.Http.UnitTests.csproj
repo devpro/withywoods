@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Net.Http\Net.Http.csproj" />
+    <ProjectReference Include="..\..\src\Net.Http\Net.Http.csproj"/>
   </ItemGroup>
 
 </Project>

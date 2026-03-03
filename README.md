@@ -8,19 +8,23 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods?ref=badge_shield&issueType=license)
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods.svg?type=shield&issueType=security)](https://app.fossa.com/projects/custom%2B60068%2Fgithub.com%2Fdevpro%2Fwithywoods?ref=badge_shield&issueType=security)
 
-Withywoods is a set of small independant .NET 8 libraries.
-The goal is to do better with less code, and capitalize on best practices (#KISS #DRY).
+Withywoods is a set of small independent .NET projects to help developers go faster and better (#KISS #DRY).
+All .NET libraries packages are available on [nuget.org](https://www.nuget.org/).
 
-All libraries are available on [nuget.org](https://www.nuget.org/).
 Feel free to report any problem or ask for a change through a [GitHub Issue](https://github.com/devpro/withywoods/issues).
-
 More technical information are provided in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Did you know? The name _Whithywoods_ comes from [Robin Hobb](https://twitter.com/robinhobb)'s incredible writing.
+Did you know? The name _Withywoods_ comes from [Robin Hobb](https://twitter.com/robinhobb) amazing book series.
 
 ## Libraries
 
+- [Withywoods.AspNetCore.Mvc.Testing](src/AspNetCore.Mvc.Testing/README.md)
 - [Withywoods.AutoMapper.MongoDb](src/AutoMapper.MongoDb/README.md)
 - [Withywoods.Configuration](src/Configuration/README.md)
 - [Withywoods.Net.Http](src/Net.Http/README.md)
 - [Withywoods.System](src/System/README.md)
+
+## Samples
+
+- [Withywoods.DemoBlazorWebApp](samples/DemoBlazorWebApp/README.md)
+- [Withywoods.DemoWebApi](samples/DemoWebApi/README.md)

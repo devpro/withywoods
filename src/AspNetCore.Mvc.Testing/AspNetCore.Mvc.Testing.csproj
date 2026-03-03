@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Withywoods.AspNetCore.Mvc.Testing</AssemblyName>
+    <RootNamespace>Withywoods.AspNetCore.Mvc.Testing</RootNamespace>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <Authors>devprofr</Authors>
+    <Description>A package that provide classes to ease ASP.NET testing.</Description>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

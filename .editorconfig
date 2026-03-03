@@ -8,15 +8,20 @@ indent_style = space
 insert_final_newline = true
 max_line_length = 140
 
-[*.{cs,sln}]
+[*.{cs,razor,sln}]
 indent_size = 4
 trim_trailing_whitespace = true
 
-[*.{config,csproj,json,md,props,runsettings,sh,tf,xml,yml,yaml}]
+[*.{config,csproj,css,feature,js,json,props,runsettings,sh,tf,xml,yml,yaml}]
+indent_size = 2
+trim_trailing_whitespace = true
+
+[Dockerfile]
 indent_size = 2
 trim_trailing_whitespace = true
 
 [*.md]
+indent_size = 2
 trim_trailing_whitespace = false
 
 [*.cs]
