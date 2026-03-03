@@ -44,3 +44,10 @@
     # ensures EOL is correct
     find . -type f \( -name "*.cs" -o -name "*.csproj" -o -name "*.slnx" -o -name "*.js" -o -name "*.razor" -o -name "*.css" \) -exec sed -i 's/\r$//' {} +
     ```
+
+5. Container images
+
+    ```bash
+    docker build . -t withywoods-demoblazorwebapp:local -f samples/DemoBlazorWebApp/Dockerfile
+    docker build . -t withywoods-demoblazorwebapp:local -f samples/DemoWebApi/Dockerfile
+    ```
