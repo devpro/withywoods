@@ -20,4 +20,4 @@ RUN dotnet publish "./DemoWebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DemoWebApi.dll"]
+ENTRYPOINT ["dotnet", "Withywoods.DemoWebApi.dll"]

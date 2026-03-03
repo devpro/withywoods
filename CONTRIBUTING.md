@@ -40,4 +40,7 @@
     
     # lints Markdown files
     docker run --rm -v "$(pwd)":/workdir davidanson/markdownlint-cli2 "**/*.md"
+   
+    # ensures EOL is correct
+    find . -type f \( -name "*.cs" -o -name "*.csproj" -o -name "*.slnx" -o -name "*.js" -o -name "*.razor" -o -name "*.css" \) -exec sed -i 's/\r$//' {} +
     ```
