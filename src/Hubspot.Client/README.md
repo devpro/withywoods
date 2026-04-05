@@ -59,4 +59,4 @@ public async Task GetContacts()
 - [HubSpot API Overview](https://developers.hubspot.com/docs/overview)
 - [adimichele/hubspot-ruby](https://github.com/adimichele/hubspot-ruby)
 - [HubSpot/hubspot-php](https://github.com/HubSpot/hubspot-php)
-- [hubspot-net/HubSpot.NET](https://github.com/hubspot-net/HubSpot.NET): outdated .NET client, no recent CI with code coverage, not compatible with dependency injection and not using .NET best practices (HTTP client, naming convention, clean code, editorconfig)
+- [hubspot-net/HubSpot.NET](https://github.com/hubspot-net/HubSpot.NET): outdated .NET client, not compatible with dependency injection and not using .NET best practices
