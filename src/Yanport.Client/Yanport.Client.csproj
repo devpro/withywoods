@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Devpro.Yanport.Client</AssemblyName>
+    <RootNamespace>Devpro.Yanport.Client</RootNamespace>
+    <ProjectGuid>{E2D956BB-FECF-4C1D-865C-F6D92FE77ECB}</ProjectGuid>
+    <Authors>devprofr</Authors>
+    <Description>A package that provides access to Yanport services.</Description>
+    <RepositoryUrl>https://github.com/devpro/yanport-dotnet-client</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/yanport-dotnet-client</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Withywoods.Net.Http" Version="1.4.3" />
+    <PackageReference Include="Withywoods.Serialization" Version="1.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yanport.Abstractions\Yanport.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

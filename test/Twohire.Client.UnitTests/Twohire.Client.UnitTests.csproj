@@ -3,15 +3,16 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>Exe</OutputType>
-    <AssemblyName>Withywoods.Hubspot.Client.IntegrationTests</AssemblyName>
-    <RootNamespace>Withywoods.Hubspot.Client.IntegrationTests</RootNamespace>
+    <AssemblyName>Withywoods.Twohire.Client.UnitTests</AssemblyName>
+    <RootNamespace>Withywoods.Twohire.Client.UnitTests</RootNamespace>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Hubspot.Client\Hubspot.Client.csproj" />
+    <ProjectReference Include="..\..\src\Twohire.Client\Twohire.Client.csproj" />
+    <ProjectReference Include="..\Net.Http.UnitTests\Net.Http.UnitTests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +22,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
     <PackageReference Include="Microsoft.Testing.Extensions.TrxReport" />
+    <PackageReference Include="Moq" />
     <PackageReference Include="Verify.XunitV3" />
     <PackageReference Include="xunit.v3.mtp-v2" />
   </ItemGroup>

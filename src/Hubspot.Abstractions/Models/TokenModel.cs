@@ -7,10 +7,10 @@ namespace Withywoods.Hubspot.Abstractions.Models;
 public partial class TokenModel
 {
     [JsonPropertyName("refresh_token")]
-    public required string RefreshToken { get; set; }
+    public string RefreshToken { get; set; } = string.Empty;
 
     [JsonPropertyName("access_token")]
-    public required string AccessToken { get; set; }
+    public string AccessToken { get; set; } =  string.Empty;
 
     /// <summary>
     /// The access token will expire after the number of seconds given in the expires_in field of the response.

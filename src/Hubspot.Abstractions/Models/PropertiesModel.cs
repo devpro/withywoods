@@ -2,11 +2,11 @@
 
 public partial class PropertiesModel
 {
-    public required ValueModel FirstName { get; set; }
+    public ValueModel FirstName { get; set; } =  new();
 
     public ValueModel? LastModifiedDate { get; set; }
 
-    public required ValueModel Company { get; set; }
+    public ValueModel Company { get; set; } = new();
 
-    public required ValueModel LastName { get; set; }
+    public ValueModel LastName { get; set; } = new();
 }

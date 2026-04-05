@@ -27,6 +27,8 @@
   <Project Path="src/Hubspot.Client/Hubspot.Client.csproj" />
   <Project Path="src/Net.Http/Net.Http.csproj" />
   <Project Path="src/System/System.csproj" />
+  <Project Path="src/Twohire.Abstractions/Twohire.Abstractions.csproj" />
+  <Project Path="src/Twohire.Client/Twohire.Client.csproj" />
   <Project Path="test/AutoMapper.MongoDb.UnitTests/AutoMapper.MongoDb.UnitTests.csproj" />
   <Project Path="test/Configuration.UnitTests/Configuration.UnitTests.csproj" />
   <Project Path="test/DemoBlazorWebApp.PlaywrightTests/DemoBlazorWebApp.PlaywrightTests.csproj" />
@@ -35,4 +37,6 @@
   <Project Path="test/Hubspot.Client.UnitTests/Hubspot.Client.UnitTests.csproj" />
   <Project Path="test/Net.Http.UnitTests/Net.Http.UnitTests.csproj" />
   <Project Path="test/System.UnitTests/System.UnitTests.csproj" />
+  <Project Path="test/Twohire.Client.IntegrationTests/Twohire.Client.IntegrationTests.csproj" />
+  <Project Path="test/Twohire.Client.UnitTests/Twohire.Client.UnitTests.csproj" />
 </Solution>

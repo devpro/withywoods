@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Hubspot.Client\Hubspot.Client.csproj" />
+    <ProjectReference Include="..\Net.Http.UnitTests\Net.Http.UnitTests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AwesomeAssertions" />
     <PackageReference Include="Bogus" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
@@ -20,11 +25,6 @@
     <PackageReference Include="Moq" />
     <PackageReference Include="Verify.XunitV3" />
     <PackageReference Include="xunit.v3.mtp-v2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Hubspot.Client\Hubspot.Client.csproj" />
-    <ProjectReference Include="..\Net.Http.UnitTests\Net.Http.UnitTests.csproj" />
   </ItemGroup>
 
 </Project>
