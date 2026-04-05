@@ -34,7 +34,7 @@ public class TokenProviderTest
             .AddLogging();
         var serviceProvider = services.BuildServiceProvider();
 
-        var logger = serviceProvider.GetService<ILogger<TokenProvider>>() ??  throw new NullReferenceException();
+        var logger = serviceProvider.GetService<ILogger<TokenProvider>>() ?? throw new NullReferenceException();
 
         var repositoryMock = new Mock<ITokenRepository>();
         repositoryMock.Setup(x => x.CreateAsync())

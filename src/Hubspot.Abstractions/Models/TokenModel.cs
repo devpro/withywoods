@@ -10,7 +10,7 @@ public partial class TokenModel
     public string RefreshToken { get; set; } = string.Empty;
 
     [JsonPropertyName("access_token")]
-    public string AccessToken { get; set; } =  string.Empty;
+    public string AccessToken { get; set; } = string.Empty;
 
     /// <summary>
     /// The access token will expire after the number of seconds given in the expires_in field of the response.

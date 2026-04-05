@@ -2,7 +2,7 @@
 
 public partial class PropertiesModel
 {
-    public ValueModel FirstName { get; set; } =  new();
+    public ValueModel FirstName { get; set; } = new();
 
     public ValueModel? LastModifiedDate { get; set; }
 
