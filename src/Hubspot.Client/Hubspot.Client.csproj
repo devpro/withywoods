@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Withywoods.Hubspot.Client</AssemblyName>
+    <RootNamespace>Withywoods.Hubspot.Client</RootNamespace>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <Authors>devprofr</Authors>
+    <Description>A package that provides access to Hubspot services.</Description>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hubspot.Abstractions\Hubspot.Abstractions.csproj" />
+    <ProjectReference Include="..\Net.Http\Net.Http.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Withywoods.Hubspot.Abstractions</AssemblyName>
+    <RootNamespace>Withywoods.Hubspot.Abstractions</RootNamespace>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <Authors>devprofr</Authors>
+    <Description>A package that provides high level abstractions to HubSpot services.</Description>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
+  </PropertyGroup>
+
+</Project>

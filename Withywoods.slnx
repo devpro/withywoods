@@ -23,12 +23,16 @@
   <Project Path="src/AspNetCore.Mvc.Testing/AspNetCore.Mvc.Testing.csproj" />
   <Project Path="src/AutoMapper.MongoDb/AutoMapper.MongoDb.csproj" />
   <Project Path="src/Configuration/Configuration.csproj" />
+  <Project Path="src/Hubspot.Abstractions/Hubspot.Abstractions.csproj" />
+  <Project Path="src/Hubspot.Client/Hubspot.Client.csproj" />
   <Project Path="src/Net.Http/Net.Http.csproj" />
   <Project Path="src/System/System.csproj" />
   <Project Path="test/AutoMapper.MongoDb.UnitTests/AutoMapper.MongoDb.UnitTests.csproj" />
   <Project Path="test/Configuration.UnitTests/Configuration.UnitTests.csproj" />
   <Project Path="test/DemoBlazorWebApp.PlaywrightTests/DemoBlazorWebApp.PlaywrightTests.csproj" />
   <Project Path="test/DemoWebApi.IntegrationTests/DemoWebApi.IntegrationTests.csproj" />
+  <Project Path="test/Hubspot.Client.IntegrationTests/Hubspot.Client.IntegrationTests.csproj" />
+  <Project Path="test/Hubspot.Client.UnitTests/Hubspot.Client.UnitTests.csproj" />
   <Project Path="test/Net.Http.UnitTests/Net.Http.UnitTests.csproj" />
   <Project Path="test/System.UnitTests/System.UnitTests.csproj" />
 </Solution>
