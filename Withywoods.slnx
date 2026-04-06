@@ -1,5 +1,5 @@
 <Solution>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/0 - Solution Items/">
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
     <File Path=".markdownlint.yml" />
@@ -11,15 +11,33 @@
     <File Path="global.json" />
     <File Path="README.md" />
   </Folder>
-  <Folder Name="/Solution Items/azure-pipelines/">
+  <Folder Name="/0 - Solution Items/azure-pipelines/">
     <File Path=".azure/pipelines/ci.yml" />
   </Folder>
-  <Folder Name="/Solution Items/github-actions/">
+  <Folder Name="/0 - Solution Items/github-actions/">
     <File Path=".github/workflows/ci.yaml" />
     <File Path=".github/workflows/pkg.yaml" />
   </Folder>
-  <Project Path="samples/DemoBlazorWebApp/DemoBlazorWebApp.csproj" />
-  <Project Path="samples/DemoWebApi/DemoWebApi.csproj" />
+  <Folder Name="/1 - API Clients/">
+    <Project Path="src/Hubspot.Abstractions/Hubspot.Abstractions.csproj" />
+    <Project Path="src/Hubspot.Client/Hubspot.Client.csproj" />
+    <Project Path="src/Twohire.Abstractions/Twohire.Abstractions.csproj" />
+    <Project Path="src/Twohire.Client/Twohire.Client.csproj" />
+    <Project Path="src/Yanport.Abstractions/Yanport.Abstractions.csproj" />
+    <Project Path="src/Yanport.Client/Yanport.Client.csproj" />
+    <Project Path="test/Hubspot.Client.IntegrationTests/Hubspot.Client.IntegrationTests.csproj" />
+    <Project Path="test/Hubspot.Client.UnitTests/Hubspot.Client.UnitTests.csproj" />
+    <Project Path="test/Twohire.Client.IntegrationTests/Twohire.Client.IntegrationTests.csproj" />
+    <Project Path="test/Twohire.Client.UnitTests/Twohire.Client.UnitTests.csproj" />
+    <Project Path="test/Yanport.Client.IntegrationTests/Yanport.Client.IntegrationTests.csproj" />
+    <Project Path="test/Yanport.Client.UnitTests/Yanport.Client.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/2 - Samples/">
+    <Project Path="samples/DemoBlazorWebApp/DemoBlazorWebApp.csproj" />
+    <Project Path="samples/DemoWebApi/DemoWebApi.csproj" />
+    <Project Path="test/DemoBlazorWebApp.PlaywrightTests/DemoBlazorWebApp.PlaywrightTests.csproj" />
+    <Project Path="test/DemoWebApi.IntegrationTests/DemoWebApi.IntegrationTests.csproj" />
+  </Folder>
   <Project Path="src/AspNetCore.Mvc.Testing/AspNetCore.Mvc.Testing.csproj" />
   <Project Path="src/AutoMapper.MongoDb/AutoMapper.MongoDb.csproj" />
   <Project Path="src/Configuration/Configuration.csproj" />
@@ -27,8 +45,6 @@
   <Project Path="src/System/System.csproj" />
   <Project Path="test/AutoMapper.MongoDb.UnitTests/AutoMapper.MongoDb.UnitTests.csproj" />
   <Project Path="test/Configuration.UnitTests/Configuration.UnitTests.csproj" />
-  <Project Path="test/DemoBlazorWebApp.PlaywrightTests/DemoBlazorWebApp.PlaywrightTests.csproj" />
-  <Project Path="test/DemoWebApi.IntegrationTests/DemoWebApi.IntegrationTests.csproj" />
   <Project Path="test/Net.Http.UnitTests/Net.Http.UnitTests.csproj" />
   <Project Path="test/System.UnitTests/System.UnitTests.csproj" />
 </Solution>

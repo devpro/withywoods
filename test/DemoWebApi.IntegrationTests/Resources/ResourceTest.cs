@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http.Json;
-using System.Text.Json;
 using System.Threading.Tasks;
 using AwesomeAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -40,7 +39,6 @@ public class ResourceTest(WebApplicationFactory<Program> factory)
     [Fact]
     public async Task WeatherForecastResource_Get_ReturnsExpectedResponse()
     {
-
         var client = factory.CreateClient();
 
         var response = await client.GetAsync("/weather-forecast", TestContext.Current.CancellationToken);
