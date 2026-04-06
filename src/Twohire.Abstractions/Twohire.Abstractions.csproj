@@ -5,8 +5,8 @@
     <AssemblyName>Withywoods.Twohire.Abstractions</AssemblyName>
     <RootNamespace>Withywoods.Twohire.Abstractions</RootNamespace>
     <Nullable>enable</Nullable>
-    <Authors>devprofr</Authors>
     <IsPackable>true</IsPackable>
+    <Authors>devprofr</Authors>
     <Description>A package that provides domain classes to connect to 2hire system, this high level abstraction is needed to be able to design a loosely coupled system.</Description>
     <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
     <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>

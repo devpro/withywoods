@@ -2,28 +2,20 @@
 using Microsoft.Extensions.Logging;
 using Withywoods.Net.Http;
 
-namespace Devpro.Yanport.Client.Repositories
+namespace Withywoods.Yanport.Client.Repositories;
+
+public abstract class RepositoryBase(
+    IYanportClientConfiguration configuration,
+    ILogger logger,
+    IHttpClientFactory httpClientFactory)
+    : HttpRepositoryBase(logger, httpClientFactory)
 {
-    public abstract class RepositoryBase : HttpRepositoryBase
+    protected abstract string ResourceName { get; }
+
+    protected override string HttpClientName => configuration.HttpClientName;
+
+    protected string GenerateUrl(string prefix = "", string suffix = "", string arguments = "")
     {
-        protected RepositoryBase(
-            IYanportClientConfiguration configuration,
-            ILogger logger,
-            IHttpClientFactory httpClientFactory)
-            : base(logger, httpClientFactory)
-        {
-            Configuration = configuration;
-        }
-
-        protected IYanportClientConfiguration Configuration { get; private set; }
-
-        protected abstract string ResourceName { get; }
-
-        protected override string HttpClientName => Configuration.HttpClientName;
-
-        protected string GenerateUrl(string prefix = "", string suffix = "", string arguments = "")
-        {
-            return $"{Configuration.BaseUrl}{prefix}/{ResourceName}{suffix}{arguments}";
-        }
+        return $"{configuration.BaseUrl}{prefix}/{ResourceName}{suffix}{arguments}";
     }
 }

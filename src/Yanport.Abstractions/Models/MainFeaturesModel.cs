@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class MainFeaturesModel
 {
-    public class MainFeaturesModel
-    {
-        public DescriptiveModel Descriptive { get; set; }
-        public VisualModel Visual { get; set; }
-        public GeometryModel Geometry { get; set; }
-        public ConstructionModel Construction { get; set; }
-        public EnergyModel Energy { get; set; }
-        public object Condominium { get; set; }
-        public List<AdditionalFeatureModel> AdditionalFeatures { get; set; }
-    }
+    public DescriptiveModel Descriptive { get; set; } = new();
+
+    public VisualModel Visual { get; set; } = new();
+
+    public GeometryModel Geometry { get; set; } = new();
+
+    public ConstructionModel Construction { get; set; } = new();
+
+    public EnergyModel Energy { get; set; } = new();
+
+    public object? Condominium { get; set; }
+
+    public List<AdditionalFeatureModel> AdditionalFeatures { get; set; } = [];
 }

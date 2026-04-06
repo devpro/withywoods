@@ -22,7 +22,6 @@ public class TokenRepositoryTest : RepositoryTestBase
     {
         // Arrange
         var faker = new Faker();
-
         var responseDto = new ResponseModel<TokenDataDto>
         {
             Status = true,

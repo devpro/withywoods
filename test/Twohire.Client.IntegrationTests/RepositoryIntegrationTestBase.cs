@@ -2,13 +2,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using Withywoods.Twohire.Client.DependencyInjection;
 
-namespace Withywoods.Twohire.Client.IntegrationTests.Sandbox;
+namespace Withywoods.Twohire.Client.IntegrationTests;
 
 public abstract class RepositoryIntegrationTestBase
 {
     protected RepositoryIntegrationTestBase()
     {
-        Configuration = new SandboxTwoHireRestApiConfiguration(Environment.GetEnvironmentVariable("Environment") ?? "Sandbox");
+        Configuration = new TwoHireRestApiConfiguration(Environment.GetEnvironmentVariable("Environment") ?? "Sandbox");
 
         var services = new ServiceCollection()
             .AddLogging()
@@ -18,5 +18,5 @@ public abstract class RepositoryIntegrationTestBase
 
     protected ServiceProvider ServiceProvider { get; private set; }
 
-    protected SandboxTwoHireRestApiConfiguration Configuration { get; }
+    protected TwoHireRestApiConfiguration Configuration { get; }
 }

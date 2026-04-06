@@ -7,11 +7,10 @@ using Microsoft.Extensions.Logging;
 using Withywoods.Twohire.Abstractions.Providers;
 using Withywoods.Twohire.Abstractions.Repositories;
 using Withywoods.Twohire.Client.Repositories;
-using Xunit;
 
-namespace Withywoods.Twohire.Client.IntegrationTests.Sandbox;
+namespace Withywoods.Twohire.Client.IntegrationTests.Resources;
 
-public class PersonalVehicleRepositorySandboxIntegrationTest : RepositoryIntegrationTestBase
+public class PersonalVehicleRepositoryIntegrationTest : RepositoryIntegrationTestBase
 {
     // TODO: enable it
     // [Fact]

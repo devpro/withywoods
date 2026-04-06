@@ -4,13 +4,11 @@ using System.Threading.Tasks;
 using AwesomeAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Withywoods.Twohire.Abstractions.Repositories;
 using Withywoods.Twohire.Client.Repositories;
-using Xunit;
 
-namespace Withywoods.Twohire.Client.IntegrationTests.Sandbox;
+namespace Withywoods.Twohire.Client.IntegrationTests.Resources;
 
-public class TokenRepositorySandboxIntegrationTest : RepositoryIntegrationTestBase
+public class TokenRepositoryIntegrationTest : RepositoryIntegrationTestBase
 {
     // TODO: enable it
     // [Fact]

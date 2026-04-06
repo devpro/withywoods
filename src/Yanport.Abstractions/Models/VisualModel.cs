@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class VisualModel
 {
-    public class VisualModel
-    {
-        public List<string> Images { get; set; }
-        public List<object> Orientations { get; set; }
-        public List<object> Views { get; set; }
-    }
+    public List<string> Images { get; set; } = [];
+
+    public List<object> Orientations { get; set; } = [];
+
+    public List<object> Views { get; set; } = [];
 }

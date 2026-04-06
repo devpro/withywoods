@@ -1,7 +1,6 @@
 ﻿using Moq;
 using Withywoods.Net.Http.UnitTests;
 using Withywoods.Twohire.Abstractions.Providers;
-using Withywoods.Twohire.Client.UnitTests.Fakes;
 
 namespace Withywoods.Twohire.Client.UnitTests.Repositories;
 

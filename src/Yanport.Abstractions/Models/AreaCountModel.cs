@@ -1,19 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class AreaCountModel
 {
-    public class AreaCountModel
-    {
-        [JsonProperty("BEDROOM")]
-        public int Bedroom { get; set; }
+    [JsonPropertyName("BEDROOM")]
+    public int Bedroom { get; set; }
 
-        [JsonProperty("GARDEN")]
-        public int Garden { get; set; }
+    [JsonPropertyName("GARDEN")]
+    public int Garden { get; set; }
 
-        [JsonProperty("PARKING")]
-        public int Parking { get; set; }
+    [JsonPropertyName("PARKING")]
+    public int Parking { get; set; }
 
-        [JsonProperty("TERRACE")]
-        public int Terrace { get; set; }
-    }
+    [JsonPropertyName("TERRACE")]
+    public int Terrace { get; set; }
 }

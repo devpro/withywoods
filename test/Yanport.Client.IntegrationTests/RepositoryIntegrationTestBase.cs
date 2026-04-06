@@ -1,22 +1,22 @@
-﻿using Devpro.Yanport.Client.DependencyInjection;
+﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using Withywoods.Yanport.Client.DependencyInjection;
 
-namespace Devpro.Yanport.Client.IntegrationTests
+namespace Withywoods.Yanport.Client.IntegrationTests;
+
+public abstract class RepositoryIntegrationTestBase
 {
-    public class RepositoryIntegrationTestBase<T> where T : class, IYanportClientConfiguration
+    protected RepositoryIntegrationTestBase()
     {
-        protected RepositoryIntegrationTestBase(T configuration)
-        {
-            Configuration = configuration;
+        Configuration = new YanportClientConfiguration(Environment.GetEnvironmentVariable("Environment") ?? "Sandbox");
 
-            var services = new ServiceCollection()
-                .AddLogging()
-                .AddYanportClient(Configuration);
-            ServiceProvider = services.BuildServiceProvider();
-        }
-
-        protected ServiceProvider ServiceProvider { get; private set; }
-
-        protected T Configuration { get; private set; }
+        var services = new ServiceCollection()
+            .AddLogging()
+            .AddYanportClient(Configuration);
+        ServiceProvider = services.BuildServiceProvider();
     }
+
+    protected ServiceProvider ServiceProvider { get; private set; }
+
+    protected IYanportClientConfiguration Configuration { get; }
 }

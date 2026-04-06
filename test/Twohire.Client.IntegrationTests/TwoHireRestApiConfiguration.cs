@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Withywoods.Twohire.Client.IntegrationTests.Sandbox;
+namespace Withywoods.Twohire.Client.IntegrationTests;
 
-public class SandboxTwoHireRestApiConfiguration(string environmentName) : ITwohireClientConfiguration
+public class TwoHireRestApiConfiguration(string environmentName) : ITwohireClientConfiguration
 {
     public string HttpClientName => "TwoHire";
 

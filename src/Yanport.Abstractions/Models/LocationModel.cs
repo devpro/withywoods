@@ -1,8 +1,8 @@
-﻿namespace Devpro.Yanport.Abstractions.Models
+﻿namespace Withywoods.Yanport.Abstractions.Models;
+
+public class LocationModel
 {
-    public class LocationModel
-    {
-        public double Lat { get; set; }
-        public double Lon { get; set; }
-    }
+    public double Lat { get; set; }
+
+    public double Lon { get; set; }
 }

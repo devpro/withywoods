@@ -1,7 +1,6 @@
-﻿namespace Devpro.Yanport.Abstractions.Models
+﻿namespace Withywoods.Yanport.Abstractions.Models;
+
+public class BloctelModel
 {
-    public class BloctelModel
-    {
-        public string Status { get; set; }
-    }
+    public string Status { get; set; } = string.Empty;
 }

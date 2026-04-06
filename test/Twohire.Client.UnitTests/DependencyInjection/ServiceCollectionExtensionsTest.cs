@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Withywoods.Twohire.Abstractions.Providers;
 using Withywoods.Twohire.Abstractions.Repositories;
 using Withywoods.Twohire.Client.DependencyInjection;
-using Withywoods.Twohire.Client.UnitTests.Fakes;
 using Xunit;
 
 namespace Withywoods.Twohire.Client.UnitTests.DependencyInjection;

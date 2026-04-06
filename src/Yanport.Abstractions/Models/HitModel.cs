@@ -1,18 +1,24 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class HitModel
 {
-    public class HitModel
-    {
-        public string Id { get; set; }
-        public string Source { get; set; }
-        public MainFeaturesModel Features { get; set; }
-        public MarketingModel Marketing { get; set; }
-        public AddressModel Address { get; set; }
-        public List<AdModel> Ads { get; set; }
-        public List<object> Properties { get; set; }
-        [JsonProperty("type")]
-        public string HitType { get; set; }
-    }
+    public string Id { get; set; } = string.Empty;
+
+    public string Source { get; set; } = string.Empty;
+
+    public MainFeaturesModel Features { get; set; } = new();
+
+    public MarketingModel Marketing { get; set; } = new();
+
+    public AddressModel Address { get; set; } = new();
+
+    public List<AdModel> Ads { get; set; } = [];
+
+    public List<object> Properties { get; set; } = [];
+
+    [JsonPropertyName("type")]
+    public string HitType { get; set; } = string.Empty;
 }

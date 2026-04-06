@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class EnergyModel
 {
-    public class EnergyModel
-    {
-        public List<string> HeatingTypes { get; set; }
-        public List<object> WaterHeatingTypes { get; set; }
-        public string HeatingMode { get; set; }
-    }
+    public List<string> HeatingTypes { get; set; } = [];
+
+    public List<object> WaterHeatingTypes { get; set; } = [];
+
+    public string HeatingMode { get; set; } = string.Empty;
 }

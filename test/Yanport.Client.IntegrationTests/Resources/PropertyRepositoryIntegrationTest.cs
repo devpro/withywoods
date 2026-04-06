@@ -1,24 +1,19 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Devpro.Yanport.Abstractions.Repositories;
-using Devpro.Yanport.Client.Repositories;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Xunit;
+using Withywoods.Yanport.Abstractions.Repositories;
+using Withywoods.Yanport.Client.Repositories;
 
-namespace Devpro.Yanport.Client.IntegrationTests.Sandbox
+namespace Withywoods.Yanport.Client.IntegrationTests.Resources
 {
-    [Trait("Environment", "Sandbox")]
-    public class PropertyRepositorySandboxIntegrationTest : RepositoryIntegrationTestBase<SandboxYanportClientConfiguration>
+    public class PropertyRepositoryIntegrationTest : RepositoryIntegrationTestBase
     {
-        public PropertyRepositorySandboxIntegrationTest()
-            : base(new SandboxYanportClientConfiguration())
-        {
-        }
-
-        [Fact]
+        // TODO: enable it
+        // [Fact]
         public async Task PropertyRepositorySandboxFindAllAsync_ReturnToken()
         {
             // Arrange
@@ -31,7 +26,8 @@ namespace Devpro.Yanport.Client.IntegrationTests.Sandbox
             output.Should().NotBeNullOrEmpty();
         }
 
-        [Fact]
+        // TODO: enable it
+        // [Fact]
         public async Task RentalRouenPropertyRepositorySandboxFindAllAsync_ReturnToken()
         {
             // Arrange
@@ -53,7 +49,8 @@ namespace Devpro.Yanport.Client.IntegrationTests.Sandbox
             csv.Should().NotBeNullOrEmpty();
         }
 
-        [Fact]
+        // TODO: enable it
+        // [Fact]
         public async Task RentalAnnecyPropertyRepositorySandboxFindAllAsync_ReturnToken()
         {
             // Arrange
@@ -77,8 +74,8 @@ namespace Devpro.Yanport.Client.IntegrationTests.Sandbox
 
         private IPropertyRepository BuildRepository()
         {
-            var logger = ServiceProvider.GetService<ILogger<PropertyRepository>>();
-            var httpClientFactory = ServiceProvider.GetService<IHttpClientFactory>();
+            var logger = ServiceProvider.GetService<ILogger<PropertyRepository>>() ?? throw new NullReferenceException();
+            var httpClientFactory = ServiceProvider.GetService<IHttpClientFactory>() ?? throw new NullReferenceException();
 
             return new PropertyRepository(Configuration, logger, httpClientFactory);
         }

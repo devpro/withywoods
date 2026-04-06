@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class AdditionalFeatureModel
 {
-    public class AdditionalFeatureModel
-    {
-        public FeaturesModel Features { get; set; }
-        [JsonProperty("type")]
-        public string AdditionalFeatureType { get; set; }
-    }
+    public FeaturesModel Features { get; set; } = new();
+
+    [JsonPropertyName("type")]
+    public string AdditionalFeatureType { get; set; } = string.Empty;
 }

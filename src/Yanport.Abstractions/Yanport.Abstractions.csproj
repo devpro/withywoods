@@ -1,23 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Devpro.Yanport.Abstractions</AssemblyName>
-    <RootNamespace>Devpro.Yanport.Abstractions</RootNamespace>
-    <ProjectGuid>{DD0244BC-117C-43D5-8B53-1BC6ACB563F8}</ProjectGuid>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Withywoods.Yanport.Abstractions</AssemblyName>
+    <RootNamespace>Withywoods.Yanport.Abstractions</RootNamespace>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
     <Authors>devprofr</Authors>
     <Description>A package that provides high level abstractions to Yanport services.</Description>
-    <RepositoryUrl>https://github.com/devpro/yanport-dotnet-client</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/devpro/yanport-dotnet-client</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/devpro/withywoods</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/devpro/withywoods</PackageProjectUrl>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Withywoods.Serialization" Version="1.4.3" />
-  </ItemGroup>
-  
 </Project>

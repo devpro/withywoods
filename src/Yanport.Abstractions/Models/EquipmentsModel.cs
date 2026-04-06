@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class EquipmentsModel
 {
-    public class EquipmentsModel
-    {
-        [JsonProperty("FURNITURE")]
-        public bool Furniture { get; set; }
-    }
+    [JsonPropertyName("FURNITURE")]
+    public bool Furniture { get; set; }
 }

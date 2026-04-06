@@ -1,11 +1,10 @@
-﻿namespace Devpro.Yanport.Client
+﻿namespace Withywoods.Yanport.Client;
+
+public class DefaultYanportClientConfiguration : IYanportClientConfiguration
 {
-    public class DefaultYanportClientConfiguration : IYanportClientConfiguration
-    {
-        public string BaseUrl { get; set; }
+    public required string BaseUrl { get; set; }
 
-        public string Token { get; set; }
+    public required string Token { get; set; }
 
-        public string HttpClientName { get; set; } = "Yanport";
-    }
+    public string HttpClientName { get; set; } = "Yanport";
 }

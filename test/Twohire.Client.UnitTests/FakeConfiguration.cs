@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Withywoods.Twohire.Client.UnitTests.Fakes;
+namespace Withywoods.Twohire.Client.UnitTests;
 
 public class FakeConfiguration : DefaultTwohireClientConfiguration
 {

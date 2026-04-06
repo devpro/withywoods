@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace Devpro.Yanport.Abstractions.Models
+namespace Withywoods.Yanport.Abstractions.Models;
+
+public class AreaModel
 {
-    public class AreaModel
-    {
-        public List<object> KitchenEquipments { get; set; }
-        [JsonProperty("type")]
-        public string AreaType { get; set; }
-    }
+    public List<object> KitchenEquipments { get; set; } = [];
+
+    [JsonPropertyName("type")]
+    public string AreaType { get; set; } = string.Empty;
 }
