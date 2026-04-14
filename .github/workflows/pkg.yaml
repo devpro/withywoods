@@ -16,6 +16,9 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
 jobs:
   package-publication:
     name: Package / Publication
@@ -29,7 +32,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: devpro/github-workflow-parts
-          ref: c90ba46a93ca90123f57744b47e49c1a73962cea
+          ref: 0fb84dd26bcb614ca4683c8e501008fccf424d51
           path: workflow-parts
       - name: Pack & push .NET projects
         uses: ./workflow-parts/actions/dotnet/pack-push
