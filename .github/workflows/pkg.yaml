@@ -20,8 +20,14 @@ permissions:
   contents: read
 
 jobs:
+  git-check:
+    name: Git
+    uses: ./.github/workflows/reusable-git-check.yml
+
   package-publication:
     name: Package / Publication
+    needs: git-check
+    if: github.event_name == 'workflow_dispatch' || needs.git-check.outputs.app_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
