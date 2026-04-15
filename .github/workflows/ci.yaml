@@ -21,17 +21,23 @@ concurrency:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
+  git-check:
+    name: Git
+    uses: ./.github/workflows/reusable-git-check.yml
+    with:
+      is-pull-request: ${{ github.event_name == 'pull_request' }}
+
   markup-lint:
     name: Markup
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@c90ba46a93ca90123f57744b47e49c1a73962cea
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@0fb84dd26bcb614ca4683c8e501008fccf424d51
 
   code-quality:
     name: Code
-    if: github.event_name != 'workflow_dispatch' || inputs.run-code-quality
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@c90ba46a93ca90123f57744b47e49c1a73962cea
+    needs: git-check
+    if: needs.git-check.outputs.app_changed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.run-code-quality)
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@0fb84dd26bcb614ca4683c8e501008fccf424d51
     with:
       custom-commands: |
         dotnet build --no-restore --configuration Debug test/DemoBlazorWebApp.PlaywrightTests
@@ -42,7 +48,7 @@ jobs:
       sonar-organization: ${{ vars.SONAR_ORG }}
       sonar-project-key: ${{ vars.SONAR_PROJECT_KEY }}
       sonar-project-name: Withywoods
-      workflow-parts-version: c90ba46a93ca90123f57744b47e49c1a73962cea
+      workflow-parts-version: 0fb84dd26bcb614ca4683c8e501008fccf424d51
     secrets:
       fossa-api-key: ${{ secrets.FOSSA_API_KEY }}
       sonar-token: ${{ secrets.SONAR_TOKEN }}
