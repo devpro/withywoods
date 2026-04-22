@@ -17,6 +17,7 @@
   <Folder Name="/0 - Solution Items/github-actions/">
     <File Path=".github/workflows/ci.yaml" />
     <File Path=".github/workflows/pkg.yaml" />
+    <File Path=".github/workflows/reusable-git-check.yml" />
   </Folder>
   <Folder Name="/1 - API Clients/">
     <Project Path="src/Hubspot.Abstractions/Hubspot.Abstractions.csproj" />
