@@ -9,11 +9,20 @@
     dotnet --version
     ```
 
-2. Build and test from the command line
+2. Install [Powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell?view=powershell-7.6)
+
+    ```bash
+    winget install --id Microsoft.PowerShell --source winget
+    ```
+
+3. Build and test from the command line
 
     ```bash
     # builds the solution
     dotnet build
+   
+    # installs playwright browser
+    pwsh test/DemoBlazorWebApp.PlaywrightTests/bin/Debug/net10.0/playwright.ps1 install chromium
    
     # runs the tests
     dotnet test
@@ -25,21 +34,15 @@
     dotnet pack
     ```
 
-3. Develop in an IDE (Rider - recommended, Visual Studio 2026 or Visual Studio Code)
+4. Develop in an IDE (Rider - recommended, Visual Studio 2026 or Visual Studio Code)
 
     From the IDE, you can build the solution, run and debug the tests.
 
-4. Quality checks
+5. Quality checks
 
     ```bash
     # review .NET code against .editorconfig
     dotnet format
-   
-    # lints YAML files
-    docker run --rm -v "$(pwd)":/data cytopia/yamllint .
-    
-    # lints Markdown files
-    docker run --rm -v "$(pwd)":/workdir davidanson/markdownlint-cli2 "**/*.md"
    
     # ensures EOL is correct
     find . -type f \( -name "*.cs" -o -name "*.csproj" -o -name "*.slnx" -o -name "*.js" -o -name "*.razor" -o -name "*.css" \) -exec sed -i 's/\r$//' {} +
@@ -49,7 +52,7 @@
     docker build . -t withywoods-demoblazorwebapp:local -f samples/DemoWebApi/Dockerfile
     ```
 
-5. Demo containers images
+6. Demo containers images
 
     - Start containers
 
