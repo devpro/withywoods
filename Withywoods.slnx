@@ -2,7 +2,7 @@
   <Folder Name="/0 - Solution Items/">
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
-    <File Path=".markdownlint.yml" />
+    <File Path=".markdownlint-cli2.yaml" />
     <File Path=".yamllint.yaml" />
     <File Path="compose.yaml" />
     <File Path="CONTRIBUTING.md" />

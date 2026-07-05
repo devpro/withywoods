@@ -31,13 +31,13 @@ jobs:
 
   markup-lint:
     name: Markup
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@fde24497b1ccb7e876e4f06869a0ec0b3f2ba7ce
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@f9d8c00db1ed723e39cfff6c4c7addc77a23c54d
 
   code-quality:
     name: Code
     needs: git-check
     if: needs.git-check.outputs.app_changed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.run-code-quality)
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@fde24497b1ccb7e876e4f06869a0ec0b3f2ba7ce
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@f9d8c00db1ed723e39cfff6c4c7addc77a23c54d
     with:
       custom-commands: |
         dotnet build --no-restore --configuration Debug test/DemoBlazorWebApp.PlaywrightTests
@@ -48,7 +48,7 @@ jobs:
       sonar-organization: ${{ vars.SONAR_ORG }}
       sonar-project-key: ${{ vars.SONAR_PROJECT_KEY }}
       sonar-project-name: Withywoods
-      workflow-parts-version: fde24497b1ccb7e876e4f06869a0ec0b3f2ba7ce
+      workflow-parts-version: f9d8c00db1ed723e39cfff6c4c7addc77a23c54d
     secrets:
       fossa-api-key: ${{ secrets.FOSSA_API_KEY }}
       sonar-token: ${{ secrets.SONAR_TOKEN }}

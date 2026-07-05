@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>Withywoods.Hubspot.Abstractions</AssemblyName>
     <RootNamespace>Withywoods.Hubspot.Abstractions</RootNamespace>
     <Nullable>enable</Nullable>
