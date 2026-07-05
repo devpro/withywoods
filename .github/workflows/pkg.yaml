@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: devpro/github-workflow-parts
-          ref: fde24497b1ccb7e876e4f06869a0ec0b3f2ba7ce
+          ref: e5a95462126fb83f70e177edbc3f0dfb35598028
           path: workflow-parts
       - name: Pack & push .NET projects
         uses: ./workflow-parts/actions/dotnet/pack-push
