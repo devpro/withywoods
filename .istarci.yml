@@ -1,0 +1,11 @@
+# IstarCI configuration, read from the root of the repository.
+
+runner:
+  # The analysis runs against the SonarQube IstarCI starts on this machine, with a token made there.
+  sonarqube: true
+
+# Repository variables the pipeline reads, which a local run otherwise gets as placeholders.
+vars:
+  # The local SonarQube has no organizations, and a non-empty one is what turns the analysis on.
+  SONAR_ORG: local
+  SONAR_PROJECT_KEY: withywoods
