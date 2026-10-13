@@ -1,6 +1,10 @@
 # IstarCI configuration, read from the root of the repository.
 
 runner:
+  image: ghcr.io/devpro/ubuntu-dotnet:latest
+  images:
+    "git-check*": ghcr.io/devpro/debian-node:latest
+    "markup-lint*": ghcr.io/devpro/debian-node:latest
   # The analysis runs against the SonarQube IstarCI starts on this machine, with a token made there.
   sonarqube: true
 
