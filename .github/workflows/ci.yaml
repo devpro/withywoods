@@ -25,19 +25,19 @@ permissions:
 jobs:
   git-check:
     name: Git
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@1407a4bb9c27be25216e3ab69865c3895d862107
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
     with:
-      workflow-parts-version: 1407a4bb9c27be25216e3ab69865c3895d862107
+      workflow-parts-version: c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
 
   markup-lint:
     name: Markup
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@1407a4bb9c27be25216e3ab69865c3895d862107
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
 
   code-quality:
     name: Code
     needs: git-check
     if: needs.git-check.outputs.changed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.run-code-quality)
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@1407a4bb9c27be25216e3ab69865c3895d862107
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-dotnet-quality.yml@c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
     with:
       custom-commands: |
         dotnet build --no-restore --configuration Debug test/DemoBlazorWebApp.PlaywrightTests
@@ -49,7 +49,7 @@ jobs:
       sonar-organization: ${{ vars.SONAR_ORG }}
       sonar-project-key: ${{ vars.SONAR_PROJECT_KEY }}
       sonar-project-name: Withywoods
-      workflow-parts-version: 1407a4bb9c27be25216e3ab69865c3895d862107
+      workflow-parts-version: c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
     secrets:
       fossa-api-key: ${{ secrets.FOSSA_API_KEY }}
       sonar-token: ${{ secrets.SONAR_TOKEN }}
