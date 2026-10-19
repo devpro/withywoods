@@ -22,26 +22,23 @@ permissions:
 jobs:
   git-check:
     name: Git
-    uses: ./.github/workflows/reusable-git-check.yml
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@1407a4bb9c27be25216e3ab69865c3895d862107
+    with:
+      workflow-parts-version: 1407a4bb9c27be25216e3ab69865c3895d862107
 
   package-publication:
     name: Package / Publication
     needs: git-check
-    if: github.event_name == 'workflow_dispatch' || needs.git-check.outputs.app_changed == 'true'
+    if: github.event_name == 'workflow_dispatch' || needs.git-check.outputs.changed == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Clone repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - name: Checkout workflow parts
-        uses: actions/checkout@v6
-        with:
-          repository: devpro/github-workflow-parts
-          ref: f9d8c00db1ed723e39cfff6c4c7addc77a23c54d
-          path: workflow-parts
       - name: Pack & push .NET projects
-        uses: ./workflow-parts/actions/dotnet/pack-push
+        uses: devpro/github-workflow-parts/actions/dotnet/pack-push@1407a4bb9c27be25216e3ab69865c3895d862107
         with:
           registry-token: ${{ secrets.NUGET_API_KEY }}
           push-enabled: ${{ github.event_name != 'workflow_dispatch' || inputs.push-enabled }}
