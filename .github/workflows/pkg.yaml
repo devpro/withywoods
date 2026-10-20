@@ -22,9 +22,9 @@ permissions:
 jobs:
   git-check:
     name: Git
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@86258d301cd7d6d374587a0663ee384b9ccc4515
     with:
-      workflow-parts-version: c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
+      workflow-parts-version: 86258d301cd7d6d374587a0663ee384b9ccc4515
 
   package-publication:
     name: Package / Publication
@@ -38,7 +38,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Pack & push .NET projects
-        uses: devpro/github-workflow-parts/actions/dotnet/pack-push@c6d06a61a377a41dc192ce58f08a0b5100d9a2bc
+        uses: devpro/github-workflow-parts/actions/dotnet/pack-push@86258d301cd7d6d374587a0663ee384b9ccc4515
         with:
           registry-token: ${{ secrets.NUGET_API_KEY }}
           push-enabled: ${{ github.event_name != 'workflow_dispatch' || inputs.push-enabled }}
