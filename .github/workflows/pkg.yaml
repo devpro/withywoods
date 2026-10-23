@@ -1,4 +1,4 @@
-﻿name: PKG
+name: PKG
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 # purpose: Continuous Delivery (aka Packaging & Shipping)
 
@@ -22,9 +22,9 @@ permissions:
 jobs:
   git-check:
     name: Git
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@86258d301cd7d6d374587a0663ee384b9ccc4515
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@13ac7ccf4ba593797f8c80a75f2559ce0fc2d09e
     with:
-      workflow-parts-version: 86258d301cd7d6d374587a0663ee384b9ccc4515
+      workflow-parts-version: 13ac7ccf4ba593797f8c80a75f2559ce0fc2d09e
 
   package-publication:
     name: Package / Publication
@@ -34,11 +34,11 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Clone repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
       - name: Pack & push .NET projects
-        uses: devpro/github-workflow-parts/actions/dotnet/pack-push@86258d301cd7d6d374587a0663ee384b9ccc4515
+        uses: devpro/github-workflow-parts/actions/dotnet/pack-push@13ac7ccf4ba593797f8c80a75f2559ce0fc2d09e
         with:
           registry-token: ${{ secrets.NUGET_API_KEY }}
           push-enabled: ${{ github.event_name != 'workflow_dispatch' || inputs.push-enabled }}
