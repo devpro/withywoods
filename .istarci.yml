@@ -5,6 +5,8 @@ runner:
   images:
     "git-check*": ghcr.io/devpro/debian-node:latest
     "markup-lint*": ghcr.io/devpro/debian-node:latest
+    # The Playwright tests of the Blazor sample need the system libraries of Chromium, which only this image carries.
+    "code-quality*": ghcr.io/devpro/ubuntu-dotnet-playwright:latest
   # The analysis runs against the SonarQube IstarCI starts on this machine, with a token made there.
   sonarqube: true
 
