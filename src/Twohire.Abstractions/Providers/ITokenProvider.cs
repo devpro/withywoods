@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Twohire.Abstractions.Providers;
+namespace Withywoods.Twohire.Abstractions.Providers;
 
 public interface ITokenProvider
 {

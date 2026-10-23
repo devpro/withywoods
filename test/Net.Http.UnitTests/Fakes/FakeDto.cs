@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Net.Http.UnitTests.Fakes;
+namespace Withywoods.Net.Http.UnitTests.Fakes;
 
 public class FakeDto
 {

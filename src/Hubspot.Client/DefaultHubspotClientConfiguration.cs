@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Hubspot.Client;
+namespace Withywoods.Hubspot.Client;
 
 public class DefaultHubspotClientConfiguration : IHubspotClientConfiguration
 {

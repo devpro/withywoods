@@ -1,4 +1,4 @@
-﻿using Withywoods.Net.Http.UnitTests;
+using Withywoods.Net.Http.UnitTests;
 
 namespace Withywoods.Yanport.Client.UnitTests.Repositories;
 

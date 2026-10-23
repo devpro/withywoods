@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.DependencyInjection;
 using Withywoods.Twohire.Client.DependencyInjection;
 

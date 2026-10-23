@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Twohire.Client.Dto
+namespace Withywoods.Twohire.Client.Dto
 {
     public class UserDto
     {

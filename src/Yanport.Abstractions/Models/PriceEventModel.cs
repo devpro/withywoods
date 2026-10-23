@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Yanport.Abstractions.Models;
+namespace Withywoods.Yanport.Abstractions.Models;
 
 public class PriceEventModel
 {

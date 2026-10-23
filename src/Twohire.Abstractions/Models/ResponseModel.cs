@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Twohire.Abstractions.Models;
+namespace Withywoods.Twohire.Abstractions.Models;
 
 public class ResponseModel<T>
 {

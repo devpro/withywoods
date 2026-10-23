@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Twohire.Client;
+namespace Withywoods.Twohire.Client;
 
 public class DefaultTwohireClientConfiguration : ITwohireClientConfiguration
 {

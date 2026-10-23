@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AwesomeAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AwesomeAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using MongoDB.Bson;

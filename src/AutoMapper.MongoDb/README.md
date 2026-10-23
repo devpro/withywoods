@@ -1,4 +1,4 @@
-﻿# Withywoods AutoMapper MongoDB library
+# Withywoods AutoMapper MongoDB library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.AutoMapper.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.AutoMapper.MongoDb/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.AutoMapper.MongoDb.svg)](https://www.nuget.org/packages/Withywoods.AutoMapper.MongoDb/)

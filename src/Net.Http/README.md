@@ -1,4 +1,4 @@
-﻿# Withywoods Net HTTP Library
+# Withywoods Net HTTP Library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Net.Http.svg)](https://www.nuget.org/packages/Withywoods.Net.Http/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Net.Http.svg)](https://www.nuget.org/packages/Withywoods.Net.Http/)

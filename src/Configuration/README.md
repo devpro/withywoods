@@ -1,4 +1,4 @@
-﻿# Withywoods Configuration Library
+# Withywoods Configuration Library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.Configuration.svg)](https://www.nuget.org/packages/Withywoods.Configuration/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.Configuration.svg)](https://www.nuget.org/packages/Withywoods.Configuration/)

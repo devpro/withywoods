@@ -1,1 +1,1 @@
-﻿global using Withywoods.DemoBlazorWebApp.Components;
+global using Withywoods.DemoBlazorWebApp.Components;

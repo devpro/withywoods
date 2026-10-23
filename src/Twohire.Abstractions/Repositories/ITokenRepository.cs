@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Withywoods.Twohire.Abstractions.Models;
 
 namespace Withywoods.Twohire.Abstractions.Repositories;

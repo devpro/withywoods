@@ -1,4 +1,4 @@
-﻿services:
+services:
   demoblazorwebapp:
     image: withywoods-demoblazorwebapp:local
     build:

@@ -1,4 +1,4 @@
-﻿# HubSpot .NET
+# HubSpot .NET
 
 .NET client for [HubSpot](https://www.hubspot.com/) API.
 

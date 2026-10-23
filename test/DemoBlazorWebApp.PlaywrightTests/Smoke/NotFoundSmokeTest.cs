@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Withywoods.AspNetCore.Mvc.Testing;
 using Withywoods.DemoBlazorWebApp.PlaywrightTests.Aspects;
 using Withywoods.DemoBlazorWebApp.PlaywrightTests.Pages;

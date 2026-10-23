@@ -1,4 +1,4 @@
-﻿# Withywoods System Library
+# Withywoods System Library
 
 [![Version](https://img.shields.io/nuget/v/Withywoods.System.svg)](https://www.nuget.org/packages/Withywoods.System/)
 [![Downloads](https://img.shields.io/nuget/dt/Withywoods.System.svg)](https://www.nuget.org/packages/Withywoods.System/)

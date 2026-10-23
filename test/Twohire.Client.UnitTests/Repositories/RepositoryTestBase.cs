@@ -1,4 +1,4 @@
-﻿using Moq;
+using Moq;
 using Withywoods.Net.Http.UnitTests;
 using Withywoods.Twohire.Abstractions.Providers;
 

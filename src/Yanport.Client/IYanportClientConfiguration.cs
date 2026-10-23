@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Yanport.Client;
+namespace Withywoods.Yanport.Client;
 
 /// <summary>
 /// Client library configuration.

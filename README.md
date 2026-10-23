@@ -1,4 +1,4 @@
-﻿# Devpro Withywoods - Shared .NET libraries
+# Devpro Withywoods - Shared .NET libraries
 
 [![CI](https://github.com/devpro/withywoods/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/devpro/withywoods/actions/workflows/ci.yaml)
 [![PKG](https://github.com/devpro/withywoods/actions/workflows/pkg.yaml/badge.svg?branch=main)](https://github.com/devpro/withywoods/actions/workflows/pkg.yaml)

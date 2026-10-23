@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Hubspot.Client;
+namespace Withywoods.Hubspot.Client;
 
 /// <summary>
 /// Client library configuration.

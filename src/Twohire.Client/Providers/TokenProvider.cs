@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.Logging;
 using Withywoods.Twohire.Abstractions.Providers;
 using Withywoods.Twohire.Abstractions.Repositories;

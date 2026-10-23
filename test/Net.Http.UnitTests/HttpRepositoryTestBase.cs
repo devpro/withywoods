@@ -1,4 +1,4 @@
-﻿using System.Net.Http;
+using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Withywoods.Net.Http.UnitTests.Fakes;

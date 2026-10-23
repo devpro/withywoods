@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Twohire.Client;
+namespace Withywoods.Twohire.Client;
 
 /// <summary>
 /// 2hire client configuration.

@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Withywoods.Hubspot.Abstractions.Models;
 
 namespace Withywoods.Hubspot.Abstractions.Repositories;

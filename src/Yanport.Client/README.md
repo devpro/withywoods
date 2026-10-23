@@ -1,4 +1,4 @@
-﻿# Yanport .NET Client
+# Yanport .NET Client
 
 .NET client for [Yanport](https://www.yanport.com/), provider of real estate data.
 

@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Yanport.Client;
+namespace Withywoods.Yanport.Client;
 
 public class DefaultYanportClientConfiguration : IYanportClientConfiguration
 {

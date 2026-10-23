@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Hubspot.Abstractions.Providers;
+namespace Withywoods.Hubspot.Abstractions.Providers;
 
 /// <summary>
 /// Token provider.

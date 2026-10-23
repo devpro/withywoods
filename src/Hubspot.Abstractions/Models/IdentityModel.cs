@@ -1,4 +1,4 @@
-﻿namespace Withywoods.Hubspot.Abstractions.Models;
+namespace Withywoods.Hubspot.Abstractions.Models;
 
 public partial class IdentityModel
 {
