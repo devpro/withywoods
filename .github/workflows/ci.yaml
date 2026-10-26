@@ -23,15 +23,15 @@ permissions:
   contents: read
 
 jobs:
+  markup-lint:
+    name: Markup
+    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@591b0c7bfba6fbc7b0cab7d896447e0732b819de
+
   git-check:
     name: Git
     uses: devpro/github-workflow-parts/.github/workflows/reusable-git-check.yml@591b0c7bfba6fbc7b0cab7d896447e0732b819de
     with:
       workflow-parts-version: 591b0c7bfba6fbc7b0cab7d896447e0732b819de
-
-  markup-lint:
-    name: Markup
-    uses: devpro/github-workflow-parts/.github/workflows/reusable-markup-lint.yml@591b0c7bfba6fbc7b0cab7d896447e0732b819de
 
   code-quality:
     name: Code
